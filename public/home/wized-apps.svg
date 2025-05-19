@@ -1,0 +1,32 @@
+<svg width="350" height="300" viewBox="0 0 350 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="350" height="300" fill="#192024"/>
+
+  <!-- App interface mockup -->
+  <rect x="120" y="40" width="180" height="220" rx="5" fill="#2D3B41"/>
+  
+  <!-- Top bar -->
+  <rect x="120" y="40" width="180" height="30" rx="5" fill="#384A52"/>
+  <circle cx="135" cy="55" r="5" fill="#00ff7f"/>
+  <rect x="150" y="50" width="60" height="10" rx="2" fill="#566971"/>
+  
+  <!-- App elements -->
+  <rect x="135" y="85" width="150" height="30" rx="3" fill="#384A52"/>
+  <rect x="135" y="125" width="150" height="1" fill="#566971"/>
+  <rect x="135" y="135" width="150" height="20" rx="3" fill="#384A52"/>
+  <rect x="135" y="165" width="150" height="20" rx="3" fill="#384A52"/>
+  <rect x="135" y="195" width="150" height="20" rx="3" fill="#384A52"/>
+  <rect x="135" y="225" width="70" height="20" rx="10" fill="#00ff7f" opacity="0.7"/>
+  
+  <!-- Code-free indication -->
+  <g transform="translate(90, 170)">
+    <rect x="0" y="0" width="40" height="40" rx="20" fill="#384A52"/>
+    <text x="20" y="25" font-family="Arial" font-size="20" text-anchor="middle" fill="white">{ }</text>
+    <line x1="5" y1="5" x2="35" y2="35" stroke="#ff4444" stroke-width="3"/>
+  </g>
+  
+  <!-- Wized simplified logo -->
+  <g transform="translate(70, 70)">
+    <rect x="0" y="0" width="30" height="30" rx="5" fill="#384A52"/>
+    <text x="15" y="22" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="white">W</text>
+  </g>
+</svg> 

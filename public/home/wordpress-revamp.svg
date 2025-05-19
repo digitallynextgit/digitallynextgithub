@@ -1,0 +1,32 @@
+<svg width="350" height="300" viewBox="0 0 350 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="350" height="300" fill="#192024"/>
+  
+  <!-- Website mockup with transformation arrow -->
+  <rect x="50" y="80" width="120" height="90" rx="5" fill="#464342"/>
+  <rect x="60" y="100" width="100" height="15" rx="2" fill="#6f6f6f"/>
+  <rect x="60" y="125" width="60" height="10" rx="2" fill="#6f6f6f"/>
+  <rect x="60" y="145" width="80" height="10" rx="2" fill="#6f6f6f"/>
+  
+  <!-- WordPress logo -->
+  <circle cx="110" cy="195" r="20" fill="#464342"/>
+  <path d="M110,175 C99,175 90,184 90,195 C90,206 99,215 110,215 C121,215 130,206 130,195 C130,184 121,175 110,175 Z M110,177 C120,177 128,185 128,195 C128,205 120,213 110,213 C100,213 92,205 92,195 C92,185 100,177 110,177 Z" fill="#21759b"/>
+  <path d="M100,195 L105,210 L115,180 L120,200 L123,195" stroke="#21759b" stroke-width="2" fill="none"/>
+
+  <!-- Modern design mockup -->
+  <rect x="220" y="80" width="120" height="90" rx="15" fill="#2D3B41"/>
+  <rect x="230" y="100" width="100" height="15" rx="2" fill="#00ff7f" opacity="0.3"/>
+  <rect x="230" y="125" width="60" height="10" rx="5" fill="#384A52"/>
+  <rect x="230" y="145" width="80" height="10" rx="5" fill="#384A52"/>
+  
+  <!-- Webflow logo simplified -->
+  <g transform="translate(280, 195)">
+    <circle cx="0" cy="0" r="20" fill="#4353FF"/>
+    <path d="M-10,-3 L-3,7 L3,-3 L10,7" stroke="white" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Arrow between -->
+  <g transform="translate(175, 125)">
+    <circle cx="0" cy="0" r="15" fill="#00ff7f" opacity="0.8"/>
+    <path d="M-7,0 L7,0 M2,-5 L7,0 L2,5" stroke="white" stroke-width="2"/>
+  </g>
+</svg> 

@@ -1,0 +1,21 @@
+<svg width="350" height="300" viewBox="0 0 350 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="350" height="300" fill="#192024"/>
+  <!-- Dashboard mockup -->
+  <rect x="120" y="40" width="200" height="140" rx="5" fill="#2D3B41"/>
+  <rect x="130" y="50" width="180" height="20" rx="2" fill="#384A52"/>
+  <circle cx="140" cy="60" r="5" fill="#00ff7f"/>
+  
+  <!-- Table data -->
+  <rect x="130" y="80" width="180" height="90" rx="2" fill="#384A52"/>
+  <line x1="130" y1="100" x2="310" y2="100" stroke="#4F5E66" stroke-width="1"/>
+  <line x1="130" y1="120" x2="310" y2="120" stroke="#4F5E66" stroke-width="1"/>
+  <line x1="130" y1="140" x2="310" y2="140" stroke="#4F5E66" stroke-width="1"/>
+  <line x1="200" y1="80" x2="200" y2="170" stroke="#4F5E66" stroke-width="1"/>
+  
+  <!-- Shopify logo -->
+  <g transform="translate(70, 200)">
+    <path d="M30,0 C30,0 25,-5 20,3 C15,11 10,30 10,30 L50,30 C50,30 45,11 40,3 C35,-5 30,0 30,0 Z" fill="#95BF47"/>
+    <rect x="20" y="30" width="20" height="30" fill="#5E8E3E"/>
+    <circle cx="30" cy="15" r="5" fill="white"/>
+  </g>
+</svg> 
