@@ -79,8 +79,8 @@ const Careers = () => {
           >
             <div className="bg-white rounded-[4vw] p-4 border-2 border-black hover:border-red-600 transition-all duration-300 h-full flex flex-col hover:bg-blue">
               <div className="flex-grow aspect-square relative mb-2 h-[25vh]">
-                <Image
-                  src="/logo.webp"
+              <Image
+                  src={position.icon}
                   alt={position.title}
                   fill
                   className="object-contain p-[3vw] hover:scale-125 transition-all duration-300"

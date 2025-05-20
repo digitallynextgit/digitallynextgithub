@@ -84,7 +84,7 @@ export function Testimonials() {
         <section className="] overflow-hidden mt-[-20px] p-4 text-center">
             <div className="relative flex w-full flex-col items-center justify-center py-8 gap-2">
                 <p className="uppercase tracking-wider text-sm font-semibold">Happy Clients</p>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold mb-10">
+                <h2 className="text-4xl md:text-5xl font-serif font-bold mb-10 ">
                 Why They Believe in Us?
                 </h2>
                 <div className="w-full">

@@ -49,14 +49,14 @@ const projects = [
 
 const BookConsultation = () => {
   return (
-    <section className="bg-white py-10">
+    <section className="bg-white py-10 px-4">
       <div className="text-center mb-5">
-        <h1 className="text-[78px] font-black m-0 leading-none tracking-tight">Book</h1>
-        <h2 className="text-[78px] font-black m-0 leading-none tracking-tight text-[#231942]">
+        <h1 className="text-5xl md:text-[78px] font-black m-0 leading-none tracking-tight">Book</h1>
+        <h2 className="text-5xl md:text-[78px] font-black m-0 leading-none tracking-tight text-[#231942]">
           <span className="text-[#231942]">A </span>
           <span className="text-transparent" style={{ WebkitTextStroke: '2px #231942' }}>Consultation</span>
         </h2>
-        <p className="mt-4 text-lg text-[#231942] max-w-xl mx-auto">Book a consultation with our experts to discover how we can help you achieve your goals. Our team specializes in a variety of fields to ensure your success.</p>
+        <p className="mt-4 text-sm md:text-lg text-[#231942] max-w-xl mx-auto">Book a consultation with our experts to discover how we can help you achieve your goals. Our team specializes in a variety of fields to ensure your success.</p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
         {projects.map((p) => (
@@ -74,7 +74,7 @@ const BookConsultation = () => {
               }}
             />
             {/* Content (scales on hover) */}
-            <div className="relative z-10 text-left p-8 w-full max-w-[300px] left-12 flex flex-col items-start justify-end transition-transform duration-300 ml-10 group-hover:scale-110">
+            <div className="relative z-10 text-left p-8 w-full max-w-[300px] lg:left-12 flex flex-col items-start justify-end transition-transform duration-300 ml-10 group-hover:scale-110">
               <Image
                 src={p.img}
                 alt={p.name}

@@ -89,7 +89,8 @@ const LogoItem = ({ name, url }: { name: string; url: string }) => {
       <Image
         src={url} 
         alt={`${name} logo`} 
-        fill
+        width={100}
+        height={100}
         className="h-8 sm:h-10 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
       />
     </motion.div>

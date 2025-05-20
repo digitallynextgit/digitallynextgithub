@@ -205,7 +205,7 @@ const features = [
       <Calendar
         mode="single"
         selected={new Date(2025, 4, 11, 0, 0, 0)}
-        className="absolute right-12 top-10 origin-top scale-125 rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-90"
+        className="absolute md:right-12 left-2 md:top-10 origin-top scale-125 rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-90"
       />
     ),
   },
@@ -224,7 +224,7 @@ const features = [
 
 export function BentoDemo() {
   return (
-    <BentoGrid className="max-w-6xl mx-auto py-20">
+    <BentoGrid className="max-w-6xl mx-auto md:py-20 py-10 md:px-10 px-4">
       {features.map((feature, idx) => (
         <BentoCard key={idx} {...feature} />
       ))}

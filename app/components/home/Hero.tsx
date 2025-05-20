@@ -64,7 +64,7 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col items-center justify-center">
         {/* Animated Address in Top Right */}
         <motion.div 
-          className="absolute top-20 right-8 z-30 flex items-center md:top-24"
+          className="absolute hidden  right-8 z-30 md:flex items-center md:top-24 "
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -103,7 +103,7 @@ const Hero = () => {
                 repeatType: "reverse"
               }}
             >
-              <Image src="/home/1.webp" alt="" width={1200} height={100} className="w-[200px] md:w-[300px]"/>
+              <Image src="/home/1.webp" alt="" width={1200} height={100} className=" w-[300px] hidden md:block"/>
             </motion.div>
           </motion.div>
 
@@ -125,24 +125,24 @@ const Hero = () => {
                 delay: 1
               }}
             >
-              <Image src="/home/2.webp" alt="" width={1200} height={100} className="w-[200px] md:w-[300px]"/>
+              <Image src="/home/2.webp" alt="" width={1200} height={100} className="w-[300px] hidden md:block"/>
             </motion.div>
           </motion.div>
         </div>
 
         {/* Content */}
-        <div className="flex flex-col items-center justify-center text-center z-10 px-4 mt-16 md:mt-0">
-            <h3 className="text-lg text-gray-600 mb-[-50px]" style={{ fontFamily: 'Montserrat, sans-serif' }}>Cracting Experience that Inspire:</h3>
+        <div className="flex flex-col items-center justify-center text-center z-10 px-4 mt-[-140px] md:mt-0">
+            <h3 className="md:text-lg text-sm text-gray-600 md:mb-[-50px]" style={{ fontFamily: 'Montserrat, sans-serif' }}>Cracting Experience that Inspire:</h3>
           <TypewriterEffect />
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-[-20px] sm:mt-[-16px]">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:mt-[-20px]">
             <a
               href="/digitally-next"
-              className="btn-primary text-sm px-6 py-3"
+              className="btn-primary md:text-sm text-[12px] px-6 py-3"
             >
               DIGITALLY NEXT
             </a>
-            <a href="/expertise" className="btn-secondary py-3 px-6 border-2 text-sm">
+            <a href="/expertise" className="btn-secondary py-3 px-6 border-2 md:text-sm text-[12px]">
               EXPLORE EXPERTISE
             </a>
           </div>
@@ -156,7 +156,7 @@ const Hero = () => {
             aria-label="Scroll to next section"
           >
             <div className="flex flex-col justify-center items-center">
-              <FaChevronDown className="h-10 w-10" />
+              <FaChevronDown className="md:h-10 md:w-10 h-6 w-6" />
             </div>
           </button>
         </div>
@@ -184,7 +184,7 @@ const Hero = () => {
                   <p className="text-xs text-gray-600">{testimonials[currentTestimonial].role}</p>
                 </div>
               </div>
-              <p className="text-gray-800 italic text-base">&quot;{testimonials[currentTestimonial].quote}&quot;</p>
+              <p className="text-gray-800 italic md:text-base text-xs">&quot;{testimonials[currentTestimonial].quote}&quot;</p>
               
               {/* Indicator dots */}
               {/* <div className="flex justify-center mt-3 space-x-2">

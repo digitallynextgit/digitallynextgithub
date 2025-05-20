@@ -36,23 +36,23 @@ const Header = () => {
     }, [isMenuOpen]);
 
     return (
-        <header className={`fixed top-0 w-full h-[80px] sm:h-[90px] z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+        <header className={`fixed top-0 w-full lg:h-[95px]  z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
        
                         <div className='flex-shrink-0 relative'>
                             <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2"/>
                         </div>
-                        <div className="flex-shrink-0 ml-0 sm:ml-4">
+                        <div className="flex-shrink-0 md:ml-0 -ml-32 ">
                             <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
-                                <Image src="/logo.webp" alt="logo" width={120} height={100} className='transform -translate-y-3 sm:-translate-y-4'/>
+                                <Image src="/logo.webp" alt="logo" width={120} height={100} className='transform lg:-translate-y-3 translate-y-2'/>
                             </Link>
                         </div>
           
                     
                     {/* Hamburger Button */}
                     <button 
-                        className="flex flex-col justify-center items-center w-12 h-12 rounded-full bg-[#dc3333] z-50 relative focus:outline-none transform -translate-y-1 sm:-translate-y-4"
+                        className="flex flex-col justify-center items-center w-12 h-12 rounded-full bg-[#dc3333] z-50 relative focus:outline-none transform lg:-translate-y-4 translate-y-2"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
                     >

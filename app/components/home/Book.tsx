@@ -41,10 +41,10 @@ const Book = () => {
 
             {/* Right Column - Text Content */}
             <div className="text-center lg:text-left bg-[#fff] border-black border-[1px] md:p-10 p-6 md:pl-20 rounded-3xl md:ml-[-250px]  -mt-10 md:-mt-60 w-[100%]">
-              <h2 className="text-5xl md:text-5xl font-serif font-medium mb-6">
+              <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
                 What NEXT ?
               </h2>
-              <p className="text-md mb-8">
+              <p className="md:text-md text-sm mb-8">
                 <strong>DigitallyNext</strong> is a powerful video series hosted
                 by Deepak, recognized as a thought leader and pioneer in digital
                 transformation. Through engaging conversations with industry

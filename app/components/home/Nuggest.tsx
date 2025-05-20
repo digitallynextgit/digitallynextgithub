@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 
@@ -37,10 +37,24 @@ const final = [
 
 const Nuggest = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if we're on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Framer Motion scroll progress for the section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "center center"], // 0 at section top, 1 at section center
+    offset: ["start end", "center center"],
   });
 
   // Create individual motion values for each card at the component level
@@ -80,37 +94,63 @@ const Nuggest = () => {
   return (
     <section
       ref={sectionRef}
-      className="min-h-[600px] flex flex-col items-center justify-center py-20 bg-white transition-colors duration-700"
+      className="md:min-h-[600px] flex flex-col items-center justify-center py-20 bg-white transition-colors duration-700"
     >
-      <h2 className="text-5xl font-black mb-12 text-[#231942] tracking-tight">
-        THIS IS WHAT{' '}
+      <h2 className="md:text-5xl text-4xl text-center md:  font-black mb-12 text-[#231942] tracking-tight">
+      FREE DIGITAL {' '}
         <span
           className="text-transparent"
           style={{ WebkitTextStroke: '2px #231942' }}
         >
-          WE DO
+          NUGGETS
         </span>
       </h2>
-      <div className="relative flex items-center justify-center w-full max-w-6xl min-h-[350px]" style={{ height: 400 }}>
-        {cards.map((card, i) => (
-          <motion.div
-            key={i}
-            className=" w-full h-full absolute left-1/2 top-1/2 group"
-            style={{
-              ...getMotionStyle(i),
-              translateX: '-50%',
-              translateY: '-50%',
-              zIndex: 10 + i,
-              willChange: 'transform',
-            }}
-            transition={{ type: 'spring', stiffness: 80, damping: 30 }}
-          >
-            <div className="transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-full h-full">
-              <Image src={card.img} alt="Nuggest" className="w-full h-full object-contain rounded-2xl" fill/>
+
+      {/* Mobile Grid Layout */}
+      {isMobile ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl px-4">
+          {cards.map((card, i) => (
+            <div
+              key={i}
+              className="relative aspect-square w-full group"
+            >
+              <Image 
+                src={card.img} 
+                alt="Nuggest" 
+                className="w-full h-full md:object-cover rounded-2xl transition-transform duration-300 group-hover:scale-105" 
+                fill
+              />
             </div>
-          </motion.div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        /* Desktop Animated Layout */
+        <div className="relative flex items-center justify-center w-full max-w-6xl min-h-[350px]" style={{ height: 400 }}>
+          {cards.map((card, i) => (
+            <motion.div
+              key={i}
+              className="w-full h-full absolute left-1/2 top-1/2 group"
+              style={{
+                ...getMotionStyle(i),
+                translateX: '-50%',
+                translateY: '-50%',
+                zIndex: 10 + i,
+                willChange: 'transform',
+              }}
+              transition={{ type: 'spring', stiffness: 80, damping: 30 }}
+            >
+              <div className="transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-full h-full">
+                <Image 
+                  src={card.img} 
+                  alt="Nuggest" 
+                  className="w-full h-full object-contain rounded-2xl" 
+                  fill
+                />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

@@ -43,7 +43,7 @@ const About = () => {
             viewport={{ once: true }}
             className="lg:col-span-8"
           >
-            <h2 className="text-8xl md:text-[10rem] font-black leading-none tracking-tighter text-black">
+            <h2 className="text-5xl md:text-[10rem] font-black leading-none tracking-tighter text-black text-center md:text-left">
               ABOUT US
             </h2>
             {/* <h2 className="text-8xl md:text-[10rem] font-black leading-none tracking-tighter text-black">
@@ -57,15 +57,15 @@ const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="lg:col-span-4 h-[300px] lg:h-[300px] mb-16"
+            className="lg:col-span-4 h-[300px] lg:h-[300px] md:mb-16 "
           >
             <LottieAnimation src="https://lottie.host/6659a81d-1046-466c-bd4d-889bc5fd8c4b/QgjOCUlNx6.lottie" />
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start ">
           {/* Left Content */}
-          <div className="lg:col-span-3 mt-[-6vw]">
+          <div className="lg:col-span-3 md:mt-[-6vw] mb-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ const About = () => {
           </div>
 
           {/* Center - Image Carousel */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 my-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ const About = () => {
           </div>
 
           {/* Right Column - Video */}
-          <div className="lg:col-span-4 mt-[-10vw]">
+          <div className="lg:col-span-4 md:mt-[-10vw]">
             <div className="space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
