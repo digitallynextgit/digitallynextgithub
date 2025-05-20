@@ -24,7 +24,7 @@ const TypewriterEffect = () => {
 
   return (
     <div 
-      className="relative my-8 md:my-12 lg:my-16 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight break-words h-[200px] md:h-[150px] lg:h-[180px] w-full max-w-[85vw] lg:max-w-[55vw] mx-auto flex items-center justify-center" 
+      className="relative my-8 md:my-12 lg:my-16 text-4xl md:text-4xl lg:text-5xl font-bold leading-tight break-words h-[200px] md:h-[150px] lg:h-[180px] w-full max-w-[85vw] lg:max-w-[75vw] mx-auto flex items-center justify-center" 
       style={{ fontFamily: 'Playfair Display, sans-serif' }}
     >
       <div className="flex flex-col items-center">
