@@ -7,7 +7,7 @@ import { typewriterData } from '@/app/data/typewriter-data';
 const TypewriterEffect = () => {
   const [showTag, setShowTag] = useState(false);
   const [currentTag, setCurrentTag] = useState('');
-  const [tagVisible, setTagVisible] = useState(false);
+  const [, setTagVisible] = useState(false);
   const typewriterRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
