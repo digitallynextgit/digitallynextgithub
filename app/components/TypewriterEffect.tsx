@@ -15,7 +15,7 @@ const TypewriterEffect = () => {
     if (showTag) {
       timeout = setTimeout(() => {
         setTagVisible(true);
-      }, 500); // 500ms delay
+      }, 500);
     } else {
       setTagVisible(false);
     }
@@ -23,10 +23,13 @@ const TypewriterEffect = () => {
   }, [showTag]);
 
   return (
-    <div className="relative my-[3vw] text-[7vw] md:text-[5vw] lg:text-[4.5vw] font-bold leading-[11vw] md:leading-[4.5vw] lg:leading-[6vw] break-words min-h-[15vh] md:min-h-[12vh] w-full max-w-[85vw] lg:max-w-[55vw] mx-auto" style={{ fontFamily: 'Playfair Display, sans-serif' }}>
-      <div className="flex flex-col">
-        <div className="relative text-black flex flex-col">
-          <div ref={typewriterRef} className="inline">
+    <div 
+      className="relative my-8 md:my-12 lg:my-16 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight break-words h-[200px] md:h-[150px] lg:h-[180px] w-full max-w-[85vw] lg:max-w-[55vw] mx-auto flex items-center justify-center" 
+      style={{ fontFamily: 'Playfair Display, sans-serif' }}
+    >
+      <div className="flex flex-col items-center">
+        <div className="relative text-black flex flex-col items-center">
+          <div ref={typewriterRef} className="inline text-center">
             <Typewriter
               onInit={(typewriter) => {
                 let sequence = typewriter;
@@ -60,18 +63,18 @@ const TypewriterEffect = () => {
               }}
             />
           </div>
-          {showTag && (
-            <div className="inline-block ml-2">
+          <div className="h-12 md:h-14 lg:h-16 flex items-center">
+            {showTag && (
               <span 
                 key={0}
-                className={`text-[7vw] lg:text-[4.5vw] text-red-600
+                className={`text-3xl md:text-4xl lg:text-5xl text-red-600
                   transition-opacity duration-500
                   ${tagVisible ? 'opacity-100' : 'opacity-0'}`}
               >
                 {currentTag}
               </span>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>
