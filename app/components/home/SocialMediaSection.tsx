@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FaYoutube } from 'react-icons/fa';
 import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
+import YoutubeFacade from '@/app/components/social/YoutubeFacade';
 
 const videos = [
   {
@@ -88,23 +89,13 @@ const SocialMediaSection = () => {
         <div ref={sliderRef} className="keen-slider">
           {videos.map((video,) => {
             const id = getYouTubeId(video.videoId);
-            const embed = id
-              ? `https://www.youtube.com/embed/${id}?autoplay=1&loop=1&controls=0&playlist=${id}&mute=1`
-              : '';
             return (
               <div key={video.id} className="keen-slider__slide flex flex-col items-center">
                 <div className="w-[300px] h-[550px] bg-white rounded-[1.5rem] border-4 border-gray-200 shadow-xl flex items-center justify-center overflow-hidden relative mx-auto">
                   {/* Speaker/Camera Notch */}
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 w-16 h-4 bg-gray-300 rounded-full z-10" />
-                  {embed && (
-                    <iframe
-                      src={embed}
-                      title={video.title}
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full rounded-[1.5rem]"
-                      style={{ border: 'none', width: '100%', height: '100%' }}
-                    />
+                  {id && (
+                    <YoutubeFacade videoId={id} className="w-full h-full rounded-[1.5rem]" />
                   )}
                 </div>
                 <h3 className="text-xl font-bold text-gray-800 mt-6 mb-4 text-center">{video.title}</h3>
