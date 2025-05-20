@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa6";
 import ConsultationForm from "@/components/contact/ConsulationForm";
-import Image from "next/image";
+// import Image from "next/image";
 
 const ContactPage = () => {
   return (
@@ -12,7 +12,7 @@ const ContactPage = () => {
         {/* Left Side: Heading, Testimonial, CTA */}
         <div className="flex flex-col justify-center h-full">
           <h1 className="text-3xl md:text-5xl font-extrabold text-center md:text-left text-[#d90429] mb-8 leading-tight">
-            Let's start a project
+            Let&apos;s start a project
             <br />
             together
           </h1>
