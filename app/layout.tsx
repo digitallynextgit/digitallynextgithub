@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
+import HeaderWrapper from "./components/HeaderWrapper";
 import Footer from "./components/Footer";
 import LenisProvider from "./components/LenisProvider";
 
@@ -18,7 +18,6 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Add proper font loading for Montserrat and Playfair Display
 const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -34,7 +33,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "AD Agency DigitallyNext - Premium Digital Marketing Solutions",
+  title: "DigitallyNext - Digital Marketing Solutions",
   description: "AD Agency DigitallyNext provides comprehensive digital marketing solutions to help businesses establish and grow their online presence.",
 };
 
@@ -52,7 +51,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden w-full`}
       >
         <LenisProvider>
-          <Header />
+          <HeaderWrapper />
           <main className="overflow-x-hidden w-full">{children}</main>
           <Footer />
         </LenisProvider>
