@@ -51,6 +51,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "picsum.photos", // ✅ Added to fix your error
       },
+      {
+        protocol: "https",
+        hostname: "ui-avatars.com", // ✅ Added to fix client logo images
+      },
     ],
     domains: [
       'upload.wikimedia.org',

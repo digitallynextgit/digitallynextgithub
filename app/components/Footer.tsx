@@ -22,7 +22,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-6">
         {/* Logo + tagline + social */}
         <div className="flex flex-col gap-6">
-          <Image src="/logo.webp" alt="Digitally Next Logo" width={180} height={80} className="mb-2" />
+          <Image src="/logo-white.webp" alt="Digitally Next Logo" width={180} height={80} className="mb-2" />
           <p className="text-gray-300 text-base max-w-xs">
             Empowering businesses with next-generation digital solutions and innovative strategies.
           </p>

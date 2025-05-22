@@ -1,0 +1,124 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useState } from 'react';
+
+const leadTeam = [
+  {
+    name: 'SARAH',
+    position: 'CEO AND FOUNDER',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3'
+  },
+  {
+    name: 'MICHAEL',
+    position: 'CTO',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3'
+  },
+  {
+    name: 'EMILY',
+    position: 'CXO',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3'
+  },
+  {
+    name: 'JAMES',
+    position: 'FRONT TECH LEADER',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3'
+  },
+  {
+    name: 'PRIYA',
+    position: 'CHRO',
+    image: 'https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3'
+  },
+  {
+    name: 'DAVID',
+    position: 'BUSINESS RELATIONS',
+    image: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3'
+  }
+];
+
+export default function TeamLeadSection() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  return (
+    <section className="bg-red-500 text-white py-12 md:py-16 lg:py-20 relative overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
+          {/* Left side with heading and description - stacks on mobile */}
+          <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center lg:text-left"
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-3 md:mb-4 tracking-tight">
+                LEADING
+                <span className="block text-6xl sm:text-7xl md:text-8xl lg:text-9xl leading-tight">TEAM</span>
+              </h2>
+              <p className="text-base md:text-lg mx-auto lg:mx-0 max-w-2xl lg:max-w-none lg:pr-12 mt-4 md:mt-6">
+                Our leading team combines technical expertise, commitment, and a positive attitude. 
+                With advanced skills, they lead by example, always sharing their experience and, 
+                of course, a few gray hairs of wisdom.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Right side with team members - responsive grid */}
+          <div className="w-full lg:w-1/2">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mx-auto max-w-3xl lg:max-w-none">
+              {leadTeam.map((member, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    rotate: 6,
+                    transition: { 
+                      duration: 0.4,
+                      ease: "easeOut"
+                    } 
+                  }}
+                  style={{
+                    transformOrigin: "center center",
+                    transformStyle: "preserve-3d",
+                    perspective: "1000px",
+                    willChange: "transform"
+                  }}
+                  onMouseEnter={() => setHoveredIndex(index)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="bg-red-700 rounded-2xl sm:rounded-3xl overflow-hidden transform-gpu h-full"
+                >
+                  <div className="p-3 sm:p-4 md:p-5 lg:p-6 pb-2 sm:pb-3 md:pb-4">
+                    <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-1 line-clamp-1">{member.name}</h3>
+                    <p className="text-[10px] sm:text-xs lg:text-sm font-medium text-white/80 line-clamp-1">{member.position}</p>
+                  </div>
+                  <div className="relative h-24 sm:h-32 md:h-40 lg:h-48 w-full overflow-hidden">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 15vw"
+                      className={`object-cover object-center transition-transform duration-700 ${hoveredIndex === index ? 'scale-110' : ''}`}
+                    />
+                    {hoveredIndex === index && (
+                      <div className="absolute inset-0"></div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Background decorative dot - adjusted for responsiveness */}
+      <div className="absolute top-12 right-4 md:right-auto md:left-2/3 w-3 h-3 md:w-4 md:h-4 bg-red-400 rounded-full"></div>
+      <div className="absolute bottom-8 left-4 md:left-1/4 w-2 h-2 md:w-3 md:h-3 bg-red-400/70 rounded-full hidden sm:block"></div>
+    </section>
+  );
+} 

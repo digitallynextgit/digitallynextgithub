@@ -1,18 +1,26 @@
-import React from 'react'
-import Banner from '@/app/components/about/Banner'
-import Know from '@/app/components/about/Know'
-import BreakRules from '@/app/components/about/BreakRules'
-import Subscribe from '@/app/components/about/Subscribe'
+import { Metadata } from 'next';
+import AboutHero from '@/app/components/about/AboutHero';
+import OurStory from '@/app/components/about/OurStory';
+import OurValues from '@/app/components/about/OurValues';
+// import TeamSection from '@/app/components/about/TeamSection';
+import TeamLeadSection from '@/app/components/about/TeamLeadSection';
+import Achievements from '@/app/components/about/Achievements';
+import ClientsSlider from '@/app/components/about/ClientsSlider';
 
-const page = () => {
+export const metadata: Metadata = {
+  title: 'About Us | DigitallyNext',
+  description: 'Learn about our journey, mission, values, and the team that makes DigitallyNext a leading digital agency.',
+};
+
+export default function AboutPage() {
   return (
-    <>
-      <Banner />
-      <Know />
-      <BreakRules />
-      <Subscribe />
-    </>
-  )
-}
-
-export default page
+    <div className="min-h-screen bg-white">
+      <AboutHero />
+      <OurStory />
+      <OurValues />
+      <Achievements />
+      <TeamLeadSection />
+      <ClientsSlider />
+    </div>
+  );
+} 
