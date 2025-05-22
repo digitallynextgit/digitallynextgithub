@@ -64,6 +64,7 @@ module.exports = {
         "orbit": "orbit calc(var(--duration) * 1s) linear infinite",
         "shimmer": "shimmer-slide var(--speed) ease-in-out infinite alternate",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+        "blink": "blink 1s step-end infinite",
       },
       keyframes: {
         marquee: {
@@ -90,6 +91,10 @@ module.exports = {
           "15%, 35%": { transform: "translateZ(0) rotate(90deg)" },
           "65%, 85%": { transform: "translateZ(0) rotate(270deg)" },
           "100%": { transform: "translateZ(0) rotate(360deg)" },
+        },
+        blink: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: 0 },
         },
       },
       fontFamily: {

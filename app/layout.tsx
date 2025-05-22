@@ -5,6 +5,7 @@ import "./globals.css";
 import HeaderWrapper from "./components/HeaderWrapper";
 import Footer from "./components/Footer";
 import LenisProvider from "./components/LenisProvider";
+import ToastProvider from "./providers/ToastProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden w-full`}
       >
         <LenisProvider>
+          <ToastProvider />
           <HeaderWrapper />
           <main className="overflow-x-hidden w-full">{children}</main>
           <Footer />

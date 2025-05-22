@@ -2,7 +2,7 @@
 import React from "react";
 // import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa6";
-import ConsultationForm from "@/components/contact/ConsulationForm";
+import ConsultationForm from "@/app/components/contact/ConsultationForm";
 // import Image from "next/image";
 
 const ContactPage = () => {
@@ -28,7 +28,7 @@ const ContactPage = () => {
               <div>
                 <div className="font-bold text-gray-900">Deepak Goel</div>
                 <div className="text-gray-500 text-sm">
-                  Founder & CEO @tournated
+                  Founder & CEO @DigiNext
                 </div>
               </div>
             </div>
