@@ -2,7 +2,7 @@
 import MapComponents from '@/components/home/MapComponents';
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+// import Image from 'next/image';
 // import { Montserrat } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
 
