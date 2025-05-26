@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const cards = [
   {
@@ -140,13 +141,16 @@ const Nuggest = () => {
               transition={{ type: 'spring', stiffness: 80, damping: 30 }}
             >
               <div className="transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-full h-full">
+                <Link href="/nuggets">
                 <Image 
                   src={card.img} 
                   alt="Nuggest" 
                   className="w-full h-full object-contain rounded-2xl" 
                   fill
                 />
+                </Link>
               </div>
+              
             </motion.div>
           ))}
         </div>

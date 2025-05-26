@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-import { FaSpotify, FaApple, FaPodcast } from "react-icons/fa";
-// import { SiPocketcasts, SiCastbox } from 'react-icons/si';
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
 import Image from "next/image";
 
 // Dynamically import the PodcastMockScreen component with SSR disabled
@@ -56,30 +55,27 @@ const Book = () => {
                 innovation.
               </p>
 
-              {/* Listen Platforms */}
+              {/* Social Media Links */}
               <div className="space-y-4">
-                <p className="font-medium text-lg">Listen on:</p>
+                <p className="font-medium text-lg">Follow us on:</p>
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
                   <a
-                    href="#"
+                    href="https://www.instagram.com/digitallynext?igsh=dzBveGl2bnFveW1m"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition"
                   >
-                    <FaSpotify className="text-[#1DB954] text-2xl" />
-                    <span>Spotify</span>
+                    <FaInstagram className="text-[#E1306C] text-2xl" />
+                    <span>Instagram</span>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/digitallynext/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition"
                   >
-                    <FaApple className="text-[#000000] text-2xl" />
-                    <span>Podcasts</span>
-                  </a>
-                  <a
-                    href="#"
-                    className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition"
-                  >
-                    <FaPodcast className="text-[#FF8C00] text-2xl" />
-                    <span>Google Podcasts</span>
+                    <FaLinkedin className="text-[#0077B5] text-2xl" />
+                    <span>LinkedIn</span>
                   </a>
                 </div>
               </div>

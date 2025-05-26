@@ -3,7 +3,10 @@ import MapComponents from '@/components/home/MapComponents';
 import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+// import { Montserrat } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 
+const playfairDisplay = Playfair_Display({ subsets: ['latin'] });
 const Map = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
@@ -45,7 +48,7 @@ const Map = () => {
         {/* Top Text with animations */}
         <div className="flex items-baseline gap-2 lg:gap-4 mb-[4vh] lg:mb-[6vh]">
           <motion.span 
-            className="text-red-600 text-[10vw] lg:text-[10vw] font-bold"
+            className={`text-red-600 text-[10vw] lg:text-[10vw] font-bold font-playfair  ${playfairDisplay.className}`}
             initial={{ scale: 0 }}
             animate={isInView ? { 
               scale: [0, 1.2, 0.9, 1.1, 1],
@@ -59,7 +62,7 @@ const Map = () => {
             BIG
           </motion.span>
           <motion.span 
-            className="text-white text-[7vw] lg:text-[4vw] font-bold whitespace-normal lg:whitespace-nowrap"
+            className={`text-white text-[7vw] lg:text-[4vw] font-bold whitespace-normal lg:whitespace-nowrap ${playfairDisplay.className}`}
             initial={{ x: -1000, opacity: 0 }}
             animate={isInView ? { x: 0, opacity: 1 } : { x: -1000, opacity: 0 }}
             transition={{
@@ -90,13 +93,13 @@ const Map = () => {
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ delay: 2.5, duration: 0.5 }}
           >
-            <Image
+            {/* <Image
               src="/images/arrow.webp"
               alt="Map Image"
               width={1200}
               height={100}
               className='w-full rounded-lg overflow-hidden'
-            />
+            /> */}
           </motion.div>
           <motion.h2 
             className="text-[8vw] lg:text-[4vw] font-bold text-red-600 text-center lg:text-left"

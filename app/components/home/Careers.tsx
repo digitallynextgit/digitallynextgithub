@@ -164,7 +164,7 @@ const Careers = () => {
                   className="basis-1/4"
                 >
                   <Link
-                    href={activeTab === 'fulltime' ? "/careers/full-time" : "/careers/internship"}
+                    href={activeTab === 'fulltime' ? "/careers" : "/careers"}
                     className="group h-full block"
                   >
                     <div className="bg-white rounded-[2vw] p-[1vw] border-2 border-black hover:border-red-600 transition-all duration-300 h-full flex flex-col hover:bg-blue">

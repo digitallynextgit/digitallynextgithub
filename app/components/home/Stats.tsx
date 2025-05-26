@@ -13,22 +13,27 @@ const files = [
   {
     name: "bitcoin.pdf",
     body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+    color: "#00C9A7",
   },
   {
     name: "finances.xlsx",
     body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+    color: "#FFB800",
   },
   {
     name: "logo.svg",
     body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
+    color: "#FF3D71",
   },
   {
     name: "keys.gpg",
     body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
+    color: "#1E86FF",
   },
   {
     name: "seed.txt",
     body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+    color: "#9747FF",
   },
 ];
 
@@ -165,10 +170,14 @@ const features = [
             key={idx}
             className={cn(
               "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
-              "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-              "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
+              "border-gray-950/[.1] hover:bg-gray-950/[.05]",
+              "dark:border-gray-50/[.1] dark:hover:bg-gray-50/[.15]",
               "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none"
             )}
+            style={{
+              backgroundColor: f.color + "33",
+              borderColor: f.color,
+            }}
           >
             <div className="flex flex-row items-center gap-2">
               <div className="flex flex-col">

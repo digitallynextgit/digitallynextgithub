@@ -6,6 +6,7 @@ import ChatBot from "./components/ChatBot";
 import Book from "./components/home/Book";
 // import Podcast from "./components/home/Podcast";
 // import BlogSection from "./components/home/BlogSection";
+
 import { Testimonials } from "./components/home/Testimonials";
 import MediaGrid from "./components/home/MediaGrid";
 import Stats from "./components/home/Stats";
@@ -16,6 +17,8 @@ import Careers from "./components/home/Careers";
 import QuoraSection from "./components/home/QuoraSection";
 import Map from "./components/home/Map";
 import SocialMediaSection from "./components/home/SocialMediaSection";
+
+
 
 export default function Home() {
   return (

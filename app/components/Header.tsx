@@ -127,6 +127,7 @@ const menuItems = [
     { label: 'HOME', href: '/' },
     { label: 'ABOUT', href: '/about' },
     { label: 'SERVICES', href: '/services' },
+    { label: 'NUGGETS', href: '/nuggets' },
     { label: 'CAREERS', href: '/careers' },
     { label: 'BLOG', href: '/blog' }
 ];
