@@ -3,7 +3,7 @@
 import { Editor as TinyMCEEditor } from '@tinymce/tinymce-react';
 import { useState, useRef, ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
-import { blogCategories } from "@/data/blogs";
+import { blogCategories } from "@/app/data/blogs";
 import { BlogCategory } from "@/types/blog";
 import type { Editor } from 'tinymce';
 import Image from 'next/image';
