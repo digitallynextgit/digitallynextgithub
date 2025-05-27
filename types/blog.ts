@@ -1,4 +1,4 @@
-import { BlogCategory } from "../data/blogs";
+import { BlogCategory } from "../app/data/blogs";
 
 export interface BlogPost {
   createdAt: string | number | Date;

@@ -1,15 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 import { blogPosts } from "@/app/data/blogs";
 import { BlogPost } from "@/types/blog";
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(request: NextRequest) {
   try {
-    const postId = parseInt(params.id);
+    // Extract ID from the URL path
+    const pathname = request.nextUrl.pathname;
+    const id = pathname.split('/').pop() || '';
+    const postId = parseInt(id);
+
     const postIndex = blogPosts.findIndex((post) => post.id === postId);
 
     if (postIndex === -1) {
@@ -50,12 +51,13 @@ export const blogPosts: BlogPost[] = ${JSON.stringify(blogPosts, null, 2)};`;
   }
 }
 
-export async function PUT(
-  request: Request,
-  context: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest) {
   try {
-    const postId = parseInt(context.params.id);
+    // Extract ID from the URL path
+    const pathname = request.nextUrl.pathname;
+    const id = pathname.split('/').pop() || '';
+    const postId = parseInt(id);
+
     const postIndex = blogPosts.findIndex((post) => post.id === postId);
 
     if (postIndex === -1) {
