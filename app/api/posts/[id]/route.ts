@@ -52,10 +52,10 @@ export const blogPosts: BlogPost[] = ${JSON.stringify(blogPosts, null, 2)};`;
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
-    const postId = parseInt(params.id);
+    const postId = parseInt(context.params.id);
     const postIndex = blogPosts.findIndex((post) => post.id === postId);
 
     if (postIndex === -1) {
