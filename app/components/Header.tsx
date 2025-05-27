@@ -129,7 +129,8 @@ const menuItems = [
     { label: 'SERVICES', href: '/services' },
     { label: 'NUGGETS', href: '/nuggets' },
     { label: 'CAREERS', href: '/careers' },
-    { label: 'BLOG', href: '/blog' }
+    { label: 'BLOG', href: '/blog' },
+    { label: 'INNEWS', href: '/innews' }
 ];
 
 export default Header;
