@@ -1,7 +1,7 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import { blogPosts } from '@/data/blogs';
+import { blogPosts } from '@/app/data/blogs';
 import BlogPostContent from '@/app/blog/[id]/BlogPostContent';
 
 interface Props {

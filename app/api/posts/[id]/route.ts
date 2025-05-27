@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
-import { blogPosts } from "../../../../data/blogs";
-import { BlogPost } from "../../../../types/blog";
+import { blogPosts } from "@/app/data/blogs";
+import { BlogPost } from "@/types/blog";
 
 export async function DELETE(
   request: Request,
