@@ -1,11 +1,49 @@
 import { NextResponse } from 'next/server';
 import type { Short } from '@/app/utils/fetchShorts';
 
+// Define interfaces for YouTube API response
+interface YouTubeVideoID {
+  kind: string;
+  videoId: string;
+}
+
+interface YouTubeThumbnail {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface YouTubeThumbnails {
+  default?: YouTubeThumbnail;
+  medium?: YouTubeThumbnail;
+  high?: YouTubeThumbnail;
+  standard?: YouTubeThumbnail;
+  maxres?: YouTubeThumbnail;
+}
+
+interface YouTubeSnippet {
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
+  thumbnails: YouTubeThumbnails;
+  channelTitle: string;
+  liveBroadcastContent: string;
+  publishTime: string;
+}
+
+interface YouTubeSearchItem {
+  kind: string;
+  etag: string;
+  id: YouTubeVideoID;
+  snippet: YouTubeSnippet;
+}
+
 // Get YouTube API key from environment variables
 const YOUTUBE_API_KEY = process.env.YT_API_KEY || process.env.YOUTUBE_API_KEY;
 
 // Get channel ID from environment variables
-let rawChannelId = process.env.YT_CHANNEL_ID || process.env.YOUTUBE_CHANNEL_ID || 'UCnb7CwF65VXrDGbsw2hv5HA';
+const rawChannelId = process.env.YT_CHANNEL_ID || process.env.YOUTUBE_CHANNEL_ID || 'UCnb7CwF65VXrDGbsw2hv5HA';
 
 // If the channel ID is a URL or handle, extract just the channel ID or handle
 function getProperChannelId(input: string): string {
@@ -45,7 +83,7 @@ export async function GET() {
       throw new Error(`YouTube API responded with ${response.status}: ${response.statusText}`);
     }
 
-    const data = await response.json();
+    const data = await response.json() as { items: YouTubeSearchItem[] };
     console.log(`YouTube API response received: ${data.items?.length || 0} items`);
     
     if (!data.items || data.items.length === 0) {
@@ -54,13 +92,21 @@ export async function GET() {
     }
     
     // Transform YouTube API response to our Short format
-    const shorts: Short[] = data.items.map((item: any) => ({
-      videoId: item.id.videoId,
-      title: item.snippet.title,
-      thumbnail: item.snippet.thumbnails.high?.url || item.snippet.thumbnails.default?.url,
-      publishedAt: item.snippet.publishedAt,
-      description: item.snippet.description
-    }));
+    const shorts: Short[] = data.items.map((item: YouTubeSearchItem) => {
+      // Get the best available thumbnail or use a placeholder
+      const thumbnailUrl = item.snippet.thumbnails.high?.url || 
+                           item.snippet.thumbnails.medium?.url || 
+                           item.snippet.thumbnails.default?.url || 
+                           `https://i.ytimg.com/vi/${item.id.videoId}/hqdefault.jpg`;
+      
+      return {
+        videoId: item.id.videoId,
+        title: item.snippet.title,
+        thumbnail: thumbnailUrl,
+        publishedAt: item.snippet.publishedAt,
+        description: item.snippet.description
+      };
+    });
 
     console.log(`Fetched ${shorts.length} YouTube shorts successfully`);
     return NextResponse.json(shorts);
