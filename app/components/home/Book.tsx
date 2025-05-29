@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
+import { siteConfig } from "@/app/config";
 
 // Dynamically import the PodcastMockScreen component with SSR disabled
 
@@ -76,6 +77,15 @@ const Book = () => {
                   >
                     <FaLinkedin className="text-[#0077B5] text-2xl" />
                     <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href={siteConfig.socialLinks.youtube}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition"
+                  >
+                    <FaYoutube className="text-[#FF0000] text-2xl" />
+                    <span>YouTube</span>
                   </a>
                 </div>
               </div>

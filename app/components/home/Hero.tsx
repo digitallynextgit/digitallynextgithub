@@ -6,6 +6,7 @@ import TypewriterEffect from "../TypewriterEffect";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { scrollTo } from "@/app/hooks/useLenis";
+import Link from "next/link";
 
 // Testimonial data
 const testimonials = [
@@ -78,8 +79,8 @@ const Hero = () => {
               transition={{ duration: 0.3 }}
               className=""
             >
-              <p className="text-[10px] text-white">123 Innovation Ave,</p>
-              <p className="text-[10px] text-white">Tech City</p>
+              <p className="text-[10px] text-white">South Extension-2,</p>
+              <p className="text-[10px] text-white">New Delhi</p>
             </motion.div>
           </div>
         </motion.div>
@@ -136,15 +137,15 @@ const Hero = () => {
           <TypewriterEffect />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:mt-[-20px]">
-            <a
-              href="/digitally-next"
-              className="btn-primary md:text-sm text-[12px] px-6 py-3"
+            <Link
+              href="/about"
+              className="btn-primary md:text-sm text-[12px] px-6 py-3 capitalize"
             >
-              DIGITALLY NEXT
-            </a>
-            <a href="/expertise" className="btn-secondary py-3 px-6 border-2 md:text-sm text-[12px]">
+About US
+            </Link>
+            <Link href="/services" className="btn-secondary py-3 px-6 border-2 md:text-sm text-[12px]">
               EXPLORE EXPERTISE
-            </a>
+            </Link>
           </div>
         </div>
 

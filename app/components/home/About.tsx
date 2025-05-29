@@ -5,6 +5,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import ImageCarousel from "./ImageCarousel";
+import Link from "next/link";
 
 // Dynamically import Lottie Animation for better performance
 const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
@@ -84,6 +85,9 @@ const About = () => {
                 Digitally Next...
               </p>
             </motion.div>
+            <Link href="/about" className="btn-primary mt-4 text-xl capitalize">
+              Know More
+            </Link>
           </div>
 
           {/* Center - Image Carousel */}
@@ -112,19 +116,15 @@ const About = () => {
                 viewport={{ once: true }}
               >
                 <div className="relative w-full h-0 pb-[56.25%] rounded-md overflow-hidden mb-6">
-                  <video
-                    className="absolute top-0 left-0 w-full h-full object-cover border-[1px] rounded-2xl"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                  >
-                    <source
-                      src="/videos/agency-showcase.mp4"
-                      type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                  </video>
+                  <div className="absolute top-0 left-0 w-full h-full bg-gray-200 animate-pulse"></div>
+                  <iframe 
+                    className="absolute top-0 left-0 w-full h-full z-10"
+                    src="https://www.youtube.com/embed/TuOqG4dkSVE?autoplay=1&mute=1"
+                    title="YouTube video player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowFullScreen
+                  ></iframe>
                 </div>
 
                 <h3 className="text-2xl font-bold mb-3">Our Philosophy</h3>

@@ -55,6 +55,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "ui-avatars.com", // ✅ Added to fix client logo images
       },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com", // ✅ Added to fix YouTube thumbnails
+      },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com", // ✅ Added for YouTube thumbnails
+      },
     ],
     domains: [
       'upload.wikimedia.org',
@@ -72,7 +80,9 @@ const nextConfig = {
       'www.twitter.com',
       'www.oracle.com',
       'www.nvidia.com',
-      'www.salesforce.com'
+      'www.salesforce.com',
+      'i.ytimg.com', // ✅ Added to fix YouTube thumbnails
+      'img.youtube.com' // ✅ Added for YouTube thumbnails
     ],
   },
   output: "standalone",
