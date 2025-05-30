@@ -9,26 +9,26 @@ const values = [
   {
     title: 'Innovation',
     description: 'We embrace creative thinking and push boundaries to deliver exceptional results.',
-    image: '/images/culture/innovation.webp',
-    fallback: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3'
+    image: '/office/1.png',
+    fallback: '/office/1.png'
   },
   {
     title: 'Collaboration',
     description: 'We believe in the power of teamwork and collective expertise to solve complex challenges.',
-    image: '/images/culture/collaboration.webp',
-    fallback: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3'
+    image: '/office/7.webp',
+    fallback: '/office/2.png'
   },
   {
     title: 'Excellence',
     description: 'We strive for the highest standards in everything we do, never settling for mediocrity.',
-    image: '/images/culture/excellence.webp',
-    fallback: 'https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-4.0.3'
+    image: '/office/6.png',
+    fallback: '/office/3.png'
   },
   {
     title: 'Growth Mindset',
     description: 'We embrace challenges, persist in the face of setbacks, and see effort as the path to mastery.',
-    image: '/images/culture/growth.webp',
-    fallback: 'https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-4.0.3'
+    image: '/office/4.png',
+    fallback: '/office/4.png'
   }
 ]
 
@@ -90,13 +90,13 @@ const CultureSection = () => {
           
           <div className="relative h-[500px]">
             <Image
-              src="/images/culture/team-culture.webp"
+              src="/office/3.png"
               alt="Our team culture"
               fill
               className="object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = "https://images.unsplash.com/photo-1542744173-8659b8e39abc?ixlib=rb-4.0.3";
+                target.src = "/office/2.png";
               }}
             />
           </div>
@@ -176,7 +176,7 @@ const CultureSection = () => {
             className="relative h-[400px] rounded-2xl overflow-hidden shadow-xl"
           >
             <Image
-              src="/images/culture/workspace.webp"
+              src="/office/5.png"
               alt="Our workspace"
               fill
               className="object-cover"

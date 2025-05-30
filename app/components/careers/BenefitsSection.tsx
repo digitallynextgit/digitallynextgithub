@@ -117,7 +117,7 @@ const BenefitsSection = () => {
         </div>
         
         {/* Additional benefits highlight */}
-        <div className="mt-24 bg-gradient-to-r from-indigo-900 to-purple-900 rounded-3xl overflow-hidden">
+        <div className="mt-24 bg-gradient-to-r from-[#02D0C7] to-[#008080] rounded-3xl overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 p-8 md:p-12 text-white">
               <motion.div
@@ -155,7 +155,7 @@ const BenefitsSection = () => {
             <div className="md:w-1/2 relative">
               <div className="aspect-video md:aspect-auto md:h-full relative">
                 <Image
-                  src="/images/benefits-team.webp"
+                  src="/office/4.png"
                   fill
                   alt="Team collaboration"
                   className="object-cover"
