@@ -9,8 +9,10 @@ const menuItems = [
   { label: 'HOME', href: '/' },
   { label: 'ABOUT', href: '/about' },
   { label: 'SERVICES', href: '/services' },
-  { label: 'PORTFOLIO', href: '/portfolio' },
-  { label: 'BLOG', href: '/blog' }
+  { label: 'NUGGETS', href: '/nuggets' },
+  { label: 'CAREERS', href: '/careers' },
+  { label: 'BLOG', href: '/blog' },
+  { label: 'INNEWS', href: '/innews' }
 ];
 
 export default function HamburgerMenu() {

@@ -1,12 +1,14 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [showServicesMegaMenu, setShowServicesMegaMenu] = useState(false);
+    const servicesRef = useRef<HTMLDivElement>(null);
 
     // Handle scroll effect
     useEffect(() => {
@@ -35,21 +37,34 @@ const Header = () => {
         };
     }, [isMenuOpen]);
 
+    // Handle clicks outside of mega menu
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+                setShowServicesMegaMenu(false);
+            }
+        }
+        
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [servicesRef]);
+
     return (
-        <header className={`fixed top-0 w-full lg:h-[95px]  z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+        <header className={`fixed top-0 w-full lg:h-[95px] z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
        
-                        <div className='flex-shrink-0 relative'>
-                            <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2"/>
-                        </div>
-                        <div className="flex-shrink-0 md:ml-0 -ml-32 ">
-                            <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
-                                <Image src="/logo.webp" alt="logo" width={120} height={100} className='transform lg:-translate-y-3 translate-y-2'/>
-                            </Link>
-                        </div>
+                    <div className='flex-shrink-0 relative'>
+                        <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2"/>
+                    </div>
+                    <div className="flex-shrink-0 md:ml-0 -ml-32 ">
+                        <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
+                            <Image src="/logo.webp" alt="logo" width={120} height={100} className='transform lg:-translate-y-3 translate-y-2'/>
+                        </Link>
+                    </div>
           
-                    
                     {/* Hamburger Button */}
                     <button 
                         className="flex flex-col justify-center items-center w-12 h-12 rounded-full bg-[#dc3333] z-50 relative focus:outline-none transform lg:-translate-y-4 translate-y-2"
@@ -69,17 +84,77 @@ const Header = () => {
                     >
                         <nav className="flex flex-col items-center justify-center space-y-6 md:space-y-8 w-full px-4">
                             {menuItems.map((item, index) => (
-                                <Link
+                                <div 
                                     key={index}
-                                    href={item.href}
-                                    className={`text-2xl md:text-3xl font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
-                                        isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                                    }`}
-                                    style={{ transitionDelay: `${index * 100}ms` }}
-                                    onClick={() => setIsMenuOpen(false)}
+                                    className="relative" 
+                                    ref={item.label === 'SERVICES' ? servicesRef : null}
                                 >
-                                    {item.label}
-                                </Link>
+                                    <Link
+                                        href={item.href}
+                                        className={`text-2xl md:text-3xl font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
+                                            isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                        }`}
+                                        style={{ transitionDelay: `${index * 100}ms` }}
+                                        onClick={() => item.label !== 'SERVICES' && setIsMenuOpen(false)}
+                                        onMouseEnter={() => item.label === 'SERVICES' ? setShowServicesMegaMenu(true) : null}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                    
+                                    {/* Mega Menu for Services */}
+                                    {item.label === 'SERVICES' && showServicesMegaMenu && isMenuOpen && (
+                                        <div 
+                                            className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-screen max-w-6xl bg-white shadow-lg rounded-md border border-gray-200 z-50"
+                                            onMouseLeave={() => setShowServicesMegaMenu(false)}
+                                        >
+                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 p-6 md:p-8">
+                                                {/* Column 1 */}
+                                                <div className="space-y-4">
+                                                    <h3 className="text-xl font-semibold text-[#dc3333]">360° Performance Marketing</h3>
+                                                    <div className="space-y-2">
+                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Digital Branding</Link>
+                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Complete Online Demand Generation</Link>
+                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Influencer Marketing | Digital PR | Personal Branding</Link>
+                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Online Community Building & Development</Link>
+                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Social CRM/Analytics Integration & Management</Link>
+                                                    </div>
+                                                </div>
+
+                                                {/* Column 2 */}
+                                                <div className="space-y-4">
+                                                    <h3 className="text-xl font-semibold text-black">Disruptive Digital Campaigns</h3>
+                                                    <ul className="space-y-2">
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Meme Marketing</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Viral Marketing</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Engagement Marketing</Link></li>
+                                                    </ul>
+
+                                                    <h3 className="text-xl font-semibold text-black mt-6">Digital Marketing Campaigns– Publish and Promote</h3>
+                                                    <ul className="space-y-2">
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Search Engine Optimization (SEO)</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Paid Media Planning and Optimization</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Social Media Optimization (SMO)</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Online Reputation Management (ORM)</Link></li>
+                                                    </ul>
+                                                </div>
+
+                                                {/* Column 3 */}
+                                                <div className="space-y-4">
+                                                    <h3 className="text-xl font-semibold text-black">Digital Marketing Campaigns Assets Creation</h3>
+                                                    <ul className="space-y-2">
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Website / Microsite / Landing page</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Social Media Setup and Activation</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Content Marketing Assets</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Visual Communication Assets</Link></li>
+                                                        <li className="pl-6"><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">- Video production</Link></li>
+                                                        <li className="pl-6"><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">- Graphics</Link></li>
+                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Paid Ads Assets</Link></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
                             ))}
                             
                             <Link
