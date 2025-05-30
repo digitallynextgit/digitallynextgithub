@@ -42,18 +42,19 @@ const Book = () => {
             {/* Right Column - Text Content */}
             <div className="text-center lg:text-left bg-[#fff] border-black border-[1px] md:p-10 p-6 md:pl-20 rounded-3xl md:ml-[-250px]  -mt-10 md:-mt-60 w-[100%]">
               <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
-                What NEXT ?
+                Where Time meets Imagination
               </h2>
               <p className="md:text-md text-sm mb-8">
-                <strong>DigitallyNext</strong> is a powerful video series hosted
-                by Deepak, recognized as a thought leader and pioneer in digital
-                transformation. Through engaging conversations with industry
-                experts and changemakers, this series delivers actionable
-                insights and forward-thinking strategies to help you thrive in
-                the digital world. Whether you&apos;re a business leader, innovator,
-                or digital enthusiast, <strong>DigitallyNext</strong> empowers
-                you to navigate the next big leap in digital growth and
-                innovation.
+                At <strong>DigitallyNext</strong> walls don’t just hold art —
+                they hold eras. We’ve witnessed the world shift from iPods to
+                infinite playlists, from pixelated photos to portrait mode
+                perfection. And through every wave of change, we’ve stayed
+                rooted — not in trends, but in timeless thinking. Our space
+                breathes with symbols of ambition, cultures, and civilizations —
+                quiet reminders that great ideas outlive tools, and vision
+                transcends platforms. Here, every brief is a beginning, every
+                brand a legacy in the making. We don’t just build campaigns. We
+                build what tomorrow will remember.
               </p>
 
               {/* Social Media Links */}

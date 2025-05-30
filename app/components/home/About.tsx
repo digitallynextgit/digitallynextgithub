@@ -80,9 +80,9 @@ const About = () => {
               <p className="text-gray-700">
                 Mayan calendar predicted the end of the world in 2012. However,
                 the world did not end but did not remain the same either.
-                Destruction came in its welcoming avatar of &quot;Disruption&quot;. And
-                that&quot;s the Next the world witnessed. And the Next is here, at
-                Digitally Next...
+                Destruction came in its welcoming avatar of
+                &quot;Disruption&quot;. And that&quot;s the Next the world
+                witnessed. And the Next is here, at Digitally Next...
               </p>
             </motion.div>
             <Link href="/about" className="btn-primary mt-4 text-xl capitalize">
@@ -117,12 +117,12 @@ const About = () => {
               >
                 <div className="relative w-full h-0 pb-[56.25%] rounded-md overflow-hidden mb-6">
                   <div className="absolute top-0 left-0 w-full h-full bg-gray-200 animate-pulse"></div>
-                  <iframe 
+                  <iframe
                     className="absolute top-0 left-0 w-full h-full z-10"
                     src="https://www.youtube.com/embed/TuOqG4dkSVE?autoplay=1&mute=1"
-                    title="YouTube video player" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
                   ></iframe>
                 </div>
@@ -130,9 +130,10 @@ const About = () => {
                 <h3 className="text-2xl font-bold mb-3">Our Philosophy</h3>
 
                 <p className="text-gray-700">
-                  At Britto Charette, we believe in creating luxurious,
-                  personalized environments that reflect our clients&apos; tastes and
-                  lifestyles.
+                  In a noisy world, we choose clarity. Digitally Next is where
+                  stories are shaped and strategies are born. We walk with
+                  giants and guide the underdogs — not as service providers, but
+                  as partners in purpose.
                 </p>
               </motion.div>
             </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -38,7 +38,6 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
   const [adBlockDetected, setAdBlockDetected] = useState<boolean>(false);
   const [apiDebug, setApiDebug] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [totalShorts, setTotalShorts] = useState(initialShorts.length || FALLBACK_SHORTS.length);
   const [fetchAttempts, setFetchAttempts] = useState(0);
   const videoRefs = useRef<{[key: string]: HTMLIFrameElement}>({});
   const adBlockCheckRef = useRef<HTMLIFrameElement>(null);
@@ -47,48 +46,8 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
   const SHORTS_PER_PAGE = 4;
   const MAX_FETCH_ATTEMPTS = 3;
   
-  // Check for ad blockers
-  useEffect(() => {
-    // Create a hidden test iframe to detect ad blockers
-    const testAdBlock = () => {
-      if (adBlockCheckRef.current) {
-        // If the iframe failed to load or was blocked, this will be triggered
-        try {
-          const iframeDoc = adBlockCheckRef.current.contentWindow?.document;
-          // If we can't access the iframe's document, an ad blocker is likely active
-          if (!iframeDoc) {
-            setAdBlockDetected(true);
-          }
-        } catch {
-          setAdBlockDetected(true);
-        }
-      }
-    };
-
-    // Check after a short delay
-    const timer = setTimeout(testAdBlock, 1000);
-    
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Update visible shorts when the current index or shorts array changes
-  useEffect(() => {
-    if (shorts.length > 0) {
-      const end = Math.min(currentIndex + SHORTS_PER_PAGE, shorts.length);
-      setVisibleShorts(shorts.slice(currentIndex, end));
-      setTotalShorts(shorts.length);
-    }
-  }, [currentIndex, shorts]);
-
-  // Initial fetch of shorts
-  useEffect(() => {
-    // If no initial shorts were provided, fetch them client-side
-    if (initialShorts.length === 0) {
-      fetchShorts();
-    }
-  }, [initialShorts.length]);
-
-  const fetchShorts = async (offset = 0, limit = SHORTS_PER_PAGE) => {
+  // Define fetchShorts with useCallback to properly handle dependencies
+  const fetchShorts = useCallback(async (offset = 0, limit = SHORTS_PER_PAGE) => {
     // Don't attempt to fetch more if we've reached the maximum attempts
     if (fetchAttempts >= MAX_FETCH_ATTEMPTS && offset > 0) {
       console.warn("Maximum fetch attempts reached, skipping further requests");
@@ -161,7 +120,8 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
               setError('No YouTube Shorts available. API returned empty data.');
             }
           }
-        } catch (parseError) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        } catch (_error) {
           setApiDebug(`Failed to parse API response: ${responseText.substring(0, 100)}...`);
           
           if (offset === 0 && shorts.length === 0) {
@@ -203,7 +163,47 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
       setLoading(false);
       setLoadingMore(false);
     }
-  };
+  }, [fetchAttempts, shorts.length]);
+  
+  // Check for ad blockers
+  useEffect(() => {
+    // Create a hidden test iframe to detect ad blockers
+    const testAdBlock = () => {
+      if (adBlockCheckRef.current) {
+        // If the iframe failed to load or was blocked, this will be triggered
+        try {
+          const iframeDoc = adBlockCheckRef.current.contentWindow?.document;
+          // If we can't access the iframe's document, an ad blocker is likely active
+          if (!iframeDoc) {
+            setAdBlockDetected(true);
+          }
+        } catch {
+          setAdBlockDetected(true);
+        }
+      }
+    };
+
+    // Check after a short delay
+    const timer = setTimeout(testAdBlock, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Update visible shorts when the current index or shorts array changes
+  useEffect(() => {
+    if (shorts.length > 0) {
+      const end = Math.min(currentIndex + SHORTS_PER_PAGE, shorts.length);
+      setVisibleShorts(shorts.slice(currentIndex, end));
+    }
+  }, [currentIndex, shorts]);
+
+  // Initial fetch of shorts
+  useEffect(() => {
+    // If no initial shorts were provided, fetch them client-side
+    if (initialShorts.length === 0) {
+      fetchShorts();
+    }
+  }, [initialShorts.length, fetchShorts]);
 
   // Handle playing a short when clicked
   const handlePlayShort = (videoId: string) => {
