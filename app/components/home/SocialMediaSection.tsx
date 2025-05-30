@@ -10,10 +10,7 @@ const SocialMediaSection = () => {
       image: "/gallery/1.webp",
       text: "Gallery 1",
     },
-    {
-      image: "/flow/3.png",
-      text: "Flow 3",
-    },
+
     {
       image: "/gallery/2.webp",
       text: "Gallery 2",

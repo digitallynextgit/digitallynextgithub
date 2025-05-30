@@ -22,14 +22,7 @@ const About = () => {
       src: "/office/2.png",
       alt: "Luxurious Interior Design",
     },
-    {
-      src: "/office/4.png",
-      alt: "Modern Office Space",
-    },
-    {
-      src: "/portfolio/project-1.jpg",
-      alt: "Digital Marketing Project",
-    },
+  
   ];
 
   return (

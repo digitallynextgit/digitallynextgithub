@@ -107,7 +107,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: -100, rotate: -12 }}
             animate={{ opacity: 1, x: 0, rotate: -12 }}
             transition={{ duration: 1 }}
-            className="absolute top-20 left-10 md:left-16"
+            className="absolute top-6 left-10 md:left-16"
           >
             <motion.div
               animate={{
@@ -121,7 +121,7 @@ const Hero = () => {
               }}
             >
               <Image
-                src="/home/1.webp"
+                src="/home/2.webp"
                 alt=""
                 width={1200}
                 height={100}
@@ -149,9 +149,9 @@ const Hero = () => {
               }}
             >
               <Image
-                src="/home/2.webp"
+                src="/3.png"
                 alt=""
-                width={1200}
+                width={800}
                 height={100}
                 className="w-[300px] hidden md:block"
               />

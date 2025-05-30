@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 // import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa6";
+// import { FaArrowRight } from "react-icons/fa6";
 import ConsultationForm from "@/app/components/contact/ConsultationForm";
 // import Image from "next/image";
 
@@ -34,7 +34,7 @@ const ContactPage = () => {
             </div>
           </div>
           {/* CTA */}
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <div className="text-2xl font-bold mb-2 text-gray-900 text-center md:text-left">
               Book a free strategy call.
             </div>
@@ -44,7 +44,7 @@ const ContactPage = () => {
             >
               Schedule 20 minute call <FaArrowRight />
             </a>
-          </div>
+          </div> */}
         </div>
         {/* Right Side: Form Card */}
         <div className="flex flex-col gap-6">

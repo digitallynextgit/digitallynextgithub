@@ -57,7 +57,7 @@ export function Marquee({
     >
       <div
         className={cn(
-          "flex shrink-0 gap-4 py-4",
+          "flex shrink-0 gap-4 py-2",
           vertical ? "flex-col" : "flex-row",
           vertical
             ? "animate-marquee-vertical"

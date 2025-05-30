@@ -63,7 +63,7 @@ export default function AboutHero() {
             </a>
           </motion.div>
           
-          <motion.div 
+          {/* <motion.div 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
@@ -75,7 +75,7 @@ export default function AboutHero() {
               </svg>
               <p className="text-sm text-gray-500 mt-2">Scroll to discover our story</p>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
