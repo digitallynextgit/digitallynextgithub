@@ -121,7 +121,7 @@ export async function GET() {
     console.log(`Fetching shorts from channel: ${CHANNEL_ID}`);
     
     let apiUrl = '';
-    let isChannelId = CHANNEL_ID.startsWith('UC');
+    const isChannelId = CHANNEL_ID.startsWith('UC');
     
     if (isChannelId) {
       // Use channel ID search
@@ -142,7 +142,7 @@ export async function GET() {
     let data: { items: YouTubeSearchItem[] } | YouTubeErrorResponse;
     try {
       data = JSON.parse(responseText);
-    } catch (e) {
+    } catch {
       console.error('Failed to parse YouTube API response:', responseText.substring(0, 200));
       return NextResponse.json({ 
         error: `Invalid response from YouTube API: ${responseText.substring(0, 100)}...`

@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { fetchYouTubeShorts } from '@/app/utils/fetchShorts';
 import { motion } from 'framer-motion';
 
 interface Short {
@@ -93,7 +92,7 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
                   setError('No YouTube Shorts available. API returned empty data.');
                 }
               }
-            } catch (parseError) {
+            } catch {
               setApiDebug(`Failed to parse API response: ${responseText.substring(0, 100)}...`);
               setError('Invalid API response format');
             }

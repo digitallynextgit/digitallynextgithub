@@ -46,7 +46,7 @@ export async function fetchYouTubeShorts(options: FetchOptions = {}): Promise<Sh
           if (errorData && errorData.error) {
             errorMessage = errorData.error;
           }
-        } catch (e) {
+        } catch {
           // If we can't parse the error, use the response text
           if (text) {
             errorMessage += ` - ${text.substring(0, 100)}`;
