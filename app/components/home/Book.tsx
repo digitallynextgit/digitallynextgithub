@@ -31,12 +31,30 @@ const Book = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
             {/* Left Column - Phone Mock */}
             <div className="hidden md:block relative mx-auto max-w-[320px] lg:max-w-[350px] -mt-40 md:-mt-60 -rotate-6">
-              <Image
-                src="/home/pod.webp"
-                alt="Deepak Goel Podcast"
-                width={400}
-                height={800}
-              />
+              {/* Mobile Phone Frame */}
+              <div className="relative mx-auto w-full">
+                {/* Phone frame - using CSS */}
+                <div className="mx-auto relative w-[250px] h-[500px] rounded-[36px] overflow-hidden border-[14px] border-black bg-black shadow-xl">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[120px] h-[25px] bg-black rounded-b-[14px] z-20"></div>
+                  
+                  {/* Video inside the phone screen */}
+                  <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <video
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    >
+                      <source src="/phone.mp4" type="video/mp4" />
+                    </video>
+                  </div>
+                  
+                  {/* Home button or bottom indicator */}
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-[90px] h-[4px] bg-gray-200 rounded-full z-20"></div>
+                </div>
+              </div>
             </div>
 
             {/* Right Column - Text Content */}
@@ -45,15 +63,15 @@ const Book = () => {
                 Where Time meets Imagination
               </h2>
               <p className="md:text-md text-sm mb-8">
-                At <strong>DigitallyNext</strong> walls don’t just hold art —
-                they hold eras. We’ve witnessed the world shift from iPods to
+                At <strong>DigitallyNext</strong> walls don't just hold art —
+                they hold eras. We've witnessed the world shift from iPods to
                 infinite playlists, from pixelated photos to portrait mode
-                perfection. And through every wave of change, we’ve stayed
+                perfection. And through every wave of change, we've stayed
                 rooted — not in trends, but in timeless thinking. Our space
                 breathes with symbols of ambition, cultures, and civilizations —
                 quiet reminders that great ideas outlive tools, and vision
                 transcends platforms. Here, every brief is a beginning, every
-                brand a legacy in the making. We don’t just build campaigns. We
+                brand a legacy in the making. We don't just build campaigns. We
                 build what tomorrow will remember.
               </p>
 

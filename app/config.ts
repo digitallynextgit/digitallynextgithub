@@ -66,11 +66,9 @@ export const siteConfig = {
 
   // Social links
   socialLinks: {
-    twitter: "https://twitter.com/deepakgoel",
-    linkedin: "https://linkedin.com/in/deepakgoel",
+    linkedin: "https://www.linkedin.com/company/digitallynext/",
     instagram: "https://instagram.com/deepakgoel",
-    facebook: "https://facebook.com/deepakgoel",
-    youtube: "https://youtube.com/deepakgoel",
+    youtube: "https://www.youtube.com/@digitallynext",
   },
 
   // Contact information

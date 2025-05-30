@@ -1,5 +1,9 @@
-import React from 'react'
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import ConsultationForm from '@/app/components/contact/ConsultationForm';
 
 const projects = [
   
@@ -53,6 +57,25 @@ const BookConsultation = () => {
     blue: '#00D6E8',
     red: '#D7173B'
   };
+  
+  // State to control the popup modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
+  
+  // Function to open the modal with a specific service
+  const openModal = (serviceName: string) => {
+    setSelectedService(serviceName);
+    setIsModalOpen(true);
+    // Prevent body scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // Function to close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    // Restore body scrolling
+    document.body.style.overflow = 'unset';
+  };
 
   return (
     <section className="bg-white py-10 px-4">
@@ -69,8 +92,8 @@ const BookConsultation = () => {
           <div
             key={p.name}
             className="relative flex items-center group cursor-pointer"
+            onClick={() => openModal(p.name)}
           >
-
             {/* Content with enhanced animations */}
             <div 
               className="relative z-10 text-left p-8 w-full h-[450px] flex flex-col justify-between transition-all duration-500 ease-in-out group-hover:scale-105 shadow-lg rounded-lg"
@@ -96,8 +119,50 @@ const BookConsultation = () => {
           </div>
         ))}
       </div>
+      
+      {/* Consultation Form Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeModal}
+          >
+            <motion.div 
+              className="bg-white rounded-xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.9, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 50 }}
+              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            >
+              <div className="p-6 relative">
+                <button 
+                  onClick={closeModal}
+                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 focus:outline-none"
+                  aria-label="Close modal"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                
+                <h2 className="text-2xl font-bold text-[#d90429] mb-4">Book a Consultation</h2>
+                <p className="text-gray-600 mb-6">
+                  {selectedService ? `Get expert advice for ${selectedService}` : 'Get expert advice for your business needs'}
+                </p>
+                
+                <div className="bg-white rounded-lg">
+                  <ConsultationForm />
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
-  )
-}
+  );
+};
 
-export default BookConsultation
+export default BookConsultation;

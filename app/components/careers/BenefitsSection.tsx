@@ -15,11 +15,11 @@ import {
 } from 'react-icons/fa'
 
 const benefits = [
-  {
-    icon: <FaLaptop className="text-3xl text-red-500" />,
-    title: 'Remote Work Options',
-    description: 'Work from anywhere with our flexible remote options'
-  },
+  // {
+  //   icon: <FaLaptop className="text-3xl text-red-500" />,
+  //   title: 'Remote Work Options',
+  //   description: 'Work from anywhere with our flexible remote options'
+  // },
   {
     icon: <FaCalendarAlt className="text-3xl text-red-500" />,
     title: 'Flexible Schedule',
@@ -45,11 +45,11 @@ const benefits = [
     title: 'Collaborative Culture',
     description: 'Work with passionate teammates who inspire each other'
   },
-  {
-    icon: <FaPlane className="text-3xl text-red-500" />,
-    title: 'Paid Time Off',
-    description: 'Generous vacation policy to rest and recharge'
-  },
+  // {
+  //   icon: <FaPlane className="text-3xl text-red-500" />,
+  //   title: 'Paid Time Off',
+  //   description: 'Generous vacation policy to rest and recharge'
+  // },
   {
     icon: <FaCoffee className="text-3xl text-red-500" />,
     title: 'Work-Life Balance',
@@ -97,7 +97,7 @@ const BenefitsSection = () => {
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
           >
             {benefits.map((benefit, index) => (
               <motion.div

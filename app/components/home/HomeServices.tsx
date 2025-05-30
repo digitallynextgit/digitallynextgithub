@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 // Updated app colors based on user specification
 const appColors = {
-  blue: '#00D4E6',
+  blue: '#11C8C4',
   red: '#DC3232'
 };
 
@@ -96,12 +96,6 @@ const HomeServices = () => {
   const handleTabClick = (index: number): void => {
     setActiveService(services[index]);
     setActiveTabIndex(index);
-    
-    // Scroll the tab into view if it's not visible
-    const tabElement = document.getElementById(`service-tab-${index}`);
-    if (tabElement && tabsContainerRef.current) {
-      tabsContainerRef.current.scrollLeft = tabElement.offsetLeft - tabsContainerRef.current.offsetWidth / 2 + tabElement.offsetWidth / 2;
-    }
   };
 
   // Navigation functions for arrow controls
@@ -116,7 +110,7 @@ const HomeServices = () => {
   };
 
   return (
-    <section className="w-full bg-white py-16 px-4 md:px-10">
+    <section className="w-full bg-white py-16 px-4 md:px-10 max-w-5xl mx-auto">
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2 className="text-5xl md:text-[78px] font-black m-0 leading-none tracking-tight">
@@ -135,12 +129,12 @@ const HomeServices = () => {
 
       {/* Services Content - Desktop */}
       <div className="hidden md:flex flex-col max-w-7xl mx-auto">
-        {/* Tabs Navigation with Arrows */}
-        <div className="flex items-center mb-8">
+        {/* Arrow Navigation with Current Service Display */}
+        <div className="flex items-center justify-between mb-8">
           {/* Left Arrow */}
           <button 
             onClick={goToPrevious}
-            className="flex-shrink-0 p-2 mr-2 rounded-full hover:bg-gray-100"
+            className="flex-shrink-0 p-3 rounded-full hover:bg-gray-100 transition-colors"
             aria-label="Previous service"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -148,42 +142,20 @@ const HomeServices = () => {
             </svg>
           </button>
           
-          {/* Navigation Tabs - Scrollable */}
-          <div 
-            ref={tabsContainerRef} 
-            id="services-tabs" 
-            className="flex flex-1 overflow-x-auto pb-2 scrollbar-hide"
-          >
-            {services.map((service, index) => (
-              <button
-                id={`service-tab-${index}`}
-                key={service.id}
-                onClick={() => handleTabClick(index)}
-                className={`relative whitespace-nowrap px-6 py-3 text-base font-bold transition-all duration-300 ${
-                  activeTabIndex === index
-                    ? "text-black"
-                    : "text-gray-400 hover:text-gray-600"
-                }`}
-              >
-                {service.title.length > 20 ? `${service.title.substring(0, 20)}...` : service.title}
-                {activeTabIndex === index && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute bottom-0 left-0 right-0 h-1"
-                    style={{ backgroundColor: service.color }}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
-              </button>
-            ))}
+          {/* Current Service Title */}
+          <div className="text-center flex-grow">
+            <h3 className="text-2xl font-bold" style={{ color: activeService.color }}>
+              {activeService.title}
+            </h3>
+            <div className="text-sm text-gray-500">
+              {`${activeTabIndex + 1} of ${services.length}`}
+            </div>
           </div>
           
           {/* Right Arrow */}
           <button 
             onClick={goToNext}
-            className="flex-shrink-0 p-2 ml-2 rounded-full hover:bg-gray-100"
+            className="flex-shrink-0 p-3 rounded-full hover:bg-gray-100 transition-colors"
             aria-label="Next service"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -258,12 +230,12 @@ const HomeServices = () => {
 
       {/* Services Content - Mobile */}
       <div className="md:hidden space-y-8">
-        {/* Mobile Tabs with Arrows */}
-        <div className="flex items-center">
+        {/* Mobile Navigation with Current Service Display */}
+        <div className="flex items-center justify-between">
           {/* Left Arrow */}
           <button 
             onClick={goToPrevious}
-            className="flex-shrink-0 p-1 mr-1 rounded-full"
+            className="flex-shrink-0 p-2 rounded-full"
             style={{ backgroundColor: `${appColors.blue}40` }}
             aria-label="Previous service"
           >
@@ -272,32 +244,20 @@ const HomeServices = () => {
             </svg>
           </button>
           
-          {/* Mobile Tabs - Scrollable */}
-          <div className="flex-1 overflow-x-auto pb-2 scrollbar-hide">
-            <div className="flex">
-              {services.map((service, index) => (
-                <button
-                  key={service.id}
-                  onClick={() => handleTabClick(index)}
-                  className={`whitespace-nowrap px-4 py-2 text-sm font-bold mr-2 rounded-full transition-all duration-300 ${
-                    activeTabIndex === index 
-                      ? "bg-opacity-100 text-white" 
-                      : "bg-opacity-20 text-gray-600"
-                  }`}
-                  style={{ 
-                    backgroundColor: activeTabIndex === index ? service.color : `${service.color}20`
-                  }}
-                >
-                  {service.title.length > 15 ? `${service.title.substring(0, 12)}...` : service.title}
-                </button>
-              ))}
+          {/* Current Service Title - Mobile */}
+          <div className="text-center flex-grow mx-2">
+            <h3 className="text-lg font-bold" style={{ color: activeService.color }}>
+              {activeService.title.length > 25 ? `${activeService.title.substring(0, 22)}...` : activeService.title}
+            </h3>
+            <div className="text-xs text-gray-500">
+              {`${activeTabIndex + 1} of ${services.length}`}
             </div>
           </div>
           
           {/* Right Arrow */}
           <button 
             onClick={goToNext}
-            className="flex-shrink-0 p-1 ml-1 rounded-full"
+            className="flex-shrink-0 p-2 rounded-full"
             style={{ backgroundColor: `${appColors.red}40` }}
             aria-label="Next service"
           >

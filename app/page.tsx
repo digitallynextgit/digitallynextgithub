@@ -19,7 +19,7 @@ import Map from "./components/home/Map";
 import SocialMediaSection from "./components/home/SocialMediaSection";
 import VideoSection from "@/components/home/Video";
 import MobileVideoSection from "@/components/home/MobileHelpSection";
-import YouTubeShortsWrapper from "./components/home/YouTubeShortsWrapper";
+import ManualYoutubeShortsWrapper from "./components/home/ManualYoutubeShortsWrapper";
 
 
 
@@ -84,7 +84,7 @@ export default function Home() {
       {/* <BlogSection /> */}
 
       {/* YouTube Shorts Section */}
-      <YouTubeShortsWrapper />
+      <ManualYoutubeShortsWrapper />
 
       {/* Chat Bot */}
       <ChatBot />
