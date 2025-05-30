@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
-import Image from "next/image";
+// import Image from "next/image";
 import { siteConfig } from "@/app/config";
 
 // Dynamically import the PodcastMockScreen component with SSR disabled
@@ -63,15 +63,15 @@ const Book = () => {
                 Where Time meets Imagination
               </h2>
               <p className="md:text-md text-sm mb-8">
-                At <strong>DigitallyNext</strong> walls don't just hold art —
-                they hold eras. We've witnessed the world shift from iPods to
+                At <strong>DigitallyNext</strong> walls don&apos;t just hold art —
+                they hold eras. We&apos;ve witnessed the world shift from iPods to
                 infinite playlists, from pixelated photos to portrait mode
-                perfection. And through every wave of change, we've stayed
-                rooted — not in trends, but in timeless thinking. Our space
+                perfection. And through every wave of change, we&apos;ve stayed
+                rooted — not in trends, but in timeless thinking. <br/> <br/>Our space
                 breathes with symbols of ambition, cultures, and civilizations —
                 quiet reminders that great ideas outlive tools, and vision
                 transcends platforms. Here, every brief is a beginning, every
-                brand a legacy in the making. We don't just build campaigns. We
+                brand a legacy in the making. <br/> <br/>We don&apos;t just build campaigns. We
                 build what tomorrow will remember.
               </p>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 // import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -90,7 +90,7 @@ const services = [
 const HomeServices = () => {
   const [activeService, setActiveService] = useState(services[0]);
   const [activeTabIndex, setActiveTabIndex] = useState(0);
-  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  // const tabsContainerRef = useRef<HTMLDivElement>(null);
 
   // Function to handle tab changes with scroll - Fixed TypeScript error
   const handleTabClick = (index: number): void => {

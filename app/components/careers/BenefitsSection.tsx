@@ -4,13 +4,13 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 import { 
-  FaLaptop, 
+  // FaLaptop, 
   FaCalendarAlt, 
   FaBriefcaseMedical, 
   FaGraduationCap,
   FaChartLine,
   FaUsers,
-  FaPlane,
+  // FaPlane,
   FaCoffee
 } from 'react-icons/fa'
 
