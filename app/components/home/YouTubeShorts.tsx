@@ -23,11 +23,37 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
   const [loading, setLoading] = useState(initialShorts.length === 0);
   const [error, setError] = useState<string | null>(null);
   const [activeShort, setActiveShort] = useState<string | null>(null);
+  const [adBlockDetected, setAdBlockDetected] = useState<boolean>(false);
   const videoRefs = useRef<{[key: string]: HTMLIFrameElement}>({});
+  const adBlockCheckRef = useRef<HTMLIFrameElement>(null);
+
+  // Check for ad blockers
+  useEffect(() => {
+    // Create a hidden test iframe to detect ad blockers
+    const testAdBlock = () => {
+      if (adBlockCheckRef.current) {
+        // If the iframe failed to load or was blocked, this will be triggered
+        try {
+          const iframeDoc = adBlockCheckRef.current.contentWindow?.document;
+          // If we can't access the iframe's document, an ad blocker is likely active
+          if (!iframeDoc) {
+            setAdBlockDetected(true);
+          }
+        } catch (e) {
+          setAdBlockDetected(true);
+        }
+      }
+    };
+
+    // Check after a short delay
+    const timer = setTimeout(testAdBlock, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   // Auto-play the first short after shorts are loaded
   useEffect(() => {
-    if (shorts.length > 0 && !activeShort) {
+    if (shorts.length > 0 && !activeShort && !adBlockDetected) {
       // Set a small delay to ensure the DOM is ready
       const timer = setTimeout(() => {
         setActiveShort(shorts[0].videoId);
@@ -35,7 +61,7 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
       
       return () => clearTimeout(timer);
     }
-  }, [shorts, activeShort]);
+  }, [shorts, activeShort, adBlockDetected]);
 
   useEffect(() => {
     // If no initial shorts were provided, fetch them client-side
@@ -59,6 +85,12 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
 
   // Handle playing a short when clicked
   const handlePlayShort = (videoId: string) => {
+    if (adBlockDetected) {
+      // If ad blocker is detected, just open the YouTube link
+      window.open(getDirectYouTubeLink(videoId), '_blank');
+      return;
+    }
+    
     // If another video is currently playing, stop it
     if (activeShort && activeShort !== videoId) {
       if (videoRefs.current[activeShort]) {
@@ -76,10 +108,10 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
     setActiveShort(videoId);
   };
 
-  // Format the embedded URL for YouTube Shorts with high quality and autoplay
+  // Format the embedded URL for YouTube Shorts with standard format
   const getEmbedUrl = (videoId: string) => {
-    // Use nocookie domain to help with privacy
-    return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=0&controls=1&showinfo=0&rel=0&loop=1&playlist=${videoId}&modestbranding=1&vq=hd720`;
+    // Using standard YouTube embed format for Shorts
+    return `https://www.youtube.com/embed/${videoId}`;
   };
 
   // Handle direct link to YouTube for adblock users
@@ -89,6 +121,14 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
 
   return (
     <section className="py-16 px-4 bg-white">
+      {/* Hidden iframe for ad blocker detection */}
+      <iframe 
+        ref={adBlockCheckRef}
+        src="https://www.youtube.com/embed/placeholder"
+        style={{ display: 'none' }}
+        title="Ad Block Detector"
+      />
+
       <div className="text-center mb-12">
         <h2 className="text-5xl md:text-[78px] font-black m-0 leading-none tracking-tight">
           Our Latest{" "}
@@ -102,6 +142,11 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
         <p className="mt-4 text-sm md:text-lg text-[#231942] max-w-xl mx-auto">
           Check out our latest YouTube Shorts for quick insights and inspiration.
         </p>
+        {adBlockDetected && (
+          <div className="mt-4 text-amber-600 text-sm">
+            Ad blocker detected - click on thumbnails to view shorts directly on YouTube
+          </div>
+        )}
       </div>
 
       {loading ? (
@@ -132,17 +177,20 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
               data-videoid={short.videoId}
             >
               <div className="relative aspect-[9/16] w-full overflow-hidden">
-                {activeShort === short.videoId ? (
-                  <>
+                {activeShort === short.videoId && !adBlockDetected ? (
+                  <div className="w-full h-full">
                     <iframe
                       ref={(el) => {
                         if (el) videoRefs.current[short.videoId] = el;
                       }}
+                      width="315" 
+                      height="560"
                       src={getEmbedUrl(short.videoId)}
                       title={short.title}
+                      frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
-                      className="absolute top-0 left-0 w-full h-full border-0"
+                      className="absolute top-0 left-0 w-full h-full"
                     ></iframe>
                     <div className="absolute bottom-2 right-2 z-10">
                       <a 
@@ -154,7 +202,7 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
                         YouTube
                       </a>
                     </div>
-                  </>
+                  </div>
                 ) : (
                   <div 
                     className="cursor-pointer relative w-full h-full" 
@@ -189,7 +237,9 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
-                      <span className="text-white text-sm font-medium">Watch Short</span>
+                      <span className="text-white text-sm font-medium">
+                        {adBlockDetected ? "Open on YouTube" : "Watch Short"}
+                      </span>
                     </div>
                   </div>
                 )}
