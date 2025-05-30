@@ -78,7 +78,13 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
 
   // Format the embedded URL for YouTube Shorts with high quality and autoplay
   const getEmbedUrl = (videoId: string) => {
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0&controls=1&showinfo=0&rel=0&loop=1&playlist=${videoId}&modestbranding=1&vq=hd720&enablejsapi=1`;
+    // Use nocookie domain to help with privacy
+    return `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=0&controls=1&showinfo=0&rel=0&loop=1&playlist=${videoId}&modestbranding=1&vq=hd720`;
+  };
+
+  // Handle direct link to YouTube for adblock users
+  const getDirectYouTubeLink = (videoId: string) => {
+    return `https://www.youtube.com/shorts/${videoId}`;
   };
 
   return (
@@ -127,16 +133,28 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
             >
               <div className="relative aspect-[9/16] w-full overflow-hidden">
                 {activeShort === short.videoId ? (
-                  <iframe
-                    ref={(el) => {
-                      if (el) videoRefs.current[short.videoId] = el;
-                    }}
-                    src={getEmbedUrl(short.videoId)}
-                    title={short.title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="absolute top-0 left-0 w-full h-full border-0"
-                  ></iframe>
+                  <>
+                    <iframe
+                      ref={(el) => {
+                        if (el) videoRefs.current[short.videoId] = el;
+                      }}
+                      src={getEmbedUrl(short.videoId)}
+                      title={short.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute top-0 left-0 w-full h-full border-0"
+                    ></iframe>
+                    <div className="absolute bottom-2 right-2 z-10">
+                      <a 
+                        href={getDirectYouTubeLink(short.videoId)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-red-600 text-white text-xs rounded-full p-1 px-2 opacity-70 hover:opacity-100"
+                      >
+                        YouTube
+                      </a>
+                    </div>
+                  </>
                 ) : (
                   <div 
                     className="cursor-pointer relative w-full h-full" 
@@ -179,13 +197,18 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
               <div className="p-4">
                 <h3 className="text-lg font-bold line-clamp-2 mb-2">{short.title}</h3>
                 <p className="text-gray-600 text-sm line-clamp-2">{short.description}</p>
-                <div className="mt-4 flex items-center">
+                <div className="mt-4 flex items-center justify-between">
                   <span className="text-xs text-gray-500">
                     {new Date(short.publishedAt).toLocaleDateString()}
                   </span>
-                  <span className="ml-auto px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">
+                  <a 
+                    href={getDirectYouTubeLink(short.videoId)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full hover:bg-red-200"
+                  >
                     #shorts
-                  </span>
+                  </a>
                 </div>
               </div>
             </motion.div>
