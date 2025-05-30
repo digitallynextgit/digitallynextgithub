@@ -76,7 +76,14 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
           const apiUrl = `${origin}/api/youtube-shorts`;
           
           try {
-            const response = await fetch(apiUrl);
+            const response = await fetch(apiUrl, {
+              // Add cache-busting
+              headers: {
+                'Cache-Control': 'no-cache',
+                'Pragma': 'no-cache'
+              },
+              cache: 'no-store'
+            });
             const responseText = await response.text();
             
             try {
@@ -140,7 +147,8 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
 
   // Format the embedded URL for YouTube Shorts with standard format
   const getEmbedUrl = (videoId: string) => {
-    // Using standard YouTube embed format for Shorts
+    // This format matches the working short's format
+    // Simple embed without extra parameters that might cause issues
     return `https://www.youtube.com/embed/${videoId}`;
   };
 
@@ -198,7 +206,7 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
               <p>Make sure you have set up these environment variables:</p>
               <ul className="list-disc ml-5 mt-2">
                 <li>YT_API_KEY or YOUTUBE_API_KEY - Your YouTube Data API key</li>
-                <li>YT_CHANNEL_ID or YOUTUBE_CHANNEL_ID - Your YouTube channel ID (starts with UC...)</li>
+                <li>YT_CHANNEL_ID or YOUTUBE_CHANNEL_ID - Your YouTube channel ID (starts with UC...) or handle (starts with @)</li>
               </ul>
             </div>
           )}
