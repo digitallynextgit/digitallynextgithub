@@ -59,12 +59,18 @@ export default function ManualYouTubeShorts({ shorts = DEFAULT_SHORTS }: ManualY
   const goToPrevious = () => {
     if (canGoBack) {
       setCurrentIndex(prevIndex => prevIndex - 1);
+    } else {
+      // Loop to the last page when at the first page
+      setCurrentIndex(Math.ceil(shorts.length / SHORTS_PER_PAGE) - 1);
     }
   };
 
   const goToNext = () => {
     if (canGoForward) {
       setCurrentIndex(prevIndex => prevIndex + 1);
+    } else {
+      // Loop to the first page when at the last page
+      setCurrentIndex(0);
     }
   };
 
@@ -107,10 +113,7 @@ export default function ManualYouTubeShorts({ shorts = DEFAULT_SHORTS }: ManualY
             <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 z-10">
               <button
                 onClick={goToPrevious}
-                disabled={!canGoBack}
-                className={`p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-all ${
-                  !canGoBack ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className="p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-all"
                 aria-label="Previous shorts"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -122,10 +125,7 @@ export default function ManualYouTubeShorts({ shorts = DEFAULT_SHORTS }: ManualY
             <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 z-10">
               <button
                 onClick={goToNext}
-                disabled={!canGoForward}
-                className={`p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-all ${
-                  !canGoForward ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+                className="p-2 rounded-full bg-white shadow-lg hover:bg-gray-100 transition-all"
                 aria-label="Next shorts"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">

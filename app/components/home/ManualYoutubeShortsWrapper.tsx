@@ -43,7 +43,16 @@ const ALL_SHORTS = [
   {
     videoId: "PYmYohXZ_dE",
     title: "Short 10"
-  }
+  },
+  {
+    videoId: "0PlZUWP1oG0",
+    title: "Short 11"
+  },
+  {
+    videoId: "hzoE5Vv2Ff4",
+    title: "Short 12"
+  },
+
 ];
 
 export default function ManualYoutubeShortsWrapper() {
