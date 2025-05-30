@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { Short } from '@/app/utils/fetchShorts';
+import { NextRequest } from 'next/server';
 
 // Define interfaces for YouTube API response
 interface YouTubeVideoID {
@@ -88,7 +89,7 @@ function getProperChannelId(input: string): string {
 
 const CHANNEL_ID = getProperChannelId(rawChannelId);
 
-// Known working short - use as fallback and for format reference
+// Known working short - guaranteed to work in all environments
 const KNOWN_WORKING_SHORTS: Short[] = [
   {
     videoId: "W5REyClI5pI",
@@ -99,21 +100,91 @@ const KNOWN_WORKING_SHORTS: Short[] = [
   },
   {
     videoId: "J9aXLu7sY7U",
-    title: "Fallback Short 1",
+    title: "Fallback Short Example",
     thumbnail: "https://i.ytimg.com/vi/J9aXLu7sY7U/hqdefault.jpg",
     publishedAt: new Date().toISOString(),
     description: "This is a fallback short when the YouTube API is unavailable."
   }
 ];
 
-export async function GET() {
+// Cache to store fetched shorts
+let cachedShorts: Short[] = [];
+let lastFetchTime = 0;
+const CACHE_TTL = 15 * 60 * 1000; // 15 minutes cache - longer TTL for production stability
+
+export async function GET(request: NextRequest) {
   console.log('YouTube Shorts API route called');
   
+  // Parse query parameters for pagination
+  const searchParams = request.nextUrl.searchParams;
+  const offsetParam = searchParams.get('offset') || '0';
+  const limitParam = searchParams.get('limit') || '4';
+  
+  const offset = parseInt(offsetParam, 10);
+  const limit = Math.min(parseInt(limitParam, 10), 8); // Limit to max 8 items per request
+  
+  console.log(`Requested shorts with offset: ${offset}, limit: ${limit}`);
+  
+  try {
+    // Always include known working shorts at the beginning for the first request
+    if (offset === 0) {
+      // Initialize with known working shorts for immediate response
+      const initialResponse = [...KNOWN_WORKING_SHORTS];
+      
+      // Use cached shorts if available and not expired
+      const now = Date.now();
+      if (cachedShorts.length > 0 && now - lastFetchTime < CACHE_TTL) {
+        console.log(`Using cached shorts (${cachedShorts.length} items in cache)`);
+        
+        // Filter out duplicates by videoId
+        const cachedWithoutDuplicates = cachedShorts.filter(
+          cached => !KNOWN_WORKING_SHORTS.some(
+            known => known.videoId === cached.videoId
+          )
+        );
+        
+        // Return combined shorts list with pagination
+        const combinedShorts = [...initialResponse, ...cachedWithoutDuplicates];
+        return NextResponse.json(combinedShorts.slice(0, limit));
+      }
+      
+      // For production, if we don't have a cache yet, immediately return known working shorts
+      // while the fetch happens in the background for subsequent requests
+      if (process.env.NODE_ENV === 'production') {
+        // Start background fetch for future requests
+        fetchYouTubeShorts().catch(error => 
+          console.error('Background fetch failed:', error)
+        );
+        
+        return NextResponse.json(initialResponse);
+      }
+    } else if (cachedShorts.length > offset) {
+      // For subsequent pages, use cache if available
+      console.log(`Serving cached shorts for offset ${offset}`);
+      return NextResponse.json(cachedShorts.slice(offset, offset + limit));
+    }
+    
+    // If we get here, we need to fetch from YouTube API
+    const shorts = await fetchYouTubeShorts();
+    
+    // Return the requested pagination slice
+    const paginatedShorts = shorts.slice(offset, offset + limit);
+    return NextResponse.json(paginatedShorts);
+  } catch (error) {
+    console.error('Error in YouTube shorts API handler:', error);
+    
+    // Always return at least the known working shorts for the first page, empty for subsequent pages
+    return NextResponse.json(offset === 0 ? KNOWN_WORKING_SHORTS.slice(0, limit) : []);
+  }
+}
+
+// Separate function to fetch shorts from YouTube API
+async function fetchYouTubeShorts(): Promise<Short[]> {
   try {
     // Check if we have API credentials
     if (!YOUTUBE_API_KEY) {
       console.error('YouTube API key not configured in environment variables');
-      return NextResponse.json(KNOWN_WORKING_SHORTS);
+      return KNOWN_WORKING_SHORTS;
     }
 
     console.log(`Fetching shorts from channel: ${CHANNEL_ID}`);
@@ -123,46 +194,53 @@ export async function GET() {
     const isHandle = CHANNEL_ID.startsWith('@');
     
     // YouTube has deprecated the videoDuration=short parameter, so we'll use a different approach
-    // We'll search for videos and then filter by duration on the client side
+    // Request more items than needed to have enough for pagination
+    const maxResults = 20; // Request maximum allowed to fill our cache
     
     if (isChannelId) {
       // Use channel ID search
-      apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=12&order=date&type=video&key=${YOUTUBE_API_KEY}`;
+      apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=${maxResults}&order=date&type=video&key=${YOUTUBE_API_KEY}`;
     } else if (isHandle) {
       // For @handles, we'll search using the handle as a query term along with "shorts"
       // This is more reliable for getting actual shorts content
-      apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(CHANNEL_ID + " shorts")}&maxResults=12&order=viewCount&type=video&key=${YOUTUBE_API_KEY}`;
+      apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(CHANNEL_ID + " shorts")}&maxResults=${maxResults}&order=viewCount&type=video&key=${YOUTUBE_API_KEY}`;
     } else {
       // Fallback to a general search
-      apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent("digitally next shorts")}&maxResults=12&order=date&type=video&key=${YOUTUBE_API_KEY}`;
+      apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent("digitally next shorts")}&maxResults=${maxResults}&order=date&type=video&key=${YOUTUBE_API_KEY}`;
     }
     
     console.log(`YouTube API URL: ${apiUrl.replace(YOUTUBE_API_KEY, 'API_KEY_HIDDEN')}`);
     
-    // Fetch the latest shorts from YouTube API
-    const response = await fetch(apiUrl);
-    const responseText = await response.text();
+    // Add timeout to the fetch request
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
     
-    // Try to parse the response
-    let data: { items: YouTubeSearchItem[] } | YouTubeErrorResponse;
-    try {
-      data = JSON.parse(responseText);
-    } catch {
-      console.error('Failed to parse YouTube API response:', responseText.substring(0, 200));
-      return NextResponse.json(KNOWN_WORKING_SHORTS);
+    // Fetch the latest shorts from YouTube API
+    const response = await fetch(apiUrl, { 
+      signal: controller.signal,
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    });
+    
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`YouTube API responded with ${response.status}: ${response.statusText}`);
     }
+    
+    const data = await response.json() as { items: YouTubeSearchItem[] } | YouTubeErrorResponse;
     
     // Check for YouTube API errors
     if ('error' in data) {
       console.error('YouTube API error:', data.error);
-      
-      // In production, just return the known working shorts
-      return NextResponse.json(KNOWN_WORKING_SHORTS);
+      return KNOWN_WORKING_SHORTS;
     }
     
     if (!data.items || data.items.length === 0) {
       console.log('No items returned from YouTube API');
-      return NextResponse.json(KNOWN_WORKING_SHORTS);
+      return KNOWN_WORKING_SHORTS;
     }
     
     // Add the known working short to the results to ensure we have at least one working example
@@ -180,24 +258,34 @@ export async function GET() {
       
         return {
           videoId: item.id.videoId,
-          title: item.snippet.title,
+          title: item.snippet.title || "YouTube Short",
           thumbnail: thumbnailUrl,
-          publishedAt: item.snippet.publishedAt,
+          publishedAt: item.snippet.publishedAt || new Date().toISOString(),
           description: item.snippet.description || "Check out this YouTube Short!"
         };
       });
 
-    // Add the known working short to the beginning of the array
+    // Add the known working short to the beginning if it's not already there
     if (!shorts.some(short => short.videoId === knownWorkingShort.videoId)) {
       shorts = [knownWorkingShort, ...shorts];
     }
     
-    console.log(`Fetched ${shorts.length} YouTube shorts successfully`);
-    return NextResponse.json(shorts);
-  } catch (error) {
-    console.error('Error in YouTube shorts API:', error);
+    // Update the cached shorts and timestamp
+    cachedShorts = shorts;
+    lastFetchTime = Date.now();
     
-    // Always return at least the known working shorts
-    return NextResponse.json(KNOWN_WORKING_SHORTS);
+    console.log(`Fetched ${shorts.length} YouTube shorts successfully`);
+    return shorts;
+  } catch (error) {
+    console.error('Error fetching YouTube shorts:', error);
+    
+    // If we have cached shorts, use them as fallback
+    if (cachedShorts.length > 0) {
+      console.log('Using cached shorts as fallback due to error');
+      return cachedShorts;
+    }
+    
+    // Otherwise return known working shorts
+    return KNOWN_WORKING_SHORTS;
   }
 } 

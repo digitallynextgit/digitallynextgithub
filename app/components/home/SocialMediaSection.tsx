@@ -5,7 +5,7 @@ import CircularGallery from "@/components/home/CircularGallery";
 
 const SocialMediaSection = () => {
   return (
-    <div style={{ height: "600px", position: "relative" }}>
+    <div style={{ height: "600px", position: "relative" }} >
        <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} />
     </div>
   );
