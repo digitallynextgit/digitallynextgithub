@@ -163,7 +163,8 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
       setLoading(false);
       setLoadingMore(false);
     }
-  }, [fetchAttempts, shorts.length]);
+  // Use only stable dependencies that won't cause infinite loops
+  }, [fetchAttempts, MAX_FETCH_ATTEMPTS]);
   
   // Check for ad blockers
   useEffect(() => {
@@ -203,7 +204,8 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
     if (initialShorts.length === 0) {
       fetchShorts();
     }
-  }, [initialShorts.length, fetchShorts]);
+  // Remove fetchShorts from dependency array to prevent infinite loops
+  }, [initialShorts.length]);
 
   // Handle playing a short when clicked
   const handlePlayShort = (videoId: string) => {
