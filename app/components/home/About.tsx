@@ -19,11 +19,11 @@ const About = () => {
   // Image carousel data
   const carouselImages = [
     {
-      src: "/about/design-interior.jpg",
+      src: "/office/2.png",
       alt: "Luxurious Interior Design",
     },
     {
-      src: "/about/office-space.jpg",
+      src: "/office/4.png",
       alt: "Modern Office Space",
     },
     {

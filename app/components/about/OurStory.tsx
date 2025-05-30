@@ -18,7 +18,7 @@ const timeline = [
   {
     year: '2017',
     title: 'Global Recognition',
-    description: 'Not just a simple erstwhile agency, but a “Next Enabler” Partner in Progress (PiP) to the wonderful Stars, Starlets, Underdogs, Dark horses, and Unicorns who are keen to shine the brightest as the new age large corporations, Small and Medium businesses, Startups, Brand in Making, celebrities, andself-employed professionals.',
+    description: 'Not just a simple erstwhile agency, but a "Next Enabler" Partner in Progress (PiP) to the wonderful Stars, Starlets, Underdogs, Dark horses, and Unicorns who are keen to shine the brightest as the new age large corporations, Small and Medium businesses, Startups, Brand in Making, celebrities, andself-employed professionals.',
   },
   {
     year: '2019',
@@ -100,7 +100,7 @@ export default function OurStory() {
         >
           <div className="relative h-60 md:h-80 rounded-xl overflow-hidden shadow-lg transform transition-transform hover:scale-105">
             <Image 
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3" 
+              src="/flow/1.png" 
               alt="Team collaboration" 
               fill 
               className="object-cover"
@@ -108,7 +108,7 @@ export default function OurStory() {
           </div>
           <div className="relative h-60 md:h-80 rounded-xl overflow-hidden shadow-lg transform transition-transform hover:scale-105">
             <Image 
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3" 
+              src="/flow/2.png" 
               alt="Office space" 
               fill 
               className="object-cover"
@@ -116,7 +116,7 @@ export default function OurStory() {
           </div>
           <div className="relative h-60 md:h-80 rounded-xl overflow-hidden shadow-lg transform transition-transform hover:scale-105">
             <Image 
-              src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3" 
+              src="/flow/3.png" 
               alt="Team meeting" 
               fill 
               className="object-cover"

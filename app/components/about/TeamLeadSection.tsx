@@ -6,34 +6,34 @@ import { useState } from 'react';
 
 const leadTeam = [
   {
-    name: 'SARAH',
-    position: 'CEO AND FOUNDER',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3'
+    name: 'ANMOL',
+    position: 'Video Editor',
+    image: '/teams/1.png'
   },
   {
-    name: 'MICHAEL',
-    position: 'CTO',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3'
+    name: 'RUPAM',
+    position: 'UX/UI Designer',
+    image: '/teams/2.png'
   },
   {
-    name: 'EMILY',
-    position: 'CXO',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3'
+    name: 'SAURABH',
+    position: 'Graphic Designer',
+    image: '/teams/3.png'
   },
   {
-    name: 'JAMES',
-    position: 'FRONT TECH LEADER',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3'
+    name: 'PANKAJ',
+    position: 'Manager',
+    image: '/teams/4.png'
   },
   {
     name: 'PRIYA',
     position: 'CHRO',
-    image: 'https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?ixlib=rb-4.0.3'
+    image: '/teams/1.png'
   },
   {
     name: 'DAVID',
     position: 'BUSINESS RELATIONS',
-    image: 'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3'
+    image: '/teams/2.png'
   }
 ];
 
@@ -42,10 +42,10 @@ export default function TeamLeadSection() {
 
   return (
     <section className="bg-red-500 text-white py-12 md:py-16 lg:py-20 relative overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
+      <div className="container mx-auto px-2 sm:px-6">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-4">
           {/* Left side with heading and description - stacks on mobile */}
-          <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+          <div className="w-full lg:w-2/5 mb-10 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -66,8 +66,8 @@ export default function TeamLeadSection() {
           </div>
 
           {/* Right side with team members - responsive grid */}
-          <div className="w-full lg:w-1/2">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mx-auto max-w-3xl lg:max-w-none">
+          <div className="w-full lg:w-3/5">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-6 mx-auto max-w-3xl">
               {leadTeam.map((member, index) => (
                 <motion.div
                   key={index}
@@ -91,7 +91,7 @@ export default function TeamLeadSection() {
                   }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  className="bg-red-700 rounded-2xl sm:rounded-3xl overflow-hidden transform-gpu h-full"
+                  className="bg-red-700 rounded-xl sm:rounded-3xl overflow-hidden transform-gpu h-full w-48"
                 >
                   <div className="p-3 sm:p-4 md:p-5 lg:p-6 pb-2 sm:pb-3 md:pb-4">
                     <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-1 line-clamp-1">{member.name}</h3>
@@ -103,7 +103,7 @@ export default function TeamLeadSection() {
                       alt={member.name}
                       fill
                       sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 15vw"
-                      className={`object-cover object-center transition-transform duration-700 ${hoveredIndex === index ? 'scale-110' : ''}`}
+                      className={`object-cover object-top transition-transform duration-700 ${hoveredIndex === index ? 'scale-110' : ''}`}
                     />
                     {hoveredIndex === index && (
                       <div className="absolute inset-0"></div>

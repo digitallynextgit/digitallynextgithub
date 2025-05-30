@@ -4,58 +4,21 @@ import { Marquee } from "@/components/magicui/marquee";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+// Create arrays for odd-numbered logo files
 const logos = [
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/1005px-Intel_logo_%282006-2020%29.svg.png",
-    alt: "Intel",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png",
-    alt: "Samsung",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png",
-    alt: "Netflix",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Adobe_Corporate_Logo.png/1280px-Adobe_Corporate_Logo.png",
-    alt: "Adobe",
-  },
-  {
-    src: "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png",
-    alt: "Spotify",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/2560px-Tesla_Motors.svg.png",
-    alt: "Tesla",
-  },
+  { src: "/logos/1.png", alt: "Logo 1" },
+  { src: "/logos/3.png", alt: "Logo 3" },
+  { src: "/logos/5.png", alt: "Logo 5" },
+  { src: "/logos/7.png", alt: "Logo 7" },
+  { src: "/logos/9.png", alt: "Logo 9" },
 ];
 
 const logosSecondRow = [
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/1005px-Intel_logo_%282006-2020%29.svg.png",
-    alt: "Intel",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png",
-    alt: "Samsung",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png",
-    alt: "Netflix",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Adobe_Corporate_Logo.png/1280px-Adobe_Corporate_Logo.png",
-    alt: "Adobe",
-  },
-  {
-    src: "https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png",
-    alt: "Spotify",
-  },
-  {
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Tesla_Motors.svg/2560px-Tesla_Motors.svg.png",
-    alt: "Tesla",
-  },
+  { src: "/logos/11.png", alt: "Logo 11" },
+  { src: "/logos/13.png", alt: "Logo 13" },
+  { src: "/logos/15.png", alt: "Logo 15" },
+  { src: "/logos/17.png", alt: "Logo 17" },
+  { src: "/logos/19.png", alt: "Logo 19" },
 ];
 
 const LogoItem = ({ src, alt }: { src: string; alt: string }) => {
@@ -69,7 +32,7 @@ const LogoItem = ({ src, alt }: { src: string; alt: string }) => {
         alt={alt}
         fill
         className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
       />
     </motion.div>
   );
@@ -77,9 +40,9 @@ const LogoItem = ({ src, alt }: { src: string; alt: string }) => {
 
 export function LogoSlider() {
   return (
-    <div className="w-full overflow-hidden py-2">
+    <div className="w-full overflow-hidden py-12">
       <div className="max-w-7xl mx-auto">
-        <Marquee className="py-6" repeat={2}>
+        <Marquee className="py-6" repeat={3}>
           {logos.map((logo, index) => (
             <LogoItem key={index} {...logo} />
           ))}
