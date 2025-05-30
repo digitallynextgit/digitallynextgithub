@@ -16,7 +16,7 @@ import HomeServices from "./components/home/HomeServices";
 import Careers from "./components/home/Careers";
 import QuoraSection from "./components/home/QuoraSection";
 import Map from "./components/home/Map";
-// import SocialMediaSection from "./components/home/SocialMediaSection";
+import SocialMediaSection from "./components/home/SocialMediaSection";
 import VideoSection from "@/components/home/Video";
 import MobileVideoSection from "@/components/home/MobileHelpSection";
 import YouTubeShortsWrapper from "./components/home/YouTubeShortsWrapper";
@@ -69,7 +69,7 @@ export default function Home() {
       <Map />
 
       {/* Social Media Section */}
-      {/* <SocialMediaSection /> */}
+      <SocialMediaSection />
 
       {/* Info Section */}
       {/* <Info /> */}
