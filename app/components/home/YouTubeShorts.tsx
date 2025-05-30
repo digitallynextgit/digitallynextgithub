@@ -24,6 +24,7 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
   const [error, setError] = useState<string | null>(null);
   const [activeShort, setActiveShort] = useState<string | null>(null);
   const [adBlockDetected, setAdBlockDetected] = useState<boolean>(false);
+  const [apiDebug, setApiDebug] = useState<string | null>(null);
   const videoRefs = useRef<{[key: string]: HTMLIFrameElement}>({});
   const adBlockCheckRef = useRef<HTMLIFrameElement>(null);
 
@@ -69,12 +70,42 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
       const getShorts = async () => {
         try {
           setLoading(true);
-          const data = await fetchYouTubeShorts();
-          setShorts(data);
+          setApiDebug("Fetching shorts...");
+          
+          // Test the API endpoint directly
+          const origin = typeof window !== 'undefined' ? window.location.origin : '';
+          const apiUrl = `${origin}/api/youtube-shorts`;
+          
+          try {
+            const response = await fetch(apiUrl);
+            const responseText = await response.text();
+            
+            try {
+              const data = JSON.parse(responseText);
+              if (data && Array.isArray(data) && data.length > 0) {
+                setShorts(data);
+                setApiDebug(`Successfully fetched ${data.length} shorts`);
+              } else {
+                setApiDebug(`API returned empty or invalid data: ${responseText.substring(0, 100)}...`);
+                if (data && data.error) {
+                  setError(`API Error: ${data.error}`);
+                } else {
+                  setError('No YouTube Shorts available. API returned empty data.');
+                }
+              }
+            } catch (parseError) {
+              setApiDebug(`Failed to parse API response: ${responseText.substring(0, 100)}...`);
+              setError('Invalid API response format');
+            }
+          } catch (fetchError) {
+            setApiDebug(`Fetch error: ${fetchError instanceof Error ? fetchError.message : String(fetchError)}`);
+            setError('Network error while fetching YouTube shorts');
+          }
+          
           setLoading(false);
         } catch (err) {
           console.error('Error fetching YouTube shorts:', err);
-          setError('Failed to load YouTube shorts');
+          setError(`Failed to load YouTube shorts: ${err instanceof Error ? err.message : String(err)}`);
           setLoading(false);
         }
       };
@@ -147,6 +178,12 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
             Ad blocker detected - click on thumbnails to view shorts directly on YouTube
           </div>
         )}
+        {process.env.NODE_ENV === 'development' && apiDebug && (
+          <div className="mt-4 p-2 bg-gray-100 text-left text-xs font-mono overflow-auto max-w-xl mx-auto">
+            <p className="font-bold">Debug Info:</p>
+            <p>{apiDebug}</p>
+          </div>
+        )}
       </div>
 
       {loading ? (
@@ -155,7 +192,17 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
         </div>
       ) : error || shorts.length === 0 ? (
         <div className="text-center text-gray-500 py-12">
-          <p>{error || "No YouTube Shorts available right now."}</p>
+          <p className="mb-2">{error || "No YouTube Shorts available right now."}</p>
+          {process.env.NODE_ENV === 'development' && (
+            <div className="text-xs text-left bg-gray-100 p-3 mb-4 mx-auto max-w-xl">
+              <p className="font-semibold">Developer Note:</p>
+              <p>Make sure you have set up these environment variables:</p>
+              <ul className="list-disc ml-5 mt-2">
+                <li>YT_API_KEY or YOUTUBE_API_KEY - Your YouTube Data API key</li>
+                <li>YT_CHANNEL_ID or YOUTUBE_CHANNEL_ID - Your YouTube channel ID (starts with UC...)</li>
+              </ul>
+            </div>
+          )}
           <Link 
             href="https://www.youtube.com/@digitallynext" 
             className="mt-4 inline-block text-red-600 hover:underline"
