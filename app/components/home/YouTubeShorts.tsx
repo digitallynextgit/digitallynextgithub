@@ -39,7 +39,7 @@ export default function YouTubeShorts({ initialShorts = [] }: YouTubeShortsProps
           if (!iframeDoc) {
             setAdBlockDetected(true);
           }
-        } catch (e) {
+        } catch {
           setAdBlockDetected(true);
         }
       }
