@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import AboutHero from '@/app/components/about/AboutHero';
+import ExploreJourney from '@/app/components/about/ExploreJourney';
 // import OurStory from '@/app/components/about/OurStory';
 import OurValues from '@/app/components/about/OurValues';
 // import TeamSection from '@/app/components/about/TeamSection';
@@ -16,6 +17,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
       <AboutHero />
+      <ExploreJourney />
       {/* <OurStory /> */}
       <OurValues />
       <Achievements />

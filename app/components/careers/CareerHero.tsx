@@ -56,7 +56,7 @@ const CareerHero = () => {
         />
       </div>
       
-      <div className="container mx-auto px-4 md:px-6 py-20 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 py-20 md:py-32 relative z-10 mt-16 lg:mt-0">
         {/* Hero Content */}
         <div className="max-w-5xl mx-auto text-center">
           <motion.div 

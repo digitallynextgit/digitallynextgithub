@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="800px" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hand -->
+  <path d="M150,550 C150,550 180,480 230,450 C280,420 300,430 300,430 L450,430 C450,430 500,440 520,470 C540,500 550,550 550,550" 
+    stroke="#333" stroke-width="15" fill="none" stroke-linecap="round"/>
+  
+  <!-- Lightbulb outline -->
+  <path d="M400,100 C300,100 220,180 220,280 C220,350 260,400 300,440 L300,500 L500,500 L500,440 C540,400 580,350 580,280 C580,180 500,100 400,100 Z" 
+    stroke="#333" stroke-width="15" fill="white" stroke-linejoin="round"/>
+  
+  <!-- Bulb base -->
+  <rect x="300" y="500" width="200" height="30" fill="#444"/>
+  <rect x="320" y="530" width="160" height="20" fill="#dc3333"/>
+  <rect x="340" y="550" width="120" height="20" fill="#dc3333"/>
+  
+  <!-- Light inside -->
+  <circle cx="400" cy="300" r="60" fill="#dc3333"/>
+  
+  <!-- Light rays -->
+  <g stroke="#dc3333" stroke-width="8" stroke-linecap="round">
+    <!-- Diagonal rays -->
+    <line x1="310" y1="210" x2="280" y2="180" />
+    <line x1="490" y1="210" x2="520" y2="180" />
+    <line x1="310" y1="390" x2="280" y2="420" />
+    <line x1="490" y1="390" x2="520" y2="420" />
+    
+    <!-- Horizontal and vertical rays -->
+    <line x1="400" y1="180" x2="400" y2="150" />
+    <line x1="250" y1="300" x2="220" y2="300" />
+    <line x1="550" y1="300" x2="580" y2="300" />
+  </g>
+</svg> 

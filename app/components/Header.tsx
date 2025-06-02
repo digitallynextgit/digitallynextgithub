@@ -104,7 +104,7 @@ const Header = () => {
                                     {/* Mega Menu for Services */}
                                     {item.label === 'SERVICES' && showServicesMegaMenu && isMenuOpen && (
                                         <div 
-                                            className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-screen max-w-6xl bg-white shadow-lg rounded-md border border-gray-200 z-50"
+                                            className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-screen max-w-6xl bg-white shadow-lg rounded-md border border-gray-200 z-50 hidden lg:block"
                                             onMouseLeave={() => setShowServicesMegaMenu(false)}
                                         >
                                             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 p-6 md:p-8">

@@ -71,7 +71,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative h-[110vh] flex flex-col overflow-hidden">
+    <section className="relative lg:h-[110vh] h-[120vh] flex flex-col overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -81,7 +81,7 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col items-center justify-center">
         {/* Animated Address in Top Right */}
         <motion.div
-          className="absolute hidden  right-8 z-30 md:flex items-center md:top-24 "
+          className="absolute hidden  right-8 z-30 md:flex items-center md:top-24 top-10"
           initial={{ x: 100, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
@@ -125,7 +125,7 @@ const Hero = () => {
                 alt=""
                 width={1200}
                 height={100}
-                className=" w-[300px] hidden md:block"
+                className=" w-[250px] hidden md:block"
               />
             </motion.div>
           </motion.div>
@@ -160,7 +160,7 @@ const Hero = () => {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col items-center justify-center text-center z-10 px-4 mt-[-140px] md:mt-0">
+        <div className="flex flex-col items-center justify-center text-center z-10 px-4 lg:mt-[-140px] mt-[-100px] md:mt-0">
           <h3
             className="md:text-lg text-sm text-gray-600 md:mb-[-50px]"
             style={{ fontFamily: "Montserrat, sans-serif" }}

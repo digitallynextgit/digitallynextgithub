@@ -42,7 +42,7 @@ export default function TeamLeadSection() {
 
   return (
     <section className="bg-red-500 text-white py-12 md:py-16 lg:py-20 relative overflow-hidden">
-      <div className="container mx-auto px-2 sm:px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-4">
           {/* Left side with heading and description - stacks on mobile */}
           <div className="w-full lg:w-2/5 mb-10 lg:mb-0">
@@ -67,7 +67,7 @@ export default function TeamLeadSection() {
 
           {/* Right side with team members - responsive grid */}
           <div className="w-full lg:w-3/5">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-6 mx-auto max-w-3xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-4 md:gap-6 lg:gap-6">
               {leadTeam.map((member, index) => (
                 <motion.div
                   key={index}
@@ -91,19 +91,24 @@ export default function TeamLeadSection() {
                   }}
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
-                  className="bg-red-700 rounded-xl sm:rounded-3xl overflow-hidden transform-gpu h-full w-48"
+                  className="bg-red-700 rounded-xl sm:rounded-3xl overflow-hidden transform-gpu lg:h-full h-[400px] lg:w-full w-72 mx-auto flex flex-col"
                 >
                   <div className="p-3 sm:p-4 md:p-5 lg:p-6 pb-2 sm:pb-3 md:pb-4">
-                    <h3 className="text-sm sm:text-lg md:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-1 line-clamp-1">{member.name}</h3>
-                    <p className="text-[10px] sm:text-xs lg:text-sm font-medium text-white/80 line-clamp-1">{member.position}</p>
+                    <h3 className="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold mb-0.5 sm:mb-1 line-clamp-1">{member.name}</h3>
+                    <p className="text-xs sm:text-xs lg:text-sm font-medium text-white/80 line-clamp-1">{member.position}</p>
                   </div>
-                  <div className="relative h-24 sm:h-32 md:h-40 lg:h-48 w-full overflow-hidden">
+                  <div 
+                    className="relative flex-grow overflow-hidden h-[330px] lg:h-[250px]" 
+                  >
                     <Image
                       src={member.image}
                       alt={member.name}
                       fill
-                      sizes="(max-width: 640px) 45vw, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 15vw"
-                      className={`object-cover object-top transition-transform duration-700 ${hoveredIndex === index ? 'scale-110' : ''}`}
+                      sizes="(max-width: 640px) 288px, (max-width: 768px) 30vw, (max-width: 1024px) 20vw, 15vw"
+                      className={`object-cover transition-transform duration-700 ${hoveredIndex === index ? 'scale-110' : ''}`}
+                      style={{ 
+                        objectPosition: "center 30%"
+                      }}
                     />
                     {hoveredIndex === index && (
                       <div className="absolute inset-0"></div>

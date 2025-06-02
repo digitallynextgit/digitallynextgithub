@@ -63,8 +63,8 @@ const NumberTicker = ({ value }: { value: string }) => {
   
   return (
     <div ref={ref} className="inline-block">
-      <span className="text-6xl font-bold">{count}</span>
-      <span className="text-6xl font-bold">+</span>
+      <span className="text-5xl md:text-6xl font-bold">{count}</span>
+      <span className="text-5xl md:text-6xl font-bold">+</span>
     </div>
   );
 };
@@ -74,7 +74,7 @@ const StatsCard = ({ value, label, mascot, color }: StatsCardProps) => {
 
   return (
     <motion.div
-      className="relative bg-white border-b-8  rounded-xl p-8 max-w-xl flex flex-col items-center text-center overflow-hidden group"
+      className="relative bg-white border-b-8 rounded-xl p-6 md:p-8 max-w-xl flex flex-col items-center text-center overflow-hidden group"
       style={{ borderColor: color }}
       whileHover={{ 
         scale: 1.05,
@@ -90,13 +90,13 @@ const StatsCard = ({ value, label, mascot, color }: StatsCardProps) => {
     >
       <NumberTicker value={value} />
       
-      <div className="w-32 h-1 my-4" style={{ backgroundColor: color }}></div>
+      <div className="w-24 md:w-32 h-1 my-3 md:my-4" style={{ backgroundColor: color }}></div>
       
-      <p className="text-xl font-medium mb-4">{label}</p>
+      <p className="text-lg md:text-xl font-medium mb-2 md:mb-4">{label}</p>
       
       {/* Mascot that animates on hover */}
       <motion.div 
-        className="absolute -right-12 -bottom-12 text-8xl opacity-10 pointer-events-none"
+        className="absolute -right-12 -bottom-12 text-7xl md:text-8xl opacity-10 pointer-events-none"
         initial={{ rotate: 0 }}
         whileHover={{ 
           rotate: [0, -10, 10, -5, 5, 0],
@@ -145,7 +145,7 @@ const StatsCard = ({ value, label, mascot, color }: StatsCardProps) => {
 
 export function StatsCards() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto py-16">
+    <div className="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-8 max-w-7xl mx-auto py-4 md:py-16">
       {statsData.map((stat, index) => (
         <StatsCard key={index} {...stat} />
       ))}

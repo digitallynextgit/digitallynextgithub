@@ -54,15 +54,16 @@ const JobList = ({ jobs, onApply }: JobListProps) => {
           {/* Job header - always visible */}
           <div 
             onClick={() => toggleJob(job.id)}
-            className="p-6 cursor-pointer flex items-start gap-5"
+            className="p-6 cursor-pointer flex items-start gap-3 sm:gap-5"
           >
-            {/* Job icon */}
-            <div className="hidden sm:block shrink-0">
-              <div className="w-16 h-16 relative rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
+            {/* Job icon - now visible on mobile */}
+            <div className="shrink-0">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 relative rounded-lg overflow-hidden bg-gray-100 flex items-center justify-center">
                 <Image
                   src={job.icon}
                   alt={job.title}
                   fill
+                  sizes="(max-width: 640px) 56px, 64px"
                   className="object-cover"
                   onError={(e) => {
                     // Fallback for missing images
@@ -76,10 +77,10 @@ const JobList = ({ jobs, onApply }: JobListProps) => {
             {/* Job info */}
             <div className="flex-grow">
               <div className={`flex flex-wrap items-center gap-2 mb-1 ${expandedJob === job.id ? 'text-red-600' : 'text-gray-900'} transition-colors duration-300`}>
-                <h3 className="text-xl font-semibold mr-2">{job.title}</h3>
-                {job.subtitle && <span className="text-gray-500 text-sm">({job.subtitle})</span>}
+                <h3 className="text-base sm:text-xl font-semibold mr-2 break-words">{job.title}</h3>
+                {job.subtitle && <span className="text-gray-500 text-xs sm:text-sm">({job.subtitle})</span>}
                 
-                <div className={`ml-auto text-xs font-medium px-3 py-1 rounded-full ${
+                <div className={`ml-auto text-xs font-medium px-2 sm:px-3 py-1 rounded-full ${
                   job.type === 'Full-time' 
                     ? 'bg-blue-100 text-blue-700' 
                     : 'bg-green-100 text-green-700'
@@ -88,11 +89,7 @@ const JobList = ({ jobs, onApply }: JobListProps) => {
                 </div>
               </div>
               
-              {/* <p className="text-sm text-gray-600 line-clamp-2">
-                {job.description}
-              </p>
-               */}
-              <div className="mt-3 flex flex-wrap gap-4 text-xs text-gray-500">
+              <div className="mt-2 sm:mt-3 flex flex-wrap gap-3 sm:gap-4 text-xs text-gray-500">
                 <div className="flex items-center gap-1.5">
                   <FaLocationArrow className="text-gray-400" />
                   <span>{job.location}</span>
@@ -109,7 +106,7 @@ const JobList = ({ jobs, onApply }: JobListProps) => {
               <motion.div 
                 initial={false}
                 animate={{ rotate: expandedJob === job.id ? 90 : 0 }}
-                className="bg-gray-100 rounded-full p-2 transition-colors duration-300 hover:bg-gray-200"
+                className="bg-gray-100 rounded-full p-1.5 sm:p-2 transition-colors duration-300 hover:bg-gray-200"
               >
                 <FaArrowRight className={expandedJob === job.id ? "text-red-500" : "text-gray-500"} />
               </motion.div>

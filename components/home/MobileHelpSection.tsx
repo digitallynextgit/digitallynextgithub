@@ -88,30 +88,7 @@ export default function MobileHelpSection() {
         What can I help with?
       </motion.div>
 
-      <AnimatePresence mode="wait">
-        <div className="h-[200px] relative">
-          {isVisible && (
-            <motion.div
-              className="flex flex-wrap gap-3 justify-center absolute w-full"
-              variants={container}
-              initial="hidden"
-              animate="show"
-              exit={{ opacity: 0 }}
-            >
-              {helpOptions.map((option) => (
-                <motion.div
-                  key={option.id}
-                  variants={item}
-                  className="bg-gray-100 rounded-full px-4 py-2 flex items-center gap-2"
-                >
-                  {option.icon && <span>{option.icon}</span>}
-                  <span>{option.text}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </div>
-      </AnimatePresence>
+
 
       <div className="mt-8 flex items-center gap-4 bg-gray-100 rounded-full p-4">
         <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">
@@ -140,6 +117,30 @@ export default function MobileHelpSection() {
           </div>
         </div>
       </div>
+      <AnimatePresence mode="wait">
+        <div className="h-[200px] relative">
+          {isVisible && (
+            <motion.div
+              className="flex flex-wrap gap-3 justify-center absolute w-full"
+              variants={container}
+              initial="hidden"
+              animate="show"
+              exit={{ opacity: 0 }}
+            >
+              {helpOptions.map((option) => (
+                <motion.div
+                  key={option.id}
+                  variants={item}
+                  className="bg-gray-100 rounded-full px-4 py-2 flex items-center gap-2"
+                >
+                  {option.icon && <span>{option.icon}</span>}
+                  <span>{option.text}</span>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </AnimatePresence>
     </div>
   );
 }

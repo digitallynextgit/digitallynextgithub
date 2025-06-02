@@ -116,6 +116,12 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-diagonal': 'linear-gradient(to bottom right, var(--tw-gradient-stops))',
+        'gradient-diagonal-reverse': 'linear-gradient(to bottom left, var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
