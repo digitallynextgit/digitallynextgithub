@@ -52,6 +52,12 @@ const testimonials = [
 const Hero = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [addressHovered, setAddressHovered] = useState(false);
+  const [currentImage, setCurrentImage] = useState('');
+
+  // Handle image change from TypewriterEffect
+  const handleImageChange = (image: string) => {
+    setCurrentImage(image);
+  };
 
   // Auto-rotate testimonials
   useEffect(() => {
@@ -71,7 +77,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative lg:h-[110vh] h-[120vh] flex flex-col overflow-hidden">
+    <section id="hero-section" className="relative lg:h-[110vh] h-[120vh] flex flex-col overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -101,62 +107,44 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Animated Images */}
-        <div className="absolute inset-0 pointer-events-none">
-          <motion.div
-            initial={{ opacity: 0, x: -100, rotate: -12 }}
-            animate={{ opacity: 1, x: 0, rotate: -12 }}
-            transition={{ duration: 1 }}
-            className="absolute top-6 left-10 md:left-16"
-          >
-            <motion.div
-              animate={{
-                y: [0, -15, 0],
-                rotate: [-12, -14, -12],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            >
-              <Image
-                src="/home/2.webp"
-                alt=""
-                width={1200}
-                height={100}
-                className=" w-[250px] hidden md:block"
-              />
-            </motion.div>
-          </motion.div>
+        {/* Image Container - Positioned absolutely within the Hero section */}
+        <div className="absolute bottom-[300px] right-6 md:right-16 z-20 hidden md:block pointer-events-none">
+          <AnimatePresence mode="wait">
+            {currentImage && (
+              <motion.div
+                key={currentImage}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  y: [0, 15, 0], 
+                  rotate: 12
+                }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{
+                  duration: 0.5,
+                  y: {
+                    duration: 7,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }
+                }}
+              >
+                <Image
+                  src={currentImage}
+                  alt=""
+                  width={800}
+                  height={100}
+                  className="w-[200px]"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 100, rotate: 12 }}
-            animate={{ opacity: 1, x: 0, rotate: 12 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="absolute bottom-20 right-6 md:right-16"
-          >
-            <motion.div
-              animate={{
-                y: [0, 15, 0],
-                rotate: [12, 14, 12],
-              }}
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: 1,
-              }}
-            >
-              <Image
-                src="/3.png"
-                alt=""
-                width={800}
-                height={100}
-                className="w-[300px] hidden md:block"
-              />
-            </motion.div>
-          </motion.div>
+        {/* Animated Images container (keeping empty for structure) */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Images now handled directly in Hero component */}
         </div>
 
         {/* Content */}
@@ -165,9 +153,9 @@ const Hero = () => {
             className="md:text-lg text-sm text-gray-600 md:mb-[-50px]"
             style={{ fontFamily: "Montserrat, sans-serif" }}
           >
-            We’ve grown understanding your pain
+            We&apos;ve grown understanding your pain
           </h3>
-          <TypewriterEffect />
+          <TypewriterEffect onImageChange={handleImageChange} />
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:mt-[-20px]">
             <Link

@@ -5,6 +5,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import ImageCarousel from "./ImageCarousel";
+import { VideoText } from "@/components/magicui/video-text";
 import Link from "next/link";
 
 // Dynamically import Lottie Animation for better performance
@@ -22,7 +23,6 @@ const About = () => {
       src: "/office/2.png",
       alt: "Luxurious Interior Design",
     },
-  
   ];
 
   return (
@@ -30,20 +30,19 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large "ABOUT US" Heading with Lottie animation */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="lg:col-span-8"
-          >
-            <h2 className="text-5xl md:text-[10rem] font-black leading-none tracking-tighter text-black text-center md:text-left">
+          <div className="relative h-[250px] md:h-[300px] w-full overflow-hidden lg:col-span-8">
+            <VideoText 
+              src="https://videos.pexels.com/video-files/6561920/6561920-uhd_2560_1440_25fps.mp4"
+              fontSize={20}
+              fontWeight="900"
+              fontFamily="system-ui, sans-serif"
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="h-full w-full flex items-center justify-center"
+            >
               ABOUT US
-            </h2>
-            {/* <h2 className="text-8xl md:text-[10rem] font-black leading-none tracking-tighter text-black">
-            
-            </h2> */}
-          </motion.div>
+            </VideoText>
+          </div>
 
           {/* Lottie Animation */}
           <motion.div

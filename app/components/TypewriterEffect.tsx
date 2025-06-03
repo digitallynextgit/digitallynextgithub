@@ -4,9 +4,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import Typewriter from 'typewriter-effect';
 import { typewriterData } from '@/app/data/typewriter-data';
 
-const TypewriterEffect = () => {
+interface TypewriterEffectProps {
+  onImageChange?: (image: string) => void;
+}
+
+const TypewriterEffect = ({ onImageChange }: TypewriterEffectProps) => {
   const [showTag, setShowTag] = useState(false);
   const [currentTag, setCurrentTag] = useState('');
+  const [currentImage, setCurrentImage] = useState('');
   const [, setTagVisible] = useState(false);
   const typewriterRef = useRef<HTMLDivElement>(null);
 
@@ -22,12 +27,19 @@ const TypewriterEffect = () => {
     return () => clearTimeout(timeout);
   }, [showTag]);
 
+  // Notify parent component when image changes
+  useEffect(() => {
+    if (onImageChange && currentImage) {
+      onImageChange(currentImage);
+    }
+  }, [currentImage, onImageChange]);
+
   return (
     <div 
       className="relative w-full max-w-[85vw] lg:max-w-[75vw] mx-auto"
       style={{ 
         fontFamily: 'Playfair Display, sans-serif',
-        height: '280px', // Fixed height for all screen sizes
+        height: '280px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -37,7 +49,7 @@ const TypewriterEffect = () => {
         className="w-full"
         style={{
           position: 'relative',
-          height: '200px', // Fixed height for content
+          height: '200px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -49,11 +61,11 @@ const TypewriterEffect = () => {
           ref={typewriterRef}
           className="w-full text-center"
           style={{
-            height: '120px', // Fixed height for typewriter text
+            height: '120px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: 'clamp(2rem, 5vw, 3rem)', // Responsive font size with limits
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
             lineHeight: 1.2,
             fontWeight: 'bold'
           }}
@@ -62,12 +74,16 @@ const TypewriterEffect = () => {
             onInit={(typewriter) => {
               let sequence = typewriter;
               
-              typewriterData.forEach((item) => {
+              typewriterData.forEach((item,) => {
                 const processedText = item.text
                   .replace(/<span class='styled-word'>/g, '')
                   .replace(/<\/span>/g, '');
                   
+                // Set the image before starting to type the text
                 sequence = sequence
+                  .callFunction(() => {
+                    setCurrentImage(item.image);
+                  })
                   .typeString(processedText)
                   .callFunction(() => {
                     setShowTag(true);
@@ -95,7 +111,7 @@ const TypewriterEffect = () => {
         {/* Tag container - always present but only visible when needed */}
         <div 
           style={{
-            height: '60px', // Fixed height for tag
+            height: '60px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -105,7 +121,7 @@ const TypewriterEffect = () => {
         >
           <span 
             style={{
-              fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', // Responsive font size with limits
+              fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
               color: '#dc3333',
               fontWeight: 'bold'
             }}
