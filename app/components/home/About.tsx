@@ -3,18 +3,18 @@
 import React from "react";
 // import Image from "next/image";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 import ImageCarousel from "./ImageCarousel";
 import { VideoText } from "@/components/magicui/video-text";
 import Link from "next/link";
 import Image from "next/image";
 // Dynamically import Lottie Animation for better performance
-const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
-  ssr: false,
-  loading: () => (
-    <div className="animate-pulse bg-gray-200 rounded-md w-48 h-48 mx-auto"></div>
-  ),
-});
+// const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
+//   ssr: false,
+//   loading: () => (
+//     <div className="animate-pulse bg-gray-200 rounded-md w-48 h-48 mx-auto"></div>
+//   ),
+// });
 
 const About = () => {
   // Image carousel data

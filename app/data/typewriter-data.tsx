@@ -33,17 +33,17 @@ interface TypewriterItem {
     {
       text: "My customers don't see us as a Brand",
       tag: "#WhatNext?",
-      image: "/banner/6.webp"
+      image: "/banner/8.webp"
     },
     {
       text: "I'm struggling to set up and promote my D2C business",
       tag: "#WhatNext?",
-      image: "/banner/7.webp"
+      image: "/banner/9.webp"
     },
     {
       text: "I'm stuck with Web2.0 marketing",
       tag: "#WhatNext?",
-      image: "/banner/8.webp"
+      image: "/banner/10.webp"
     },
     {
       text: "\"You should do because everyone is doing this way\" – advise from my Present Agency",
@@ -53,12 +53,12 @@ interface TypewriterItem {
     {
       text: "Our Web2.0 marketing Digital/Social Media presence",
       tag: "#WhatNext?",
-      image: "/banner/10.webp"
+      image: "/banner/11.webp"
     },
     {
       text: "I have a limited budget. Can I still build a Brand",
       tag: "#WhatNext?",
-      image: "/banner/11.webp"
+      image: "/banner/12.webp"
     },
     // {
     //   text: "I m not able to find a limited budget Credible, Creative, Process oriented, Performance driven digital agency partner",
