@@ -108,21 +108,22 @@ const Hero = () => {
         </motion.div>
 
         {/* Image Container - Positioned absolutely within the Hero section */}
-        <div className="absolute bottom-[300px] right-6 md:right-16 z-20 hidden md:block pointer-events-none">
+        <div className="absolute bottom-[250px] right-6 md:right-16 z-20 hidden md:block pointer-events-none">
           <AnimatePresence mode="wait">
             {currentImage && (
               <motion.div
                 key={currentImage}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ 
-                  opacity: 1, 
-                  scale: 1,
+                  opacity: 1,
+                  scale: [0.8, 1.2, 0.8], 
                   y: [0, 15, 0], 
                   rotate: 12
                 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{
                   duration: 0.5,
+                
                   y: {
                     duration: 7,
                     repeat: Infinity,
@@ -135,7 +136,7 @@ const Hero = () => {
                   alt=""
                   width={800}
                   height={100}
-                  className="w-[200px]"
+                  className="w-[250px] "
                 />
               </motion.div>
             )}

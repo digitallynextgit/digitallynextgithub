@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import ImageCarousel from "./ImageCarousel";
 import { VideoText } from "@/components/magicui/video-text";
 import Link from "next/link";
-
+import Image from "next/image";
 // Dynamically import Lottie Animation for better performance
 const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
   ssr: false,
@@ -31,7 +31,7 @@ const About = () => {
         {/* Large "ABOUT US" Heading with Lottie animation */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
           <div className="relative h-[250px] md:h-[300px] w-full overflow-hidden lg:col-span-8">
-            <VideoText 
+            <VideoText
               src="https://videos.pexels.com/video-files/6561920/6561920-uhd_2560_1440_25fps.mp4"
               fontSize={20}
               fontWeight="900"
@@ -52,7 +52,14 @@ const About = () => {
             viewport={{ once: true }}
             className="lg:col-span-4 h-[300px] lg:h-[300px] md:mb-16 "
           >
-            <LottieAnimation src="https://lottie.host/6659a81d-1046-466c-bd4d-889bc5fd8c4b/QgjOCUlNx6.lottie" />
+            {/* <LottieAnimation src="https://lottie.host/6659a81d-1046-466c-bd4d-889bc5fd8c4b/QgjOCUlNx6.lottie" /> */}
+            <Image
+              src="/aboutus.gif"
+              alt="About us"
+              width={500}
+              height={300}
+              className="w-full h-full object-cover"
+            />
           </motion.div>
         </div>
 

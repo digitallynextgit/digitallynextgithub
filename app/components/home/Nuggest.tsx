@@ -116,7 +116,7 @@ const Nuggest = () => {
       ref={sectionRef}
       className="md:min-h-[60vh] flex flex-col items-center justify-center py-20 bg-white transition-colors duration-700"
     >
-      <h2 className="md:text-5xl text-4xl text-center md:  font-black mb-12 text-[#231942] tracking-tight">
+      <h2 className="md:text-7xl text-4xl text-center md:  font-black mb-12 text-[#231942] tracking-tight">
       FREE DIGITAL {' '}
         <span
           className="text-transparent"
@@ -128,7 +128,7 @@ const Nuggest = () => {
 
       {/* Mobile Grid Layout */}
       {isMobile ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-7xl px-4">
           {cards.map((card, i) => (
             <div
               key={i}
@@ -145,7 +145,7 @@ const Nuggest = () => {
         </div>
       ) : (
         /* Desktop Animated Layout */
-        <div className="relative flex items-center justify-center w-full max-w-[120vw] mx-auto" style={{ height: '50vh', minHeight: '350px', maxHeight: '600px' }}>
+        <div className="relative flex items-center justify-center mx-auto h-[70vh]" >
           {cards.map((card, i) => (
             <motion.div
               key={i}
@@ -161,7 +161,7 @@ const Nuggest = () => {
               }}
               transition={{ type: 'spring', stiffness: 80, damping: 30 }}
             >
-              <div className="transition-transform duration-300 group-hover:scale-110 flex items-center justify-center w-full h-full">
+              <div className="transition-transform duration-300 group-hover:scale-110 flex items-center mx-auto justify-center w-full h-full ml-8">
                 <Link href="/nuggets" className="w-full h-full relative block">
                 <Image 
                   src={card.img} 
