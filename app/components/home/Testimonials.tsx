@@ -17,11 +17,12 @@ const firstRow = testimonialImages.slice(0, testimonialImages.length / 2);
 // Simple image component for the carousel
 const TestimonialImage = ({ src }: { src: string }) => {
     return (
-        <div className="relative h-[500px] w-[500px] mx-4 overflow-hidden rounded-xl">
+        <div className="relative h-[250px] w-[400px] mx-4 overflow-hidden rounded-xl">
             <Image 
                 src={src} 
                 alt="Testimonial" 
-                fill 
+                width={1900}
+                height={1900}
                 className="object-contain"
             />
         </div>
@@ -31,7 +32,7 @@ const TestimonialImage = ({ src }: { src: string }) => {
 export function Testimonials() {
     return (
         <section className="overflow-hidden mt-[-20px] p-4 text-center">
-            <div className="relative flex w-full flex-col items-center justify-center py-8 gap-0">
+            <div className="relative flex w-full flex-col items-center justify-center py-2 gap-0">
                 <p className="uppercase tracking-wider text-sm font-semibold">Happy Clients</p>
                 <h2 className="text-4xl md:text-5xl font-serif font-bold mb-2">
                 Why They Believe in Us?

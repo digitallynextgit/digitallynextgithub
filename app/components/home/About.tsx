@@ -58,7 +58,7 @@ const About = () => {
               alt="About us"
               width={500}
               height={300}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover "
             />
           </motion.div>
         </div>
@@ -106,7 +106,7 @@ const About = () => {
           </div>
 
           {/* Right Column - Video */}
-          <div className="lg:col-span-4 md:mt-[-10vw]">
+          <div className="lg:col-span-4 md:mt-[-7vw]">
             <div className="space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}

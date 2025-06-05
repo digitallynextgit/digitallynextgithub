@@ -340,9 +340,7 @@ export default function ManualYouTubeShorts({
                 </div>
 
                 <div className="p-4 text-center">
-                  <h3 className="text-lg font-bold line-clamp-1 mb-2">
-                    {short.title}
-                  </h3>
+              
                   <div className="mt-4 flex justify-center items-center space-x-4">
                     <a
                       href={getDirectYouTubeLink(short.videoId)}

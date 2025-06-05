@@ -5,6 +5,34 @@ import ManualYouTubeShorts from './ManualYouTubeShorts';
 // Define shorts from the provided YouTube links
 const ALL_SHORTS = [
   {
+    videoId: "R-ZsQwf0trg",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
+    videoId: "DADADP3l0xA",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
+    videoId: "W6WQffr_XsE",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
+    videoId: "Yg3NTztIYVw",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
+    videoId: "CjcwocqDmo0",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
+    videoId: "u3hVvkRakUY",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
+    videoId: "Az53f4Cy_wU",
+    title: "The office doesn't feel the same without your favorite colleague!",
+  },
+  {
     videoId: "pQdQBJubVmQ",
     title: "Short 1"
   },

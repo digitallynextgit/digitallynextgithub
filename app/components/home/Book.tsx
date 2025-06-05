@@ -1,13 +1,23 @@
 "use client";
 
-import React from "react";
-import { FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
+import React, { useState, useRef } from "react";
+import { FaInstagram, FaLinkedin, FaYoutube, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
 // import Image from "next/image";
 import { siteConfig } from "@/app/config";
 
 // Dynamically import the PodcastMockScreen component with SSR disabled
 
 const Book = () => {
+  const [isMuted, setIsMuted] = useState(true);
+  const phoneVideoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (phoneVideoRef.current) {
+      phoneVideoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <>
       {/* Podcast Video/Image above the section */}
@@ -41,6 +51,7 @@ const Book = () => {
                   {/* Video inside the phone screen */}
                   <div className="absolute inset-0 w-full h-full overflow-hidden">
                     <video
+                      ref={phoneVideoRef}
                       className="w-full h-full object-cover"
                       autoPlay
                       muted
@@ -49,6 +60,14 @@ const Book = () => {
                     >
                       <source src="/phone.mp4" type="video/mp4" />
                     </video>
+                    
+                    {/* Mute/Unmute button */}
+                    <button 
+                      onClick={toggleMute}
+                      className="absolute bottom-4 right-4 bg-black bg-opacity-50 p-2 rounded-full text-white hover:bg-opacity-70 transition"
+                    >
+                      {isMuted ? <FaVolumeMute size={20} /> : <FaVolumeUp size={20} />}
+                    </button>
                   </div>
                   
                   {/* Home button or bottom indicator */}
