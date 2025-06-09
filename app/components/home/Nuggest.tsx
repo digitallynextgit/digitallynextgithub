@@ -132,12 +132,12 @@ const Nuggest = () => {
           {cards.map((card, i) => (
             <div
               key={i}
-              className="relative aspect-square w-full group"
+              className="relative aspect-video w-full h-[60vh] group"
             >
               <Image 
                 src={card.img} 
                 alt="Nuggest" 
-                className="w-full h-full md:object-cover rounded-2xl transition-transform duration-300 group-hover:scale-105" 
+                className="w-[80%] h-full md:object-contain rounded-2xl transition-transform duration-300 group-hover:scale-105" 
                 fill
               />
             </div>

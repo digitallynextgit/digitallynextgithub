@@ -60,9 +60,9 @@ interface TypewriterItem {
       tag: "#WhatNext?",
       image: "/banner/11.webp"
     },
-    {
-      text: "I m not able to find a limited budget Credible, Creative, Process oriented, Performance driven digital agency partner",
-      tag: "#WhatNext?",
-      image: "/banner/12.webp"
-    }
+    // {
+    //   text: "I m not able to find a limited budget Credible, Creative, Process oriented, Performance driven digital agency partner",
+    //   tag: "#WhatNext?",
+    //   image: "/banner/12.webp"
+    // }
   ];

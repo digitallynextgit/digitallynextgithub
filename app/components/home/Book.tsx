@@ -36,17 +36,17 @@ const Book = () => {
       </div>
 
       {/* Podcast Info Section with Light Background */}
-      <section className="relative bg-white pb-6">
+      <section className="relative bg-white pb-6 z-10">
         <div className="relative z-10 max-w-7xl mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
             {/* Left Column - Phone Mock */}
-            <div className="hidden md:block relative mx-auto max-w-[320px] lg:max-w-[350px] -mt-40 md:-mt-60 -rotate-6">
+            <div className="block relative mx-auto max-w-[320px] lg:max-w-[350px] -mt-40 md:-mt-60 lg:-rotate-6 z-20">
               {/* Mobile Phone Frame */}
-              <div className="relative mx-auto w-full">
+              <div className="relative mx-auto w-full mt-24 md:mt-0">
                 {/* Phone frame - using CSS */}
-                <div className="mx-auto relative w-[250px] h-[500px] rounded-[36px] overflow-hidden border-[14px] border-black bg-black shadow-xl">
+                <div className="mx-auto relative w-[200px] md:w-[250px] h-[400px] md:h-[500px] rounded-[36px] overflow-hidden border-[14px] border-black bg-black shadow-xl">
                   {/* Notch */}
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[120px] h-[25px] bg-black rounded-b-[14px] z-20"></div>
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[100px] md:w-[120px] h-[20px] md:h-[25px] bg-black rounded-b-[14px] z-20"></div>
                   
                   {/* Video inside the phone screen */}
                   <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -77,7 +77,7 @@ const Book = () => {
             </div>
 
             {/* Right Column - Text Content */}
-            <div className="text-center lg:text-left bg-[#fff] border-black border-[1px] md:p-10 p-6 md:pl-20 rounded-3xl md:ml-[-250px]  -mt-10 md:-mt-60 w-[100%]">
+            <div className="text-center lg:text-left bg-[#fff] border-black border-[1px] md:p-10 p-6 md:pl-20 rounded-3xl mt-6 md:ml-[-250px] md:-mt-60 w-[100%] z-10">
               <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
                 Where Time meets Imagination
               </h2>

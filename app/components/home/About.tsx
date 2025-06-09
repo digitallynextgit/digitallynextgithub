@@ -23,6 +23,21 @@ const About = () => {
       src: "/office/2.png",
       alt: "Luxurious Interior Design",
     },
+    {
+      src: "/office/3.png",
+      alt: "Luxurious Interior Design",
+    },
+    {
+      src: "/office/4.png",
+      alt: "Luxurious Interior Design",
+    },
+    {
+      src: "/office/5.png",
+      alt: "Luxurious Interior Design",
+    },
+    {
+      src: "/office/6.png",
+    },
   ];
 
   return (
