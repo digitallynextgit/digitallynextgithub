@@ -108,7 +108,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Image Container - Positioned absolutely within the Hero section */}
-        <div className="absolute bottom-[200px] md:bottom-[350px] md:right-16 right-1 transform md:translate-x-0 z-20 pointer-events-none">
+        <div className="absolute bottom-[320px] md:bottom-[350px] md:right-16 right-0 transform md:translate-x-0 z-20 pointer-events-none">
           <AnimatePresence mode="wait">
             {currentImage && (
               <motion.div
