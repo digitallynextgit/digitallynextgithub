@@ -77,7 +77,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({
               sizes="50vw"
             />
             <Image
-              src={image.src.desktop}
+              src={image.src.mobile}
               alt={image.alt || `Slide ${index + 1}`}
               fill
               className={`${imageClassName} block md:hidden`}

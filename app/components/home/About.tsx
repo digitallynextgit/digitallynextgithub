@@ -43,7 +43,7 @@ const About = () => {
     {
       src: {
         desktop: "/office/4.webp",
-        mobile: "/office/4.webp"
+        mobile: "/office/6.webp"
       },
       alt: "Luxurious Interior Design",
     },
