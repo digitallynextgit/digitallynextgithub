@@ -20,23 +20,39 @@ const About = () => {
   // Image carousel data
   const carouselImages = [
     {
-      src: "/office/2.png",
+      src: {
+        desktop: "/office/1.webp",
+        mobile: "/office/1.webp"
+      },
       alt: "Luxurious Interior Design",
     },
     {
-      src: "/office/3.png",
+      src: {
+        desktop: "/office/2.webp",
+        mobile: "/office/2.webp"
+      },
       alt: "Luxurious Interior Design",
     },
     {
-      src: "/office/4.png",
+      src: {
+        desktop: "/office/3.webp",
+        mobile: "/office/3.webp"
+      },
       alt: "Luxurious Interior Design",
     },
     {
-      src: "/office/5.png",
+      src: {
+        desktop: "/office/4.webp",
+        mobile: "/office/4.webp"
+      },
       alt: "Luxurious Interior Design",
     },
     {
-      src: "/office/6.png",
+      src: {
+        desktop: "/office/5.webp",
+        mobile: "/office/5.webp"
+      },
+      alt: "Luxurious Interior Design",
     },
   ];
 
@@ -116,6 +132,20 @@ const About = () => {
                 images={carouselImages}
                 className="mt-[-10vw]"
                 imageHeight={400}
+                imageClassName="
+    object-cover 
+    h-[60vw]             // sets height for mobile
+    sm:h-[50vw]          // slightly taller on small screens
+    md:h-[400px]         // fixed height from md and up
+    w-full 
+    hover:scale-105 
+    transition-transform 
+    duration-300"
+                showNavigation={true}
+                autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+                }}
               />
             </motion.div>
           </div>
