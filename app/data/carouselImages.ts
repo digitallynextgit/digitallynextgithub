@@ -5,11 +5,7 @@ const teamMembers = [
     role: "Creative Director",
     image: "/gallery/2.webp",
   },
-  {
-    name: "Emma Rodriguez",
-    role: "Lead Developer",
-    image: "/gallery/3.webp",
-  },
+  
   {
     name: "Julia Gimmel",
     role: "UX Designer",
@@ -21,6 +17,11 @@ const teamMembers = [
     image: "/flow/2.png",
   },
   {
+    name: "Emma Rodriguez",
+    role: "Lead Developer",
+    image: "/gallery/3.webp",
+  },
+  {
     name: "James Wilson",
     role: "Product Manager",
     image: "/flow/4.png",
@@ -30,6 +31,7 @@ const teamMembers = [
     role: "Product Manager",
     image: "/flow/5.png",
   },
+  
 ];
 
 export default teamMembers;
