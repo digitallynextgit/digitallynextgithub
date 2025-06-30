@@ -19,38 +19,45 @@ import Image from "next/image";
 const About = () => {
   // Image carousel data
   const carouselImages = [
+      {
+      src: {
+        desktop: "/office/8.webp",
+        mobile: "/office/8.webp",
+      },
+      alt: "Luxurious Interior Design",
+    },
     {
       src: {
         desktop: "/office/1.webp",
-        mobile: "/office/1.webp"
+        mobile: "/office/1.webp",
       },
       alt: "Luxurious Interior Design",
     },
     {
       src: {
         desktop: "/office/2.webp",
-        mobile: "/office/2.webp"
+        mobile: "/office/2.webp",
       },
       alt: "Luxurious Interior Design",
     },
     {
       src: {
         desktop: "/office/3.webp",
-        mobile: "/office/3.webp"
+        mobile: "/office/3.webp",
       },
       alt: "Luxurious Interior Design",
     },
     {
       src: {
         desktop: "/office/4.webp",
-        mobile: "/office/6.webp"
+        mobile: "/office/6.webp",
       },
       alt: "Luxurious Interior Design",
     },
     {
       src: {
         desktop: "/office/5.webp",
-        mobile: "/office/5.webp"
+        mobile: "/office/5.webp",
       },
       alt: "Luxurious Interior Design",
     },
