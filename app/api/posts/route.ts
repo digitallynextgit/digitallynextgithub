@@ -40,6 +40,7 @@ export async function POST(request: Request) {
     blogPosts.unshift(newPost);
 
     // Update the blogs.ts file
+    
     const blogsFilePath = path.join(process.cwd(), "app", "data", "blogs.ts");
     const fileContent = `import { BlogPost } from '../types/blog';
 
