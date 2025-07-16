@@ -24,15 +24,14 @@ export async function DELETE(request: NextRequest) {
     blogPosts.splice(postIndex, 1);
 
     // Update the blogs.ts file
-    const blogsFilePath = path.join(process.cwd(), "data", "blogs.ts");
+    const blogsFilePath = path.join(process.cwd(), "app", "data", "blogs.ts");
     const fileContent = `import { BlogPost } from '../types/blog';
 
 export const blogCategories = [
-  'NotToMiss',
   'Blog',
-  'Digital Media',
-  'IoT',
-  'Press Release'
+  'Featured',
+  'Latest',
+  'Innews'
 ] as const;
 
 export type BlogCategory = typeof blogCategories[number];
@@ -73,7 +72,7 @@ export async function PUT(request: NextRequest) {
     blogPosts[postIndex] = updatedPost;
 
     // Update the blogs.ts file
-    const blogsFilePath = path.join(process.cwd(), "data", "blogs.ts");
+    const blogsFilePath = path.join(process.cwd(), "app", "data", "blogs.ts");
     const fileContent = `import { BlogPost } from '../types/blog';
 
 export const blogCategories = [

@@ -196,9 +196,10 @@ export default function EditPost({ params }) {
             Content
           </label>
           <TinyMCEEditor
-            apiKey={process.env.NEXT_PUBLIC_TINYMCE}
+            apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
             onInit={(evt, editor) => editorRef.current = editor}
             initialValue={post.content}
+            id="edit-post-editor"
             init={{
               height: 500,
               menubar: true,

@@ -324,6 +324,7 @@ export default function NewPost() {
         <TinyMCEEditor
           apiKey={process.env.NEXT_PUBLIC_TINYMCE_API_KEY}
           onInit={(evt, editor) => (editorRef.current = editor)}
+          id="post-editor"
           init={{
             height: 500,
             menubar: false,
@@ -346,7 +347,7 @@ export default function NewPost() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-blue text-white px-6 py-2 rounded-md hover:bg-red/80 disabled:opacity-50"
+          className="bg-red-700 text-white px-6 py-2 rounded-md hover:bg-red-800 transition-colors disabled:opacity-50"
         >
           {isSubmitting ? "Creating..." : "Create Post"}
         </button>
