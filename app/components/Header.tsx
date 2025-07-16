@@ -91,7 +91,7 @@ const Header = () => {
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`text-2xl md:text-3xl font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
+                                        className={`text-lg md:text-xl lg:text-2xl font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
                                             isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                                         }`}
                                         style={{ transitionDelay: `${index * 100}ms` }}
@@ -156,7 +156,7 @@ const Header = () => {
                                     )}
                                 </div>
                             ))}
-                            
+                            <div></div>
                             <Link
                                 href="/contact"
                                 className={`mt-4 md:mt-6 btn-primary text-lg md:text-xl px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${
@@ -202,10 +202,14 @@ const menuItems = [
     { label: 'HOME', href: '/' },
     { label: 'ABOUT', href: '/about' },
     { label: 'SERVICES', href: '/services' },
+    { label: 'CASE STUDIES', href: '/case-studies' },
     { label: 'NUGGETS', href: '/nuggets' },
     { label: 'CAREERS', href: '/careers' },
     { label: 'BLOG', href: '/blog' },
     { label: 'INNEWS', href: '/innews' }
 ];
+
+// Styles for navbar items to prevent overlap
+// const navItemStyle = 'text-xl md:text-2xl font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110';
 
 export default Header;

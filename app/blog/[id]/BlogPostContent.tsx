@@ -74,7 +74,7 @@ export default function BlogPostContent({
 
                                 {/* Content */}
                                 <div 
-                                    className="prose max-w-none"
+                                    className="prose max-w-none mt-[7vw]"
                                     dangerouslySetInnerHTML={{ __html: post.content }}
                                 />
 

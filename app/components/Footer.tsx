@@ -40,6 +40,7 @@ const Footer = () => {
             <li><Link href="/" className="hover:text-[#b92b27] transition">Home</Link></li>
             <li><Link href="/about" className="hover:text-[#b92b27] transition">About Us</Link></li>
             <li><Link href="/services" className="hover:text-[#b92b27] transition">Services</Link></li>
+            <li><Link href="/case-studies" className="hover:text-[#b92b27] transition">Case Studies</Link></li>
             <li><Link href="/careers" className="hover:text-[#b92b27] transition">Careers</Link></li>
             <li><Link href="/contact" className="hover:text-[#b92b27] transition">Contact</Link></li>
           </ul>
@@ -84,4 +85,4 @@ const Footer = () => {
   );
 };
 
-export default Footer; 
+export default Footer;

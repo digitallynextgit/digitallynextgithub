@@ -9,6 +9,7 @@ const menuItems = [
   { label: 'HOME', href: '/' },
   { label: 'ABOUT', href: '/about' },
   { label: 'SERVICES', href: '/services' },
+  { label: 'CASE STUDIES', href: '/case-studies' },
   { label: 'NUGGETS', href: '/nuggets' },
   { label: 'CAREERS', href: '/careers' },
   { label: 'BLOG', href: '/blog' },
@@ -65,7 +66,7 @@ export default function HamburgerMenu() {
             <Link
               key={index}
               href={item.href}
-              className={`text-2xl md:text-3xl font-bold text-[#111] hover:text-[#E10600] transition-all duration-300 transform hover:scale-110 ${
+              className={`text-lg md:text-xl lg:text-2xl font-bold text-[#111] hover:text-[#E10600] transition-all duration-300 transform hover:scale-110 ${
                 isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
@@ -89,4 +90,4 @@ export default function HamburgerMenu() {
       </div>
     </>
   );
-} 
+}
