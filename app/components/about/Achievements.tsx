@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useInView, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
 
 // Stats data
@@ -264,7 +265,7 @@ export default function Achievements() {
             whileTap={{ scale: 0.98 }}
             className="inline-block"
           >
-            <a 
+            <Link 
               href="/case-studies" 
               className="group relative overflow-hidden inline-flex items-center gap-3 px-10 py-4 bg-gradient-to-r from-red-600 to-red-500 text-white rounded-xl font-medium shadow-lg hover:shadow-red-200 transition-all duration-300"
             >
@@ -285,7 +286,7 @@ export default function Achievements() {
                 animate={{ translateX: '200%' }}
                 transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 0.5 }}
               />
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
