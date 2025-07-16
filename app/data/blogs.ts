@@ -1,13 +1,11 @@
-import { BlogPost } from '../types/blog';
+import { BlogPost, BlogCategory } from '../../types/blog';
 
-export const blogCategories = [
+export const blogCategories: BlogCategory[] = [
   "Blog",
   "Featured",
   "Latest",
   "Innews"
-] as const;
-
-export type BlogCategory = typeof blogCategories[number];
+];
 
 export const blogPosts: BlogPost[] = [
   {

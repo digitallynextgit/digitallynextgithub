@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { blogPosts } from '@/app/data/blogs';
+import { BlogCategory } from '@/types/blog';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
@@ -73,7 +74,7 @@ export default function PostsPage() {
               
               {/* Categories */}
               <div className="flex flex-wrap gap-2 mb-4">
-                {post.categories.map((category) => (
+                {post.categories.map((category: BlogCategory) => (
                   <span
                     key={category}
                     className="px-2 py-1 bg-red-500 text-sm text-white rounded"

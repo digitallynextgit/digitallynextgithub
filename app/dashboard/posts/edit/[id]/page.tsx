@@ -4,7 +4,8 @@
 
 import { Editor as TinyMCEEditor } from '@tinymce/tinymce-react';
 import { useState, useRef, useEffect } from 'react';
-import { blogCategories, type BlogCategory, blogPosts } from '@/app/data/blogs';
+import { blogCategories, blogPosts } from '@/app/data/blogs';
+import { BlogCategory } from '@/types/blog';
 import { useRouter } from 'next/navigation';
 import type { Editor } from 'tinymce';
 

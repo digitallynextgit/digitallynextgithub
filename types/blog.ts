@@ -1,4 +1,4 @@
-import { BlogCategory } from "../app/data/blogs";
+export type BlogCategory = "Blog" | "Featured" | "Latest" | "Innews";
 
 export interface BlogPost {
   createdAt: string | number | Date;
@@ -13,5 +13,4 @@ export interface BlogPost {
   author: string;
   tags: string[];
 }
-export type { BlogCategory };
 

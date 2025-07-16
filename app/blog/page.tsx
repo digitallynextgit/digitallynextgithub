@@ -17,7 +17,7 @@ export default function BlogPage() {
     .filter(post => !post.categories.includes('Innews')) // Exclude Innews posts
     .filter(post => {
       if (activeCategory === 'all') {
-        return post.categories.some(cat => BLOG_CATEGORIES.includes(cat));
+        return post.categories.some((cat: BlogCategory) => BLOG_CATEGORIES.includes(cat));
       }
       return post.categories.includes(activeCategory);
     });
@@ -71,7 +71,7 @@ export default function BlogPage() {
                   <h2 className="text-xl font-semibold mb-2 line-clamp-2">{post.title}</h2>
                   {/* <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p> */}
                   <div className="flex flex-wrap gap-2">
-                    {post.categories.map((category) => (
+                    {post.categories.map((category: BlogCategory) => (
                       <span
                         key={category}
                         className="px-2 py-1 bg-red-500 text-sm text-white rounded"
