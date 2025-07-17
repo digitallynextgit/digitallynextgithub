@@ -82,7 +82,7 @@ const Header = () => {
                             isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                         }`}
                     >
-                        <nav className="flex flex-col items-center justify-center space-y-6 md:space-y-8 w-full px-4">
+                        <nav className="flex flex-col items-center justify-center space-y-6 md:space-y-6 w-full px-4">
                             {menuItems.map((item, index) => (
                                 <div 
                                     key={index}
@@ -91,7 +91,7 @@ const Header = () => {
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`text-lg md:text-xl lg:text-2xl font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
+                                        className={`text-lg md:text-base lg:text-base font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
                                             isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                                         }`}
                                         style={{ transitionDelay: `${index * 100}ms` }}
@@ -159,7 +159,7 @@ const Header = () => {
                             <div></div>
                             <Link
                                 href="/contact"
-                                className={`mt-4 md:mt-6 btn-primary text-lg md:text-xl px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${
+                                className={`mt-4 md:mt-6 btn-primary text-lg md:text-base px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${
                                     isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                                 }`}
                                 style={{ transitionDelay: `${menuItems.length * 100}ms` }}

@@ -131,13 +131,13 @@ const Hero = () => {
                   }
                 }}
               >
-                <Image
+                {/* <Image
                   src={currentImage}
                   alt=""
                   width={800}
                   height={100}
                   className="w-[120px] md:w-[250px]"
-                />
+                /> */}
               </motion.div>
             )}
           </AnimatePresence>
