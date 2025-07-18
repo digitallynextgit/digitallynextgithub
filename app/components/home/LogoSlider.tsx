@@ -25,13 +25,13 @@ const LogoItem = ({ src, alt }: { src: string; alt: string }) => {
   return (
     <motion.div
       whileHover={{ scale: 1.1 }}
-      className="relative h-24 w-48 mx-8 flex items-center justify-center"
+      className="relative h-48 w-56 mx-8 flex items-center justify-center"
     >
       <Image
         src={src}
         alt={alt}
         fill
-        className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+        className="object-contain  transition-all duration-300"
         sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
       />
     </motion.div>
@@ -42,7 +42,7 @@ export function LogoSlider() {
   return (
     <div className="w-full overflow-hidden py-12">
       <div className="max-w-7xl mx-auto">
-        <Marquee className="py-6" repeat={3}>
+        <Marquee className="py-6" repeat={2}>
           {logos.map((logo, index) => (
             <LogoItem key={index} {...logo} />
           ))}

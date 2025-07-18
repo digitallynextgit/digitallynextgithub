@@ -7,58 +7,84 @@ interface CaseStudyCardProps {
 }
 
 export default function CaseStudyCard({ study }: CaseStudyCardProps) {
+  // Determine impact story number based on study.id (1-8)
+  const impactStoryNumber = (study.id <= 8) ? study.id : (study.id % 8 || 8);
+  
+  // Helper function to get icon based on industry or sector
+  const getIcon = () => {
+    const industryIcons: Record<string, string> = {
+      "IT/ITES": "💻",
+      "Healthcare": "🏥",
+      "Healthcare Tech": "⚕️",
+      "Luxury & Lifestyle": "✨",
+      "BFSI": "💰",
+      "Consulting": "📊"
+    };
+    
+    return industryIcons[study.industry] || "🎯";
+  };
+  
   return (
     <Link href={`/case-studies/${study.slug}`}>
-      <div className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl h-full flex flex-col">
-        {/* Image */}
-        {/* <div className="relative h-48 w-full bg-gradient-to-r from-gray-700 to-gray-900">
-          {study.featuredImage ? (
-            <Image
-              src={study.featuredImage}
-              alt={study.title}
-              fill
-              className="object-cover opacity-80"
-            />
-          ) : null}
-          
+      <div className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl h-full flex flex-col border border-gray-100">
+        {/* Header with Impact Story Number */}
+        <div className="bg-gradient-to-r from-red-600 to-red-700 p-4 text-white flex justify-between items-center">
+          <div className="flex items-center">
+            <span className="text-2xl mr-2">{getIcon()}</span>
+            <span className="font-medium">{study.industry}</span>
+          </div>
+          <div className="bg-white text-red-600 rounded-full h-8 w-8 flex items-center justify-center font-bold">
+            #{impactStoryNumber}
+          </div>
+        </div>
         
-          <div className="absolute top-0 left-0 right-0 p-4 flex flex-wrap gap-2">
-            <span className="px-2 py-1 bg-red-600 text-white text-xs rounded-full">
-              {study.industry}
-            </span>
-            {study.region.slice(0, 1).map(region => (
-              <span key={region} className="px-2 py-1 bg-blue-600 text-white text-xs rounded-full">
+        {/* Content */}
+        <div className="p-6 flex-grow flex flex-col">
+          <h2 className="text-xl font-bold text-gray-900 mb-3">{study.title}</h2>
+          <p className="text-gray-600 mb-5 flex-grow">{study.oneLiner}</p>
+          
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {study.region.slice(0, 2).map(region => (
+              <span key={region} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
                 {region}
               </span>
             ))}
-            {study.sector.slice(0, 1).map(sector => (
-              <span key={sector} className="px-2 py-1 bg-gray-800 text-white text-xs rounded-full">
+            {study.sector.slice(0, 2).map(sector => (
+              <span key={sector} className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
                 {sector}
               </span>
             ))}
           </div>
-        </div> */}
-        
-        {/* Content */}
-        <div className="p-6 flex-grow flex flex-col">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">{study.title}</h2>
-          <p className="text-gray-600 mb-4 flex-grow">{study.oneLiner}</p>
           
           {/* Key results preview */}
           {study.impactStats && study.impactStats.length > 0 && (
-            <div className="flex flex-wrap gap-4 mb-4">
-              {study.impactStats.slice(0, 2).map((stat, index) => (
-                <div key={index} className="flex items-center">
-                  <div className="text-red-600 font-bold">{stat.value}</div>
-                  <div className="text-sm text-gray-500 ml-1">{stat.label}</div>
-                </div>
-              ))}
+            <div className="border-t border-gray-100 pt-4 mb-4">
+              <h3 className="text-sm font-semibold text-gray-500 uppercase mb-2">Impact</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {study.impactStats.map((stat, index) => (
+                  <div key={index} className="flex items-start">
+                    <div className="text-red-600 mr-2">
+                      {stat.icon === "network" && "🌐"}
+                      {stat.icon === "rocket" && "🚀"}
+                      {!stat.icon && "📈"}
+                    </div>
+                    <div>
+                      <div className="text-gray-900 font-bold">{stat.value}</div>
+                      <div className="text-xs text-gray-500">{stat.label}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           
-          <div className="mt-4">
-            <span className="inline-block bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors">
+          <div className="mt-auto pt-2">
+            <span className="inline-flex items-center text-red-600 font-medium hover:text-red-700 transition-colors">
               View Case Study
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
             </span>
           </div>
         </div>

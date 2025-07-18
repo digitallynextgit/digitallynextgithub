@@ -34,67 +34,89 @@ export default function CaseStudiesPage() {
   return (
     <main className="min-h-screen bg-white pt-24 pb-16">
       {/* Hero Section */}
-      <section className="relative w-full bg-gradient-to-r from-gray-900 to-gray-800 text-white py-20">
+      <section className="relative w-full bg-gradient-to-r from-red-700 to-red-900 text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">Case Studies</h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-              Explore how we&apos;ve helped businesses across industries transform their digital presence
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-8">Explore The Journey</h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10">
+              Discover how we&apos;ve transformed businesses across industries with innovative digital solutions
             </p>
           </div>
         </div>
-        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden">
           <div className="absolute inset-0 bg-repeat" style={{ backgroundImage: "url('/podcast/pattern-bg.svg')" }}></div>
         </div>
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-12 bg-white border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-4 justify-center">
+          <h2 className="text-2xl font-bold text-center mb-8">Filter Impact Stories</h2>
+          <div className="flex flex-col md:flex-row gap-6 justify-center">
             {/* Industry Filter */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">Industry</label>
-              <select 
-                className="rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                value={activeFilter.industry}
-                onChange={(e) => setActiveFilter({...activeFilter, industry: e.target.value as CaseStudyIndustry | 'all'})}
-              >
-                <option value="all">All Industries</option>
-                {industries.map(industry => (
-                  <option key={industry} value={industry}>{industry}</option>
-                ))}
-              </select>
+            <div className="flex flex-col w-full md:w-auto">
+              <label className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Industry</label>
+              <div className="relative">
+                <select 
+                  className="w-full md:w-64 appearance-none rounded-lg border border-gray-200 bg-white p-3 pr-10 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-opacity-50"
+                  value={activeFilter.industry}
+                  onChange={(e) => setActiveFilter({...activeFilter, industry: e.target.value as CaseStudyIndustry | 'all'})}
+                >
+                  <option value="all">All Industries</option>
+                  {industries.map(industry => (
+                    <option key={industry} value={industry}>{industry}</option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             {/* Region Filter */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">Region</label>
-              <select 
-                className="rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                value={activeFilter.region}
-                onChange={(e) => setActiveFilter({...activeFilter, region: e.target.value as CaseStudyRegion | 'all'})}
-              >
-                <option value="all">All Regions</option>
-                {regions.map(region => (
-                  <option key={region} value={region}>{region}</option>
-                ))}
-              </select>
+            <div className="flex flex-col w-full md:w-auto">
+              <label className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Region</label>
+              <div className="relative">
+                <select 
+                  className="w-full md:w-64 appearance-none rounded-lg border border-gray-200 bg-white p-3 pr-10 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-opacity-50"
+                  value={activeFilter.region}
+                  onChange={(e) => setActiveFilter({...activeFilter, region: e.target.value as CaseStudyRegion | 'all'})}
+                >
+                  <option value="all">All Regions</option>
+                  {regions.map(region => (
+                    <option key={region} value={region}>{region}</option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
 
             {/* Sector Filter */}
-            <div className="flex flex-col">
-              <label className="text-sm font-medium text-gray-700 mb-1">Sector</label>
-              <select 
-                className="rounded-md border-gray-300 shadow-sm focus:border-red-500 focus:ring focus:ring-red-200 focus:ring-opacity-50"
-                value={activeFilter.sector}
-                onChange={(e) => setActiveFilter({...activeFilter, sector: e.target.value as CaseStudySector | 'all'})}
-              >
-                <option value="all">All Sectors</option>
-                {sectors.map(sector => (
-                  <option key={sector} value={sector}>{sector}</option>
-                ))}
-              </select>
+            <div className="flex flex-col w-full md:w-auto">
+              <label className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Sector</label>
+              <div className="relative">
+                <select 
+                  className="w-full md:w-64 appearance-none rounded-lg border border-gray-200 bg-white p-3 pr-10 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-opacity-50"
+                  value={activeFilter.sector}
+                  onChange={(e) => setActiveFilter({...activeFilter, sector: e.target.value as CaseStudySector | 'all'})}
+                >
+                  <option value="all">All Sectors</option>
+                  {sectors.map(sector => (
+                    <option key={sector} value={sector}>{sector}</option>
+                  ))}
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -103,35 +125,24 @@ export default function CaseStudiesPage() {
       {/* Case Studies Grid */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <h2 className="text-3xl font-bold text-center mb-8">Impact Stories</h2>
+          <div className="flex flex-col space-y-8">
             {filteredStudies.map(study => (
-              <div key={study.id}>
+              <div key={study.id} className="transform transition-all duration-300 hover:scale-[1.01] w-full">
                 <CaseStudyCard study={study} />
               </div>
             ))}
           </div>
           
           {filteredStudies.length === 0 && (
-            <div className="text-center py-12">
+            <div className="text-center py-12 bg-gray-50 rounded-lg">
               <h3 className="text-xl font-medium text-gray-900">No case studies match your filters</h3>
               <p className="text-gray-500 mt-2">Try adjusting your filter criteria</p>
             </div>
           )}
         </div>
       </section>
-      
-      {/* CTA Section */}
-      <section className="bg-gradient-to-r from-red-600 to-red-800 text-white py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Digital Presence?</h2>
-          <p className="text-xl mb-8">Let&apos;s create your success story together</p>
-          <Link href="/contact">
-            <span className="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-medium hover:bg-gray-100 transition-colors">
-              Get in Touch
-            </span>
-          </Link>
-        </div>
-      </section>
+    
     </main>
   );
 }
