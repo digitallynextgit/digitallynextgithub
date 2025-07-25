@@ -20,11 +20,7 @@ export default function Service9() {
         Website / Microsite / Landing page, Social Media Setup and Activation, Content Marketing Assets, Visual Communication Assets, Video production, Graphics, Paid Ads Assets
         </p>
 
-        {/* <ul className="text-black text-lg font-semibold space-y-2">
-          {services.map((service) => (
-            <li key={service}>{service}</li>
-          ))}
-        </ul> */}
+      
       </div>
       <video src="/videos/s2.mp4" autoPlay muted loop className="w-full md:w-[400px] h-full md:h-[400px] object-cover rounded-3xl" />
     </section>
