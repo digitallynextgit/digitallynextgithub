@@ -17,7 +17,7 @@ const services = [
     id: 1,
     title: "Digital Branding",
     description: "Unleash the power of strategic storytelling and innovative design to elevate your digital presence and build a digital legacy.",
-    videoSrc: "/services/s1.mp4",
+    videoSrc: "/videos/s1.mp4",
     color: appColors.red,
     tags: ["CREATIVE DIRECTION", "BRAND IDENTITY", "VISUAL DESIGN"]
   },
@@ -25,7 +25,7 @@ const services = [
     id: 2,
     title: "Complete Online Demand Generation",
     description: "Drive results and get growth with our Complete Online Demand Generation solutions, turning prospects into loyal customers.",
-    videoSrc: "/services/s4.mp4",
+    videoSrc: "/videos/s2.mp4",
     color: appColors.blue,
     tags: ["LEAD GENERATION", "CONVERSION STRATEGY", "CAMPAIGN OPTIMIZATION"]
   },
@@ -33,7 +33,7 @@ const services = [
     id: 3,
     title: "Disruptive Digital Campaigns",
     description: "Break through the noise with our Disruptive Digital Campaigns, designed to captivate, engage, and leave a lasting impact.",
-    videoSrc: "/services/s1.mp4",
+    videoSrc: "/videos/s3.mp4",
     color: appColors.red,
     tags: ["CAMPAIGN DEVELOPMENT", "CREATIVE STRATEGY", "AUDIENCE ENGAGEMENT"]
   },
@@ -41,7 +41,7 @@ const services = [
     id: 4,
     title: "Social CRM/ANALYTICS Integration",
     description: "Build connections driving growth with our Social CRM and Analytics Integration Management services.",
-    videoSrc: "/services/s3.mp4",
+    videoSrc: "/videos/s4.mp4",
     color: appColors.blue,
     tags: ["DATA ANALYTICS", "SOCIAL MANAGEMENT", "CRM INTEGRATION"]
   },
@@ -49,7 +49,7 @@ const services = [
     id: 5,
     title: "Influencer & Digital PR",
     description: "Amplify your impact with Influencer Marketing, Digital PR, and Personal Branding solutions.",
-    videoSrc: "/services/s1.mp4",
+    videoSrc: "/videos/s1.mp4",
     color: appColors.red,
     tags: ["INFLUENCER STRATEGY", "DIGITAL PR", "THOUGHT LEADERSHIP"]
   },
@@ -57,7 +57,7 @@ const services = [
     id: 6,
     title: "Community Building",
     description: "Foster connections with our Online Community Building and Development services.",
-    videoSrc: "/services/s2.mp4",
+    videoSrc: "/videos/s2.mp4",
     color: appColors.blue,
     tags: ["ENGAGEMENT STRATEGY", "COMMUNITY MANAGEMENT", "AUDIENCE DEVELOPMENT"]
   },
@@ -65,7 +65,7 @@ const services = [
     id: 7,
     title: "Digital Performance Marketing",
     description: "Comprehensive digital performance marketing services including SEO, Paid Media, SMO, ORM, and more.",
-    videoSrc: "/services/s1.mp4",
+    videoSrc: "/videos/s3.mp4",
     color: appColors.red,
     tags: ["SEO", "PAID MEDIA", "SOCIAL OPTIMIZATION"]
   },
@@ -73,7 +73,7 @@ const services = [
     id: 8,
     title: "Viral Marketing",
     description: "Meme Marketing, Viral Marketing, Engagement Marketing strategies that get attention.",
-    videoSrc: "/services/s3.mp4",
+    videoSrc: "/videos/s4.mp4",
     color: appColors.blue,
     tags: ["MEME MARKETING", "VIRAL CONTENT", "ENGAGEMENT"]
   },
@@ -81,7 +81,7 @@ const services = [
     id: 9,
     title: "Campaign Assets Creation",
     description: "Website, Microsite, Landing pages, Social Media Setup, Content Marketing Assets, and more.",
-    videoSrc: "/services/s2.mp4",
+    videoSrc: "/videos/s2.mp4",
     color: appColors.red,
     tags: ["WEBSITE CREATION", "CONTENT ASSETS", "VISUAL COMMUNICATION"]
   }
@@ -215,7 +215,7 @@ const HomeServices = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="w-1/2 overflow-hidden rounded-2xl shadow-xl h-[300px]"
+            className="w-[400px] overflow-hidden rounded-2xl shadow-xl h-[400px]"
           >
             <video
               src={activeService.videoSrc}
