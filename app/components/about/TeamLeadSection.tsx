@@ -7,28 +7,28 @@ import { useState } from 'react';
 const leadTeam = [
   {
     name: 'ANMOL',
-    position: 'Video Editor',
+    position: 'Sr.Video Editor',
     image: '/teams/1.png'
   },
   {
-    name: 'RUPAM',
-    position: 'UX/UI Designer',
-    image: '/teams/2.png'
+    name: 'SHIVAM',
+    position: 'Performance Marketer',
+    image: '/teams/shivam.webp'
   },
   {
-    name: 'SAURABH',
-    position: 'Graphic Designer',
-    image: '/teams/3.png'
+    name: 'MRIDUL',
+    position: 'WEB DEVELOPER',
+    image: '/teams/Mridul.webp'
   },
   {
     name: 'PANKAJ',
-    position: 'Manager',
+    position: 'Sr.Manager',
     image: '/teams/4.png'
   },
   {
-    name: 'PRIYA',
-    position: 'CHRO',
-    image: '/teams/1.png'
+    name: 'ANJALI',
+    position: 'Video Editor',
+    image: '/teams/anjali.webp'
   },
   {
     name: 'DAVID',
