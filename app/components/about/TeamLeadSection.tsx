@@ -13,12 +13,12 @@ const leadTeam = [
   {
     name: 'SHIVAM',
     position: 'Performance Marketer',
-    image: '/teams/shivam.webp'
+    image: '/teams/Shivam.webp'
   },
   {
     name: 'MRIDUL',
     position: 'WEB DEVELOPER',
-    image: '/teams/Mridul.webp'
+    image: '/teams/mridul.webp'
   },
   {
     name: 'PANKAJ',
@@ -31,8 +31,8 @@ const leadTeam = [
     image: '/teams/anjali.webp'
   },
   {
-    name: 'DAVID',
-    position: 'BUSINESS RELATIONS',
+    name: 'SUDHANSHU',
+    position: 'Sr.Web Developer',
     image: '/teams/2.png'
   }
 ];
