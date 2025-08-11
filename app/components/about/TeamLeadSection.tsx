@@ -16,25 +16,26 @@ const leadTeam = [
     image: '/teams/Shivam.webp'
   },
   {
-    name: 'MRIDUL',
-    position: 'WEB DEVELOPER',
-    image: '/teams/mridul.webp'
+    name: 'SUDHANSHU',
+    position: 'Sr.Web Developer',
+    image: '/teams/sudhanshu.webp'
   },
-  {
+   {
     name: 'PANKAJ',
     position: 'Sr.Manager',
     image: '/teams/4.png'
+  },
+  {
+    name: 'MRIDUL',
+    position: 'WEB DEVELOPER',
+    image: '/teams/mridul.webp'
   },
   {
     name: 'ANJALI',
     position: 'Video Editor',
     image: '/teams/anjali.webp'
   },
-  {
-    name: 'SUDHANSHU',
-    position: 'Sr.Web Developer',
-    image: '/teams/2.png'
-  }
+  
 ];
 
 export default function TeamLeadSection() {
