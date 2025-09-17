@@ -26,7 +26,7 @@ export default function Service6() {
           ))}
         </ul> */}
       </div>
-      <video src="/videos/s1.mp4" autoPlay muted loop className="w-full md:w-[400px] h-full md:h-[400px] object-cover rounded-3xl" />
+      <video src="/services/s6.mp4" autoPlay muted loop className="w-full md:w-[400px] h-full md:h-[400px] object-cover rounded-3xl" />
     </section>
   );
 }

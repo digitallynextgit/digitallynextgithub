@@ -114,40 +114,40 @@ export const internshipPositions: InternshipPosition[] = [
       ]
     }
   },
-  {
-    title: "Marketing Research Intern",
-    description: "Are you a data detective with a passion for uncovering market trends and consumer behaviors? Do you love turning raw data into actionable insights? If so, we have an exciting opportunity for you! Join us as a Marketing Research Intern and help us decode the market to drive our strategy and growth.",
-    mission: {
-      title: "Your Mission (Should You Choose to Accept):",
-      items: [
-        "Market Exploration: Conduct comprehensive market research to gather data on industry trends, consumer preferences, and competitive analysis.",
-        "Data Analysis: Analyze quantitative and qualitative data to identify patterns, insights, and actionable recommendations.",
-        "Survey Savvy: Design and distribute surveys, collect responses, and analyze results to understand customer needs and behaviors.",
-        "Report Crafting: Prepare detailed reports, summaries, and presentations to effectively communicate research findings to stakeholders.",
-        "Collaborate: Work closely with marketing, sales, and product teams to provide insights that inform strategies and decision-making."
-      ]
-    },
-    toolkit: {
-      title: "Your Toolkit:",
-      items: [
-        "Strong analytical and critical thinking skills.",
-        "Proficiency in data analysis tools (e.g., Excel, SPSS, Google Analytics).",
-        "Excellent written and verbal communication skills.",
-        "Ability to synthesize complex information into clear and concise reports.",
-        "Attention to detail and a passion for accuracy."
-      ]
-    },
-    bonusPoints: {
-      title: "Bonus Points For:",
-      items: [
-        "Experience with survey tools (e.g., SurveyMonkey, Qualtrics).",
-        "Familiarity with market research methodologies and best practices.",
-        "Previous internship or project experience in marketing research or related fields.",
-        "Strong organizational skills and the ability to manage multiple tasks.",
-        "A proactive and curious mindset."
-      ]
-    }
-  },
+  // {
+  //   title: "Marketing Research Intern",
+  //   description: "Are you a data detective with a passion for uncovering market trends and consumer behaviors? Do you love turning raw data into actionable insights? If so, we have an exciting opportunity for you! Join us as a Marketing Research Intern and help us decode the market to drive our strategy and growth.",
+  //   mission: {
+  //     title: "Your Mission (Should You Choose to Accept):",
+  //     items: [
+  //       "Market Exploration: Conduct comprehensive market research to gather data on industry trends, consumer preferences, and competitive analysis.",
+  //       "Data Analysis: Analyze quantitative and qualitative data to identify patterns, insights, and actionable recommendations.",
+  //       "Survey Savvy: Design and distribute surveys, collect responses, and analyze results to understand customer needs and behaviors.",
+  //       "Report Crafting: Prepare detailed reports, summaries, and presentations to effectively communicate research findings to stakeholders.",
+  //       "Collaborate: Work closely with marketing, sales, and product teams to provide insights that inform strategies and decision-making."
+  //     ]
+  //   },
+  //   toolkit: {
+  //     title: "Your Toolkit:",
+  //     items: [
+  //       "Strong analytical and critical thinking skills.",
+  //       "Proficiency in data analysis tools (e.g., Excel, SPSS, Google Analytics).",
+  //       "Excellent written and verbal communication skills.",
+  //       "Ability to synthesize complex information into clear and concise reports.",
+  //       "Attention to detail and a passion for accuracy."
+  //     ]
+  //   },
+  //   bonusPoints: {
+  //     title: "Bonus Points For:",
+  //     items: [
+  //       "Experience with survey tools (e.g., SurveyMonkey, Qualtrics).",
+  //       "Familiarity with market research methodologies and best practices.",
+  //       "Previous internship or project experience in marketing research or related fields.",
+  //       "Strong organizational skills and the ability to manage multiple tasks.",
+  //       "A proactive and curious mindset."
+  //     ]
+  //   }
+  // },
   {
     title: "Social Media Content Creator Intern",
     description: "Are you a storyteller at heart with a flair for creating captivating content? Do you live and breathe social media trends? If so, we have the perfect opportunity for you! Join us as a Social Media Content Creator Intern and help us tell our story to the world.",
@@ -182,70 +182,70 @@ export const internshipPositions: InternshipPosition[] = [
       ]
     }
   },
-  {
-    title: "Web Development Intern",
-    description: "Are you a tech-savvy wizard who loves crafting digital magic? Do you dream in code and see the web as your canvas? If so, we have the perfect quest for you! Join us as a Web Developer Intern and embark on a journey where innovation meets creativity.",
-    mission: {
-      title: "Your Mission (Should You Choose to Accept):",
-      items: [
-        "Craft Code: Bring designs to life with clean, efficient, and scalable code.",
-        "Innovate & Iterate: Collaborate with our design and content teams to create visually stunning and user-friendly web pages.",
-        "Solve Puzzles: Debug and troubleshoot issues to ensure seamless performance across all devices.",
-        "Stay Ahead: Keep up with the latest trends and technologies in web development and suggest new tools or practices to enhance our workflow."
-      ]
-    },
-    toolkit: {
-      title: "Your Toolkit:",
-      items: [
-        "Proficiency in HTML, CSS, and JavaScript.",
-        "Familiarity with front-end frameworks (e.g., React, Angular, Vue.js).",
-        "Basic understanding of back-end technologies (e.g., Node.js, PHP, Python).",
-        "Experience with version control systems (e.g., Git).",
-        "A keen eye for detail and a passion for user experience."
-      ]
-    },
-    bonusPoints: {
-      title: "Bonus Points For:",
-      items: [
-        "Knowledge of responsive and adaptive design principles.",
-        "Experience with content management systems (e.g., WordPress, Drupal).",
-        "Creativity in problem-solving and a knack for innovation.",
-        "A portfolio of projects or a GitHub profile showcasing your work."
-      ]
-    }
-  },
-  {
-    title: "HR Intern",
-    description: "Are you passionate about people and ready to dive into the world of human resources? Do you have a knack for understanding and nurturing talent? If so, we have the perfect opportunity for you! Join us as an HR Intern and be part of our journey to build a thriving and dynamic workplace.",
-    mission: {
-      title: "Your Mission (Should You Choose to Accept):",
-      items: [
-        "Talent Acquisition: Assist in the recruitment process, including posting job openings, screening resumes, and coordinating interviews.",
-        "Employee Engagement: Help plan and execute employee engagement activities and events to foster a positive workplace culture.",
-        "Onboarding: Support the onboarding process for new hires, ensuring they have a smooth and welcoming start.",
-        "HR Administration: Assist with HR documentation, maintaining employee records, and handling administrative tasks.",
-        "Learning & Development: Contribute to the design and implementation of training and development programs for employees."
-      ]
-    },
-    toolkit: {
-      title: "Your Toolkit:",
-      items: [
-        "Strong interpersonal and communication skills.",
-        "Basic understanding of HR principles and practices.",
-        "Proficiency in Microsoft Office Suite (Word, Excel, PowerPoint).",
-        "Organizational skills with the ability to manage multiple tasks.",
-        "A positive attitude and a passion for helping others."
-      ]
-    },
-    bonusPoints: {
-      title: "Bonus Points For:",
-      items: [
-        "Experience with HR software or applicant tracking systems.",
-        "Prior internship or work experience in HR or related fields.",
-        "Knowledge of labor laws and employment regulations.",
-        "A proactive and problem-solving mindset.",
-        "Creativity in planning and organizing employee activities."
-      ]
-    }
-  }
+  // {
+  //   title: "Web Development Intern",
+  //   description: "Are you a tech-savvy wizard who loves crafting digital magic? Do you dream in code and see the web as your canvas? If so, we have the perfect quest for you! Join us as a Web Developer Intern and embark on a journey where innovation meets creativity.",
+  //   mission: {
+  //     title: "Your Mission (Should You Choose to Accept):",
+  //     items: [
+  //       "Craft Code: Bring designs to life with clean, efficient, and scalable code.",
+  //       "Innovate & Iterate: Collaborate with our design and content teams to create visually stunning and user-friendly web pages.",
+  //       "Solve Puzzles: Debug and troubleshoot issues to ensure seamless performance across all devices.",
+  //       "Stay Ahead: Keep up with the latest trends and technologies in web development and suggest new tools or practices to enhance our workflow."
+  //     ]
+  //   },
+  //   toolkit: {
+  //     title: "Your Toolkit:",
+  //     items: [
+  //       "Proficiency in HTML, CSS, and JavaScript.",
+  //       "Familiarity with front-end frameworks (e.g., React, Angular, Vue.js).",
+  //       "Basic understanding of back-end technologies (e.g., Node.js, PHP, Python).",
+  //       "Experience with version control systems (e.g., Git).",
+  //       "A keen eye for detail and a passion for user experience."
+  //     ]
+  //   },
+  //   bonusPoints: {
+  //     title: "Bonus Points For:",
+  //     items: [
+  //       "Knowledge of responsive and adaptive design principles.",
+  //       "Experience with content management systems (e.g., WordPress, Drupal).",
+  //       "Creativity in problem-solving and a knack for innovation.",
+  //       "A portfolio of projects or a GitHub profile showcasing your work."
+  //     ]
+  //   }
+  // },
+  // {
+  //   title: "HR Intern",
+  //   description: "Are you passionate about people and ready to dive into the world of human resources? Do you have a knack for understanding and nurturing talent? If so, we have the perfect opportunity for you! Join us as an HR Intern and be part of our journey to build a thriving and dynamic workplace.",
+  //   mission: {
+  //     title: "Your Mission (Should You Choose to Accept):",
+  //     items: [
+  //       "Talent Acquisition: Assist in the recruitment process, including posting job openings, screening resumes, and coordinating interviews.",
+  //       "Employee Engagement: Help plan and execute employee engagement activities and events to foster a positive workplace culture.",
+  //       "Onboarding: Support the onboarding process for new hires, ensuring they have a smooth and welcoming start.",
+  //       "HR Administration: Assist with HR documentation, maintaining employee records, and handling administrative tasks.",
+  //       "Learning & Development: Contribute to the design and implementation of training and development programs for employees."
+  //     ]
+  //   },
+  //   toolkit: {
+  //     title: "Your Toolkit:",
+  //     items: [
+  //       "Strong interpersonal and communication skills.",
+  //       "Basic understanding of HR principles and practices.",
+  //       "Proficiency in Microsoft Office Suite (Word, Excel, PowerPoint).",
+  //       "Organizational skills with the ability to manage multiple tasks.",
+  //       "A positive attitude and a passion for helping others."
+  //     ]
+  //   },
+  //   bonusPoints: {
+  //     title: "Bonus Points For:",
+  //     items: [
+  //       "Experience with HR software or applicant tracking systems.",
+  //       "Prior internship or work experience in HR or related fields.",
+  //       "Knowledge of labor laws and employment regulations.",
+  //       "A proactive and problem-solving mindset.",
+  //       "Creativity in planning and organizing employee activities."
+  //     ]
+  //   }
+  // }
 ];
