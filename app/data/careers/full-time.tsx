@@ -20,6 +20,25 @@ export const careersData = {
     //   ]
     // },
     {
+  id: 1,
+  icon: "/images/full-time/seo.webp",
+  title: "SEO Strategist",
+  description: "It’s not just keywords… it’s the art of being discovered. Like hidden trails leading to breathtaking views, or a compass guiding travelers home, your expertise ensures brands are found where it matters most. We’re looking for someone who understands the rhythm of search engines, the pulse of online audiences, and can weave strategy with creativity to amplify a brand’s digital heartbeat.",
+  jobEssence: "Having a deep understanding of search engine optimization across on-page, off-page, and technical aspects. Skilled in analyzing trends, optimizing content, and improving website visibility. Ideal for someone who can blend data-driven insights with creative problem-solving to drive measurable growth.",
+  requirements: [
+    "On-page and off-page SEO",
+    "Keyword research and competitor analysis",
+    "Technical SEO and site audits",
+    "Content optimization and link-building strategies",
+    "Familiarity with tools like Google Analytics, Search Console, and SEMrush"
+  ],
+  openings: [
+    "Junior SEO Executive (0-2 Years Exp)",
+    "SEO Specialist",
+    "SEO Lead"
+  ]
+    },
+    {
       id: 2,
       icon: "/images/full-time/5.webp",
       title: "Visual Treat Creator",

@@ -1,95 +1,104 @@
 export const careersData = {
   title: "Join us if you can Speak up.",
   positions: [
-    // {
-    //   id: 1,
-    //   icon: "/images/full-time/8.webp",
-    //   title: "Social Media Executive",
-    //   description: "Fine arts, visual finesse, and visual treats are what our clients demand. We are looking for modern-day artists who can be inspired by Michelangelo and know how to create captivating visual treats for the audience of 2019!",
-    //   jobEssence: "Having a sound understanding Visual Content assets – Infographics | Memes | Social Media creative updates | Comic Strips | Mind Maps | Caricatures | Announcement creatives | landing page based on Storyboarding/Trends specific Scenarios.",
-    //   requirements: [
-    //     "Visualization",
-    //     "Adobe Photoshop",
-    //     "Adobe Illustrator",
-    //     "Any other related software"
-    //   ],
-    //   openings: [
-    //     "Junior Graphic Designer (0-2 Years Exp)",
-    //     "Senior Graphic Designer",
-    //     "Creative Lead"
-    //   ]
-    // },
+    {
+      id: 1,
+      icon: "/images/full-time/seo.webp",
+      title: "SEO Strategist",
+      description:
+        "It’s not just keywords… it’s the art of being discovered. Like hidden trails leading to breathtaking views, or a compass guiding travelers home, your expertise ensures brands are found where it matters most. We’re looking for someone who understands the rhythm of search engines, the pulse of online audiences, and can weave strategy with creativity to amplify a brand’s digital heartbeat.",
+      jobEssence:
+        "Having a deep understanding of search engine optimization across on-page, off-page, and technical aspects. Skilled in analyzing trends, optimizing content, and improving website visibility. Ideal for someone who can blend data-driven insights with creative problem-solving to drive measurable growth.",
+      requirements: [
+        "On-page and off-page SEO",
+        "Keyword research and competitor analysis",
+        "Technical SEO and site audits",
+        "Content optimization and link-building strategies",
+        "Familiarity with tools like Google Analytics, Search Console, and SEMrush",
+      ],
+      openings: [
+        "Junior SEO Executive (0-2 Years Exp)",
+        "SEO Specialist",
+        "SEO Lead",
+      ],
+    },
     {
       id: 2,
       icon: "/images/full-time/5.webp",
       title: "Visual Treat Creator",
       subtitle: "Aka Graphic Designer",
-      description: "Fine arts, visual finesse, and visual treats are what our clients demand. We are looking for modern-day artists who can be inspired by Michelangelo and know how to create captivating visual treats for the audience of 2019!",
-      jobEssence: "Having a sound understanding Visual Content assets – Infographics | Memes | Social Media creative updates | Comic Strips | Mind Maps | Caricatures | Announcement creatives | landing page based on Storyboarding/Trends specific Scenarios.",
+      description:
+        "Fine arts, visual finesse, and visual treats are what our clients demand. We are looking for modern-day artists who can be inspired by Michelangelo and know how to create captivating visual treats for the audience of 2019!",
+      jobEssence:
+        "Having a sound understanding Visual Content assets – Infographics | Memes | Social Media creative updates | Comic Strips | Mind Maps | Caricatures | Announcement creatives | landing page based on Storyboarding/Trends specific Scenarios.",
       requirements: [
         "Visualization",
         "Adobe Photoshop",
         "Adobe Illustrator",
-        "Any other related software"
+        "Any other related software",
       ],
       openings: [
         "Junior Graphic Designer (0-2 Years Exp)",
         "Senior Graphic Designer",
-        "Creative Lead"
-      ]
+        "Creative Lead",
+      ],
     },
     {
       id: 3,
       icon: "/images/full-time/6.webp",
       title: "Video Editor",
       subtitle: "Product/D2C Centric",
-      description: "Every video you edit should be a movie, a story, a legendary portfolio having a capability to move mountains, arouse emotions among the audience. We are looking for someone who can create memories, and give the audience a reason to share it among their circle!",
-      jobEssence: "Having a sound understanding of - Podcasts | Reels | Video shoot with multiple camera set-ups | YouTube | OTTs | Motion Graphics | Explanatory | Streaming/News Centric",
+      description:
+        "Every video you edit should be a movie, a story, a legendary portfolio having a capability to move mountains, arouse emotions among the audience. We are looking for someone who can create memories, and give the audience a reason to share it among their circle!",
+      jobEssence:
+        "Having a sound understanding of - Podcasts | Reels | Video shoot with multiple camera set-ups | YouTube | OTTs | Motion Graphics | Explanatory | Streaming/News Centric",
       requirements: [
         "Adobe After Effects",
         "Adobe Premiere Pro",
         "Any related video editing software",
-        "Cinematography and Storytelling video editing"
+        "Cinematography and Storytelling video editing",
       ],
       openings: [
         "Junior video editor (0-2 Years Exp)",
         "Senior video editor",
-        "Video Producer"
-      ]
+        "Video Producer",
+      ],
     },
     {
       id: 4,
       icon: "/images/full-time/3.webp",
       title: "Performance Marketer",
-      description: "Strategy, plan, and process make a digital campaign more effective and perform better. Only operational understanding or knowledge of tools won't give any results anymore. If that's what you also think, then we are looking for you.",
-      jobEssence: "The role focuses on crafting and implementing data-driven campaigns that optimize user engagement, leveraging insights to deliver measurable business growth and impactful results.",
+      description:
+        "Strategy, plan, and process make a digital campaign more effective and perform better. Only operational understanding or knowledge of tools won't give any results anymore. If that's what you also think, then we are looking for you.",
+      jobEssence:
+        "The role focuses on crafting and implementing data-driven campaigns that optimize user engagement, leveraging insights to deliver measurable business growth and impactful results.",
       requirements: [
         "Paid media setups - Meta | Google | LinkedIn | Quora | Bing",
         "Google Analytics",
         "Organic marketing, including ORM",
-        "Result centric landing page knowledge"
+        "Result centric landing page knowledge",
       ],
-      openings: [
-        "Performance Marketer (3-5 Years Exp)"
-      ]
+      openings: ["Performance Marketer (3-5 Years Exp)"],
     },
     {
       id: 5,
       icon: "/images/full-time/2.webp",
       title: "Content Story Teller",
-      description: "It's Only Words ..and the words are all I have ..to take your heart away… Or Country Roads take me home …. Or Har rang kuchh kehta hai… We are looking for those who can feel the soul of seasons, the flora and fauna, the mountains, and the river…similarly if they feel the soul, the character of a brand to communicate and build the connect with its audience!",
-      jobEssence: "Having a sound understanding of storytelling in terms of creative writing on digital and social mediums, PR outreach, business and commercial aspects. Ideal to be adept in both short and long form writing.",
+      description:
+        "It's Only Words ..and the words are all I have ..to take your heart away… Or Country Roads take me home …. Or Har rang kuchh kehta hai… We are looking for those who can feel the soul of seasons, the flora and fauna, the mountains, and the river…similarly if they feel the soul, the character of a brand to communicate and build the connect with its audience!",
+      jobEssence:
+        "Having a sound understanding of storytelling in terms of creative writing on digital and social mediums, PR outreach, business and commercial aspects. Ideal to be adept in both short and long form writing.",
       requirements: [
         "Social media",
         "Creative writing",
         "Storytelling",
-        "Brand communication"
+        "Brand communication",
       ],
       openings: [
         "Junior content creator (0-2 Years Exp)",
         "Senior content creator",
-        "Content Lead"
-      ]
+        "Content Lead",
+      ],
     },
     // {
     //   id: 6,
@@ -180,5 +189,5 @@ export const careersData = {
     //     "Data Strategist"
     //   ]
     // }
-  ]
-}; 
+  ],
+};
