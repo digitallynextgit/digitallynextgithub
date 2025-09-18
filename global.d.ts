@@ -1,18 +1,17 @@
-export {};
-
-declare module "*.glb";
-declare module "*.png";
-
-declare module "meshline" {
-  export const MeshLineGeometry: any;
-  export const MeshLineMaterial: any;
-}
-
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      meshLineGeometry: any;
-      meshLineMaterial: any;
-    }
+  interface Window {
+    gtag: (
+      command: 'config' | 'event' | 'js' | 'set',
+      targetId: string | Date,
+      config?: {
+        page_path?: string;
+        event_category?: string;
+        event_label?: string;
+        value?: number;
+        [key: string]: any;
+      }
+    ) => void;
   }
 }
+
+export {};

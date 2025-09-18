@@ -6,6 +6,7 @@ import HeaderWrapper from "./components/HeaderWrapper";
 import Footer from "./components/Footer";
 import LenisProvider from "./components/LenisProvider";
 import ToastProvider from "./providers/ToastProvider";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -51,6 +52,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfairDisplay.variable} antialiased overflow-x-hidden w-full`}
       >
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LFPGR9F9ZK"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LFPGR9F9ZK');
+          `}
+        </Script>
+        
         <LenisProvider>
           <ToastProvider />
           <HeaderWrapper />
