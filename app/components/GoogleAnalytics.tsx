@@ -3,14 +3,21 @@
 import Script from 'next/script';
 
 interface GoogleAnalyticsProps {
-  trackingId: string;
+  trackingId?: string;
 }
 
 export default function GoogleAnalytics({ trackingId }: GoogleAnalyticsProps) {
+  const GA_TRACKING_ID = trackingId || process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+
+  if (!GA_TRACKING_ID) {
+    console.warn('Google Analytics tracking ID not found');
+    return null;
+  }
+
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${trackingId}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         strategy="afterInteractive"
       />
       <Script id="google-analytics" strategy="afterInteractive">
@@ -18,7 +25,10 @@ export default function GoogleAnalytics({ trackingId }: GoogleAnalyticsProps) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${trackingId}');
+          gtag('config', '${GA_TRACKING_ID}', {
+            page_title: document.title,
+            page_location: window.location.href,
+          });
         `}
       </Script>
     </>
@@ -38,8 +48,9 @@ export const trackEvent = (action: string, category: string, label?: string, val
 
 // Helper function to track page views
 export const trackPageView = (url: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('config', 'G-LFPGR9F9ZK', {
+  const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID;
+  if (typeof window !== 'undefined' && window.gtag && GA_TRACKING_ID) {
+    window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
     });
   }
