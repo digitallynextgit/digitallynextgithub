@@ -15,16 +15,7 @@ import {
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Get unique industries, regions, and sectors for filtering
-const industries = Array.from(
-  new Set(caseStudies.map((study) => study.industry))
-);
-const regions = Array.from(
-  new Set(caseStudies.flatMap((study) => study.region))
-);
-const sectors = Array.from(
-  new Set(caseStudies.flatMap((study) => study.sector))
-);
+
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState<{
@@ -142,13 +133,13 @@ export default function CaseStudiesPage() {
           transition={{ repeat: Infinity, duration: 12 }}
         />
       </section>
-      <section className="py-12 border-b border-gray-100 ">
+      {/* <section className="py-12 border-b border-gray-100 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 rounded-2xl">
           <div className="flex justify-between items-end gap-10 flex-row">
             <h2 className="text-2xl font-bold text-right mb-8">
               Filter Impact Stories
             </h2>
-            {/* Clear filters */}
+         
             <div className="flex justify-center mb-6">
               <button
                 onClick={() =>
@@ -164,9 +155,9 @@ export default function CaseStudiesPage() {
               </button>
             </div>
           </div>
-          {/* Modern chip-based filters */}
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Industry Filter */}
+         
             <div className="bg-white/50 p-4 rounded-xl">
               <div className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider ">
                 Industry
@@ -202,7 +193,7 @@ export default function CaseStudiesPage() {
               </div>
             </div>
 
-            {/* Region Filter */}
+         
                 <div className="bg-white/50 p-4 rounded-xl">
               <div className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">
                 Region
@@ -236,7 +227,7 @@ export default function CaseStudiesPage() {
               </div>
             </div>
 
-            {/* Sector Filter */}
+         
              <div className="bg-white/50 p-4 rounded-xl">
               <div className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">
                 Sector
@@ -271,10 +262,10 @@ export default function CaseStudiesPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Case Studies Grid */}
-      <section className="py-12">
+      {/* <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-8">
             Impact Stories
@@ -310,7 +301,7 @@ export default function CaseStudiesPage() {
             </div>
           )}
         </div>
-      </section>
+      </section> */}
 
       <section>
         <ExploreSection />

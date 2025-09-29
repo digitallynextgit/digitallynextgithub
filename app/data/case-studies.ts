@@ -49,7 +49,7 @@ export const caseStudies: CaseStudy[] = [
     background: "Following a merger and acquisition, a healthcare company specializing in genomics and genetics needed to establish a unified brand identity recognized across regions.",
     objective: "Drive awareness, outreach, recognition and acceptance of rebranding among diverse stakeholders.",
     goal: "Achieve seamless cross-border brand acceptance and consistency across digital touchpoints.",
-    solution: "3JS website, comprehensive digital brand kit, and strategic social media calendar ensuring consistent brand messaging across all touchpoints.",
+    solution: "JS website, comprehensive digital brand kit, and strategic social media calendar ensuring consistent brand messaging across all touchpoints.",
     keyFocusAreas: [
       "Cross-Border Brand Identity",
       "Stakeholder Acceptance",
@@ -57,7 +57,7 @@ export const caseStudies: CaseStudy[] = [
       "Consistent Messaging"
     ],
     digitalAssetsDelivered: [
-      "3JS Website",
+      "JS Website",
       "Digital Brand Kit",
       "Podcast",
       "360° Digital Social Media Calendar"

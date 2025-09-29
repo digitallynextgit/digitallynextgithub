@@ -15,6 +15,7 @@ const exploreWorldsSection1 = [
     description: caseStudies[0].oneLiner,
     industry: caseStudies[0].industry,
     impact: caseStudies[0].impact,
+    slug: caseStudies[0].slug,
   },
   {
     id: "case-2",
@@ -23,6 +24,7 @@ const exploreWorldsSection1 = [
     description: caseStudies[1].oneLiner,
     industry: caseStudies[1].industry,
     impact: caseStudies[1].impact,
+    slug: caseStudies[1].slug,
   },
   {
     id: "case-3",
@@ -31,6 +33,7 @@ const exploreWorldsSection1 = [
     description: caseStudies[2].oneLiner,
     industry: caseStudies[2].industry,
     impact: caseStudies[2].impact,
+    slug: caseStudies[2].slug,
   },
   {
     id: "case-4",
@@ -39,6 +42,7 @@ const exploreWorldsSection1 = [
     description: caseStudies[3].oneLiner,
     industry: caseStudies[3].industry,
     impact: caseStudies[3].impact,
+    slug: caseStudies[3].slug,
   },
 ];
 
@@ -51,6 +55,7 @@ const exploreWorldsSection2 = [
     description: caseStudies[4].oneLiner,
     industry: caseStudies[4].industry,
     impact: caseStudies[4].impact,
+    slug: caseStudies[4].slug,
   },
   {
     id: "case-6",
@@ -59,6 +64,7 @@ const exploreWorldsSection2 = [
     description: caseStudies[5].oneLiner,
     industry: caseStudies[5].industry,
     impact: caseStudies[5].impact,
+    slug: caseStudies[5].slug,
   },
   {
     id: "case-7",
@@ -67,6 +73,7 @@ const exploreWorldsSection2 = [
     description: caseStudies[6].oneLiner,
     industry: caseStudies[6].industry,
     impact: caseStudies[6].impact,
+    slug: caseStudies[6].slug,
   },
   {
     id: "case-8",
@@ -75,6 +82,7 @@ const exploreWorldsSection2 = [
     description: caseStudies[7].oneLiner,
     industry: caseStudies[7].industry,
     impact: caseStudies[7].impact,
+    slug: caseStudies[7].slug,
   },
 ];
 
@@ -85,41 +93,36 @@ const ExploreSection = () => {
 
   return (
     <section className="py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
-      <div
-       
-        className="max-w-7xl mx-auto"
-      >
-        <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-red-600 mb-4">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12 flex justify-center items-center gap-40">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-red-600 mb-2">
             Impact Stories
             <br />
-            
           </h2>
-        </div>
-
-        {/* Carousel Navigation */}
-        <div className="flex justify-center mb-6 sm:mb-8">
-          <div className="flex gap-2 sm:gap-4">
-            <button
-              onClick={() => setCurrentCarouselSection(1)}
-              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
-                currentCarouselSection === 1
-                  ? 'bg-red-600 text-white shadow-lg'
-                  : 'bg-white text-red-600 border-2 border-red-600 hover:bg-red-50'
-              }`}
-            >
-              {`<`}
-            </button>
-            <button
-              onClick={() => setCurrentCarouselSection(2)}
-              className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
-                currentCarouselSection === 2
-                  ? 'bg-red-600 text-white shadow-lg'
-                  : 'bg-white text-red-600 border-2 border-red-600 hover:bg-red-50'
-              }`}
-            >
-              {`>`}
-            </button>
+          {/* Carousel Navigation */}
+          <div className="flex justify-center">
+            <div className="flex gap-2 sm:gap-4">
+              <button
+                onClick={() => setCurrentCarouselSection(1)}
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
+                  currentCarouselSection === 1
+                    ? "bg-red-600 text-white shadow-lg"
+                    : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50"
+                }`}
+              >
+                {`<`}
+              </button>
+              <button
+                onClick={() => setCurrentCarouselSection(2)}
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold transition-all duration-300 text-sm sm:text-base ${
+                  currentCarouselSection === 2
+                    ? "bg-red-600 text-white shadow-lg"
+                    : "bg-white text-red-600 border-2 border-red-600 hover:bg-red-50"
+                }`}
+              >
+                {`>`}
+              </button>
+            </div>
           </div>
         </div>
 
