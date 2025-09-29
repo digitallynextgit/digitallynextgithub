@@ -1,0 +1,50 @@
+<svg width="400" height="700" viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#065f46;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="planet3" cx="50%" cy="40%" r="35%">
+      <stop offset="0%" style="stop-color:#34d399;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="700" fill="url(#grad3)"/>
+  
+  <!-- Stars -->
+  <circle cx="70" cy="80" r="2" fill="white" opacity="0.8"/>
+  <circle cx="160" cy="60" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="310" cy="100" r="2" fill="white" opacity="0.7"/>
+  <circle cx="330" cy="170" r="1" fill="white" opacity="0.8"/>
+  <circle cx="100" cy="230" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="300" cy="310" r="2" fill="white" opacity="0.9"/>
+  <circle cx="130" cy="410" r="1" fill="white" opacity="0.7"/>
+  <circle cx="260" cy="470" r="1.5" fill="white" opacity="0.8"/>
+  
+  <!-- Main Planet -->
+  <circle cx="200" cy="290" r="85" fill="url(#planet3)"/>
+  
+  <!-- Planet features -->
+  <ellipse cx="175" cy="260" rx="18" ry="10" fill="#059669" opacity="0.8"/>
+  <ellipse cx="225" cy="310" rx="22" ry="13" fill="#059669" opacity="0.6"/>
+  <ellipse cx="190" cy="330" rx="12" ry="7" fill="#065f46" opacity="0.7"/>
+  
+  <!-- Floating elements -->
+  <circle cx="110" cy="190" r="22" fill="#22d3ee" opacity="0.7"/>
+  <circle cx="310" cy="410" r="28" fill="#0891b2" opacity="0.6"/>
+  
+  <!-- Energy streams -->
+  <path d="M160 480 Q200 500 240 480 Q200 460 160 480" fill="#fbbf24" opacity="0.8"/>
+  <path d="M170 530 Q210 550 250 530 Q210 510 170 530" fill="#fbbf24" opacity="0.6"/>
+  
+  <!-- Geometric patterns -->
+  <polygon points="80,350 100,330 120,350 100,370" fill="#06b6d4" opacity="0.5"/>
+  <polygon points="300,250 320,230 340,250 320,270" fill="#06b6d4" opacity="0.7"/>
+  
+  <!-- Text overlay -->
+  <text x="200" y="600" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Kadirojo Permai</text>
+</svg>

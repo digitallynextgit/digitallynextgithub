@@ -41,7 +41,7 @@ export default function CaseStudyCard({ study }: CaseStudyCardProps) {
         {/* Content */}
         <div className="p-6 flex-grow flex flex-col">
           <h2 className="text-xl font-bold text-gray-900 mb-3">{study.title}</h2>
-          <p className="text-gray-600 mb-5 flex-grow">{study.oneLiner}</p>
+          <p className="text-gray-600 mb-5 flex-grow">{study.tagLine ?? study.oneLiner}</p>
           
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-4">

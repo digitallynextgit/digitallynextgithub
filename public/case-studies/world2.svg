@@ -1,0 +1,46 @@
+<svg width="400" height="700" viewBox="0 0 400 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c2d92;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#be185d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="planet2" cx="50%" cy="40%" r="40%">
+      <stop offset="0%" style="stop-color:#f472b6;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#be185d;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="700" fill="url(#grad2)"/>
+  
+  <!-- Stars -->
+  <circle cx="60" cy="90" r="2" fill="white" opacity="0.9"/>
+  <circle cx="180" cy="70" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="320" cy="110" r="2" fill="white" opacity="0.8"/>
+  <circle cx="340" cy="180" r="1" fill="white" opacity="0.6"/>
+  <circle cx="90" cy="240" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="310" cy="320" r="2" fill="white" opacity="0.7"/>
+  <circle cx="140" cy="420" r="1" fill="white" opacity="0.8"/>
+  <circle cx="270" cy="480" r="1.5" fill="white" opacity="0.6"/>
+  
+  <!-- Main Planet -->
+  <circle cx="200" cy="300" r="90" fill="url(#planet2)"/>
+  
+  <!-- Planet surface details -->
+  <ellipse cx="170" cy="270" rx="20" ry="12" fill="#be185d" opacity="0.7"/>
+  <ellipse cx="230" cy="320" rx="25" ry="15" fill="#be185d" opacity="0.5"/>
+  <ellipse cx="200" cy="340" rx="15" ry="8" fill="#7c2d92" opacity="0.6"/>
+  
+  <!-- Atmospheric effects -->
+  <circle cx="120" cy="200" r="20" fill="#f472b6" opacity="0.6"/>
+  <circle cx="300" cy="420" r="35" fill="#ec4899" opacity="0.5"/>
+  
+  <!-- Mystical swirls -->
+  <path d="M150 450 Q200 470 250 450 Q200 430 150 450" fill="#f59e0b" opacity="0.7"/>
+  <path d="M180 520 Q220 540 260 520 Q220 500 180 520" fill="#f59e0b" opacity="0.5"/>
+  
+  <!-- Text overlay -->
+  <text x="200" y="600" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="24" font-weight="bold">The Upside Down</text>
+</svg>

@@ -43,7 +43,14 @@ export default function CaseStudyContent({
             </div>
             
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-center">{caseStudy.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-center">{caseStudy.title}</h1>
+            
+            {/* Tagline (optional) */}
+            {caseStudy.tagLine && (
+              <p className="text-lg md:text-xl max-w-3xl text-center mb-2 text-red-200">
+                {caseStudy.tagLine}
+              </p>
+            )}
             
             {/* One-liner */}
             <p className="text-xl md:text-2xl max-w-3xl text-center mb-8">
@@ -72,6 +79,14 @@ export default function CaseStudyContent({
               <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Objective</h2>
               <p className="text-gray-700 leading-relaxed">{caseStudy.objective}</p>
             </section>
+
+            {/* Goal (optional) */}
+            {caseStudy.goal && (
+              <section className="mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Goal</h2>
+                <p className="text-gray-700 leading-relaxed">{caseStudy.goal}</p>
+              </section>
+            )}
 
             {/* Solution Implemented */}
             <section className="mb-12">
@@ -109,6 +124,20 @@ export default function CaseStudyContent({
             <section className="mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Impact & Results</h2>
               <p className="text-gray-700 leading-relaxed mb-6">{caseStudy.impact}</p>
+              
+              {caseStudy.expectedVsAchieved && (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Expected vs Achieved</h2>
+                  <p className="text-gray-700 leading-relaxed">{caseStudy.expectedVsAchieved}</p>
+                </section>
+              )}
+              
+              {caseStudy.pivotsIterations && (
+                <section className="mt-12">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">Pivots & Iterations</h2>
+                  <p className="text-gray-700 leading-relaxed">{caseStudy.pivotsIterations}</p>
+                </section>
+              )}
               
               {caseStudy.impactStats && caseStudy.impactStats.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">

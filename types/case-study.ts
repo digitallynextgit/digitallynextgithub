@@ -35,4 +35,9 @@ export interface CaseStudy {
   testimonial?: string;
   featuredImage?: string;
   galleryImages?: string[];
+  // New optional fields aligned with updated case study template
+  tagLine?: string;
+  goal?: string;
+  expectedVsAchieved?: string;
+  pivotsIterations?: string;
 }

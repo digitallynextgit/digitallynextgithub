@@ -6,7 +6,7 @@ import ChatBot from "./components/ChatBot";
 import Book from "./components/home/Book";
 // import Podcast from "./components/home/Podcast";
 // import BlogSection from "./components/home/BlogSection";
-import FeaturedCaseStudies from "./components/home/FeaturedCaseStudies";
+import ExploreSection from "./components/ExploreSection";
 
 import { Testimonials } from "./components/home/Testimonials";
 import Stats from "./components/home/Stats";
@@ -63,8 +63,8 @@ export default function Home() {
       {/* Careers Section */}
       <Careers />
 
-      {/* Featured Case Studies Section */}
-      <FeaturedCaseStudies />
+      {/* Explore Section */}
+      <ExploreSection />
 
       {/* Quora Section */}
       <QuoraSection />

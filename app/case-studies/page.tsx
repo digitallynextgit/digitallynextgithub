@@ -1,121 +1,272 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-// import Link from 'next/link';
-// import Image from 'next/image';
-import { caseStudies } from '@/app/data/case-studies';
-import { CaseStudyIndustry, CaseStudySector, CaseStudyRegion } from '@/types/case-study';
-import CaseStudyCard from '@/components/CaseStudyCard';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import dayjs from "dayjs";
+import Image from "next/image";
+import ExploreSection from "@/app/components/ExploreSection";
+
+import { caseStudies } from "@/app/data/case-studies";
+import {
+  CaseStudyIndustry,
+  CaseStudySector,
+  CaseStudyRegion,
+} from "@/types/case-study";
+import CaseStudyCard from "@/components/CaseStudyCard";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Get unique industries, regions, and sectors for filtering
-const industries = Array.from(new Set(caseStudies.map(study => study.industry)));
-const regions = Array.from(new Set(caseStudies.flatMap(study => study.region)));
-const sectors = Array.from(new Set(caseStudies.flatMap(study => study.sector)));
+const industries = Array.from(
+  new Set(caseStudies.map((study) => study.industry))
+);
+const regions = Array.from(
+  new Set(caseStudies.flatMap((study) => study.region))
+);
+const sectors = Array.from(
+  new Set(caseStudies.flatMap((study) => study.sector))
+);
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState<{
-    industry: CaseStudyIndustry | 'all';
-    region: CaseStudyRegion | 'all';
-    sector: CaseStudySector | 'all';
+    industry: CaseStudyIndustry | "all";
+    region: CaseStudyRegion | "all";
+    sector: CaseStudySector | "all";
   }>({
-    industry: 'all',
-    region: 'all',
-    sector: 'all'
+    industry: "all",
+    region: "all",
+    sector: "all",
   });
 
   // Filter case studies based on selected filters
-  const filteredStudies = caseStudies.filter(study => {
-    const industryMatch = activeFilter.industry === 'all' || study.industry === activeFilter.industry;
-    const regionMatch = activeFilter.region === 'all' || study.region.includes(activeFilter.region as CaseStudyRegion);
-    const sectorMatch = activeFilter.sector === 'all' || study.sector.includes(activeFilter.sector as CaseStudySector);
+  const filteredStudies = caseStudies.filter((study) => {
+    const industryMatch =
+      activeFilter.industry === "all" ||
+      study.industry === activeFilter.industry;
+    const regionMatch =
+      activeFilter.region === "all" ||
+      study.region.includes(activeFilter.region as CaseStudyRegion);
+    const sectorMatch =
+      activeFilter.sector === "all" ||
+      study.sector.includes(activeFilter.sector as CaseStudySector);
     return industryMatch && regionMatch && sectorMatch;
   });
+  const [now, setNow] = useState(dayjs());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setNow(dayjs()); // update every second
+    }, 1000);
+
+    return () => clearInterval(timer); // cleanup on unmount
+  }, []);
 
   return (
-    <main className="min-h-screen bg-white pt-24 pb-16">
-      {/* Hero Section */}
-      <section className="relative w-full bg-gradient-to-r from-red-700 to-red-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-8">Explore The Journey</h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10">
-              Discover how we&apos;ve transformed businesses across industries with innovative digital solutions
+    <main className="min-h-screen bg-white pt-20 pb-16">
+      {/* Hero */}
+      <section className="relative w-full h-auto flex justify-center items-center overflow-hidden bg-[#1A1A1A] text-white py-28">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col gap-10"
+        >
+          <div className="flex flex-col justify-center items-center gap-10">
+            <motion.h1
+              className="text-5xl md:text-8xl font-extrabold tracking-tight"
+              initial={{ y: 24, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              Impact Stories
+            </motion.h1>
+            <div className="text-center flex flex-row justify-end items-center gap-10">
+              <p className="text-sm font-bold">
+                {now.format("dddd, D MMMM YYYY")}{" "}
+                {/* e.g. Friday, 27 September 2025 */}
+              </p>
+              <p className="text-base font-extrabold">
+                {now.format("HH:mm:ss")} {/* e.g. 14:45:10 */}
+              </p>
+            </div>
+
+            {/* Images section */}
+            <div className="flex flex-wrap lg:flex-row flex-col justify-center items-center gap-4">
+              <video
+                className="w-1/4 h-1/4 rounded-xl"
+                src="/services/s1.mp4"
+                autoPlay
+                loop
+                muted
+              />
+              <video
+                className="w-1/4 h-1/4 rounded-xl"
+                src="/services/s2.mp4"
+                autoPlay
+                loop
+                muted
+              />
+              <video
+                className="w-1/4 h-1/4 rounded-xl"
+                src="/services/s3.mp4"
+                autoPlay
+                loop
+                muted
+              />
+            </div>
+          </div>
+          <div className="flex justify-between items-end gap-10 flex-row">
+            <motion.p
+              className="text-lg mx-auto mb-10 text-red-50 max-w-md"
+              initial={{ y: 12, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.6, ease: "easeOut" }}
+            >
+              Discover how we&apos;ve transformed businesses across industries
+              with innovative digital solutions
+            </motion.p>
+
+            <p className="text-lg  mx-auto mb-10 text-red-50">
+              ( ↓ Scroll Down )
             </p>
           </div>
-        </div>
-        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none overflow-hidden">
-          <div className="absolute inset-0 bg-repeat" style={{ backgroundImage: "url('/podcast/pattern-bg.svg')" }}></div>
-        </div>
+        </motion.div>
+        {/* Ambient animated blobs */}
+        <motion.div
+          className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-red-500/30 blur-3xl"
+          animate={{ y: [0, 30, 0], x: [0, 15, 0] }}
+          transition={{ repeat: Infinity, duration: 10 }}
+        />
+        <motion.div
+          className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-pink-500/20 blur-3xl"
+          animate={{ y: [0, -20, 0], x: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 12 }}
+        />
       </section>
-
-      {/* Filters */}
-      <section className="py-12 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-center mb-8">Filter Impact Stories</h2>
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
+      <section className="py-12 border-b border-gray-100 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-blue-50 py-10 rounded-2xl">
+          <div className="flex justify-between items-end gap-10 flex-row">
+            <h2 className="text-2xl font-bold text-right mb-8">
+              Filter Impact Stories
+            </h2>
+            {/* Clear filters */}
+            <div className="flex justify-center mb-6">
+              <button
+                onClick={() =>
+                  setActiveFilter({
+                    industry: "all",
+                    region: "all",
+                    sector: "all",
+                  })
+                }
+                className="px-4 py-2 rounded-full border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors"
+              >
+                Clear Filters
+              </button>
+            </div>
+          </div>
+          {/* Modern chip-based filters */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Industry Filter */}
-            <div className="flex flex-col w-full md:w-auto">
-              <label className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Industry</label>
-              <div className="relative">
-                <select 
-                  className="w-full md:w-64 appearance-none rounded-lg border border-gray-200 bg-white p-3 pr-10 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-opacity-50"
-                  value={activeFilter.industry}
-                  onChange={(e) => setActiveFilter({...activeFilter, industry: e.target.value as CaseStudyIndustry | 'all'})}
+            <div className="bg-white/50 p-4 rounded-xl">
+              <div className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider ">
+                Industry
+              </div>
+              <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap py-2">
+                <button
+                  onClick={() =>
+                    setActiveFilter({ ...activeFilter, industry: "all" })
+                  }
+                  className={`px-3 py-1 rounded-full border transition-colors ${
+                    activeFilter.industry === "all"
+                      ? "bg-red-600 text-white border-red-600"
+                      : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
+                  }`}
                 >
-                  <option value="all">All Industries</option>
-                  {industries.map(industry => (
-                    <option key={industry} value={industry}>{industry}</option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+                  All
+                </button>
+                {industries.map((industry) => (
+                  <button
+                    key={industry}
+                    onClick={() =>
+                      setActiveFilter({ ...activeFilter, industry })
+                    }
+                    className={`px-3 py-1 rounded-full border transition-colors ${
+                      activeFilter.industry === industry
+                        ? "bg-red-600 text-white border-red-600"
+                        : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
+                    }`}
+                  >
+                    {industry}
+                  </button>
+                ))}
               </div>
             </div>
 
             {/* Region Filter */}
-            <div className="flex flex-col w-full md:w-auto">
-              <label className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Region</label>
-              <div className="relative">
-                <select 
-                  className="w-full md:w-64 appearance-none rounded-lg border border-gray-200 bg-white p-3 pr-10 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-opacity-50"
-                  value={activeFilter.region}
-                  onChange={(e) => setActiveFilter({...activeFilter, region: e.target.value as CaseStudyRegion | 'all'})}
+                <div className="bg-white/50 p-4 rounded-xl">
+              <div className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">
+                Region
+              </div>
+              <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap py-2">
+                <button
+                  onClick={() =>
+                    setActiveFilter({ ...activeFilter, region: "all" })
+                  }
+                  className={`px-3 py-1 rounded-full border transition-colors ${
+                    activeFilter.region === "all"
+                      ? "bg-red-600 text-white border-red-600"
+                      : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
+                  }`}
                 >
-                  <option value="all">All Regions</option>
-                  {regions.map(region => (
-                    <option key={region} value={region}>{region}</option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+                  All
+                </button>
+                {regions.map((region) => (
+                  <button
+                    key={region}
+                    onClick={() => setActiveFilter({ ...activeFilter, region })}
+                    className={`px-3 py-1 rounded-full border transition-colors ${
+                      activeFilter.region === region
+                        ? "bg-red-600 text-white border-red-600"
+                        : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
+                    }`}
+                  >
+                    {region}
+                  </button>
+                ))}
               </div>
             </div>
 
             {/* Sector Filter */}
-            <div className="flex flex-col w-full md:w-auto">
-              <label className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">Sector</label>
-              <div className="relative">
-                <select 
-                  className="w-full md:w-64 appearance-none rounded-lg border border-gray-200 bg-white p-3 pr-10 shadow-sm focus:border-red-500 focus:outline-none focus:ring-2 focus:ring-red-200 focus:ring-opacity-50"
-                  value={activeFilter.sector}
-                  onChange={(e) => setActiveFilter({...activeFilter, sector: e.target.value as CaseStudySector | 'all'})}
+             <div className="bg-white/50 p-4 rounded-xl">
+              <div className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wider">
+                Sector
+              </div>
+              <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap py-2">
+                <button
+                  onClick={() =>
+                    setActiveFilter({ ...activeFilter, sector: "all" })
+                  }
+                  className={`px-3 py-1 rounded-full border transition-colors ${
+                    activeFilter.sector === "all"
+                      ? "bg-red-600 text-white border-red-600"
+                      : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
+                  }`}
                 >
-                  <option value="all">All Sectors</option>
-                  {sectors.map(sector => (
-                    <option key={sector} value={sector}>{sector}</option>
-                  ))}
-                </select>
-                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
+                  All
+                </button>
+                {sectors.map((sector) => (
+                  <button
+                    key={sector}
+                    onClick={() => setActiveFilter({ ...activeFilter, sector })}
+                    className={`px-3 py-1 rounded-full border transition-colors ${
+                      activeFilter.sector === sector
+                        ? "bg-red-600 text-white border-red-600"
+                        : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200"
+                    }`}
+                  >
+                    {sector}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
@@ -125,24 +276,45 @@ export default function CaseStudiesPage() {
       {/* Case Studies Grid */}
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-8">Impact Stories</h2>
-          <div className="flex flex-col space-y-8">
-            {filteredStudies.map(study => (
-              <div key={study.id} className="transform transition-all duration-300 hover:scale-[1.01] w-full">
-                <CaseStudyCard study={study} />
-              </div>
-            ))}
-          </div>
-          
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Impact Stories
+          </h2>
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <AnimatePresence>
+              {filteredStudies.map((study) => (
+                <motion.div
+                  key={study.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="transform transition-all duration-300 hover:scale-[1.01]"
+                >
+                  <CaseStudyCard study={study} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
           {filteredStudies.length === 0 && (
             <div className="text-center py-12 bg-gray-50 rounded-lg">
-              <h3 className="text-xl font-medium text-gray-900">No case studies match your filters</h3>
-              <p className="text-gray-500 mt-2">Try adjusting your filter criteria</p>
+              <h3 className="text-xl font-medium text-gray-900">
+                No case studies match your filters
+              </h3>
+              <p className="text-gray-500 mt-2">
+                Try adjusting your filter criteria
+              </p>
             </div>
           )}
         </div>
       </section>
-    
+
+      <section>
+        <ExploreSection />
+      </section>
     </main>
   );
 }
