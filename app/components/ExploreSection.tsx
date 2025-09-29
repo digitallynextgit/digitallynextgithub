@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { staggerContainer } from "../utils/motion";
+import {  AnimatePresence } from "framer-motion";
+// import { staggerContainer } from "../utils/motion";
 import ExploreCard from "./ExploreCard";
 import { caseStudies } from "../data/case-studies";
 

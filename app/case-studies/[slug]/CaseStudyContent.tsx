@@ -21,7 +21,7 @@ import {
   FaBalanceScale,
   FaSync,
   FaGraduationCap,
-  FaUser,
+  // FaUser,
   FaInfoCircle,
   FaIndustry,
   FaGlobe,
@@ -455,7 +455,7 @@ export default function CaseStudyContent({
                     </div>
                     <div className="flex-1">
                       <blockquote className="text-xl leading-relaxed mb-6 italic text-red-700">
-                        "{caseStudy.testimonial}"
+                        &quot;{caseStudy.testimonial}&quot;
                       </blockquote>
                       <FaQuoteRight className="text-red-600 text-2xl mb-4" />
                     </div>

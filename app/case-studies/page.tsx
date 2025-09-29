@@ -1,46 +1,46 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import dayjs from "dayjs";
-import Image from "next/image";
+// import Image from "next/image";
 import ExploreSection from "@/app/components/ExploreSection";
 
-import { caseStudies } from "@/app/data/case-studies";
-import {
-  CaseStudyIndustry,
-  CaseStudySector,
-  CaseStudyRegion,
-} from "@/types/case-study";
-import CaseStudyCard from "@/components/CaseStudyCard";
-import { motion, AnimatePresence } from "framer-motion";
+// import { caseStudies } from "@/app/data/case-studies";
+// import {
+//   CaseStudyIndustry,
+//   CaseStudySector,
+//   CaseStudyRegion,
+// } from "@/types/case-study";
+// import CaseStudyCard from "@/components/CaseStudyCard";
+import { motion,  } from "framer-motion";
 
 
 
 export default function CaseStudiesPage() {
-  const [activeFilter, setActiveFilter] = useState<{
-    industry: CaseStudyIndustry | "all";
-    region: CaseStudyRegion | "all";
-    sector: CaseStudySector | "all";
-  }>({
-    industry: "all",
-    region: "all",
-    sector: "all",
-  });
+  // const [activeFilter, setActiveFilter] = useState<{
+  //   industry: CaseStudyIndustry | "all";
+  //   region: CaseStudyRegion | "all";
+  //   sector: CaseStudySector | "all";
+  // }>({
+  //   industry: "all",
+  //   region: "all",
+  //   sector: "all",
+  // });
 
   // Filter case studies based on selected filters
-  const filteredStudies = caseStudies.filter((study) => {
-    const industryMatch =
-      activeFilter.industry === "all" ||
-      study.industry === activeFilter.industry;
-    const regionMatch =
-      activeFilter.region === "all" ||
-      study.region.includes(activeFilter.region as CaseStudyRegion);
-    const sectorMatch =
-      activeFilter.sector === "all" ||
-      study.sector.includes(activeFilter.sector as CaseStudySector);
-    return industryMatch && regionMatch && sectorMatch;
-  });
+  // const filteredStudies = caseStudies.filter((study) => {
+  //   const industryMatch =
+  //     activeFilter.industry === "all" ||
+  //     study.industry === activeFilter.industry;
+  //   const regionMatch =
+  //     activeFilter.region === "all" ||
+  //     study.region.includes(activeFilter.region as CaseStudyRegion);
+  //   const sectorMatch =
+  //     activeFilter.sector === "all" ||
+  //     study.sector.includes(activeFilter.sector as CaseStudySector);
+  //   return industryMatch && regionMatch && sectorMatch;
+  // });
   const [now, setNow] = useState(dayjs());
 
   useEffect(() => {
