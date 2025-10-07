@@ -8,7 +8,6 @@ export default function Sidebar() {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<typeof blogPosts>([]);
   const recentPosts = blogPosts.slice(0, 5); // Get 5 most recent posts
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const query = searchQuery.toLowerCase();
