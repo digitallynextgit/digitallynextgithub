@@ -108,6 +108,7 @@ module.exports = {
           "Roboto",
           "sans-serif",
         ],
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
         serif: ["var(--font-playfair)", "serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
       },
