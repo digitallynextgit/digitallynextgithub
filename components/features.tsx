@@ -1,7 +1,22 @@
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import Image from 'next/image'
+
 import { Globe, Instagram, LinkedinIcon, YoutubeIcon, FacebookIcon, GemIcon, TwitterIcon, Target, Users, Lightbulb, TrendingUp, Zap, Star } from 'lucide-react'
 
-export function Features() {
+interface FeaturesProps {
+  solutionProposed?: {
+    approach?: string;
+    focusAreas?: string[];
+    strategicSupport?: string[];
+    digitalAssets?: string[];
+  };
+}
+
+export function Features({ solutionProposed }: FeaturesProps) {
+  // If no solutionProposed data is provided, don't render the component
+  if (!solutionProposed) {
+    return null;
+  }
     return (
         <section className="dark:bg-muted/25 bg-zinc-50 py-16 rounded-2xl">
             <div className="mx-auto max-w-7xl px-6">
@@ -15,10 +30,10 @@ export function Features() {
                                     <h3 className="mx-auto max-w-md text-center text-lg font-semibold sm:text-2xl font-montserrat text-red-600">Approach</h3>
                                 </div>
                                 <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-[-10]">
-                                    {[
+                                    {solutionProposed.approach && [
                                         { name: "Mix of Strategy", icon: Lightbulb },
                                         { name: "Functional", icon: Zap },
-                                        { name: "Operational", icon: TrendingUp }
+                                        { name: "Operational pursuits ", icon: TrendingUp }
                                     ].map((area, index) => (
                                         <div key={index} className="bg-white rounded-xl p-4 border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg group cursor-pointer">
                                             <div className="flex items-center gap-2">
@@ -31,23 +46,24 @@ export function Features() {
                             </div>
                         </CardHeader>
 
-                        <div className="relative h-fit pl-6 md:pl-12">
-                            <div className="absolute -inset-6 [background:radial-gradient(75%_95%_at_50%_0%,transparent,hsl(var(--background))_100%)]"></div>
+                        <div className="relative flex justify-center items-center">
+                          
+                            {/* <div className="absolute -inset-6 [background:radial-gradient(75%_95%_at_50%_0%,transparent,hsl(var(--background))_100%)]"></div> */}
 
-                            <div className="bg-background overflow-hidden rounded-tl-lg border-l border-t pl-2 pt-2 dark:bg-zinc-950">
+                            <div className=" overflow-hidden  ">
                                 <img
-                                    src="https://tailark.com/_next/image?url=%2Fmail2.png&w=3840&q=75"
+                                    src="/images/approch.webp"
                                     className="hidden dark:block"
                                     alt="payments illustration dark"
-                                    width={1207}
-                                    height={929}
+                                    width={707}
+                                    height={429}
                                 />
                                 <img
-                                    src="https://tailark.com/_next/image?url=%2Fmail2-light.png&w=3840&q=75"
-                                    className="shadow dark:hidden"
+                                    src="/images/approch.webp"
+                                    className="shadow dark:hidden rounded-full w-[300px] h-[300px]"
                                     alt="payments illustration light"
-                                    width={1207}
-                                    height={929}
+                                    width={707}
+                                    height={429}
                                 />
                             </div>
                         </div>
@@ -61,18 +77,11 @@ export function Features() {
 
                         <CardContent className="mt-auto h-fit">
                             <div className="grid grid-cols-1 gap-4 mb-[-10]">
-                                {[
-                                    { name: "Social Media", color: "#00D6E8" },
-                                    { name: "Digital PR", color: "#dc2626" },
-                                    { name: "Thought Leadership Forums and Bodies", color: "#00D6E8" },
-                                    { name: "Local Industry Associations Communiqué", color: "#dc2626" },
-                                    { name: "Employer Branding", color: "#00D6E8" },
-                                    { name: "Brand Ambassador Engagement", color: "#dc2626" }
-                                ].map((area, index) => (
+                                {solutionProposed.focusAreas && solutionProposed.focusAreas.map((area, index) => (
                                     <div key={index} className="bg-white rounded-xl p-4 border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: area.color}}></div>
-                                            <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{area.name}</div>
+                                            <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: index % 2 === 0 ? "#00D6E8" : "#dc2626"}}></div>
+                                            <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{area}</div>
                                         </div>
                                     </div>
                                 ))}
@@ -104,17 +113,11 @@ export function Features() {
                             <p className="mx-auto max-w-md text-balance text-center text-lg font-semibold sm:text-2xl text-red-600 font-montserrat">Strategic Marketing Support:</p>
                         </div>
                         <div className="grid grid-cols-1 gap-4 mb-6">
-                            {[
-                                { name: "Themes and Content manifestation Planning", color: "#dc2626" },
-                                { name: "Visual Communication Planning", color: "#00D6E8" },
-                                { name: "Digital-Social Media Planning", color: "#dc2626" },
-                                { name: "Digital PR and Publications Planning", color: "#00D6E8" },
-                                { name: "Data and Analytics", color: "#dc2626" }
-                            ].map((area, index) => (
+                            {solutionProposed.strategicSupport && solutionProposed.strategicSupport.map((area, index) => (
                                 <div key={index} className="bg-white rounded-xl p-4 border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1">
                                     <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: area.color}}></div>
-                                        <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{area.name}</div>
+                                        <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: index % 2 === 0 ? "#dc2626" : "#00D6E8"}}></div>
+                                        <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{area}</div>
                                     </div>
                                 </div>
                             ))}
@@ -136,28 +139,21 @@ export function Features() {
                                 <p className="mx-auto max-w-md text-balance text-center text-lg font-semibold sm:text-2xl text-red-600 font-montserrat">Core Digital Assets:</p>
                             </div>
                             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                {[
-                                    { name: "Microsite", color: "#dc2626" },
-                                    { name: "Engagement Promotional Assets", color: "#00D6E8" },
-                                    { name: "Podcast- Audio and Video", color: "#dc2626" }
-                                ].map((asset, index) => (
+                                {solutionProposed.digitalAssets && solutionProposed.digitalAssets.slice(0, 3).map((asset, index) => (
                                     <div key={index} className="bg-white rounded-xl p-4 border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: asset.color}}></div>
-                                            <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{asset.name}</div>
+                                            <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: index % 2 === 0 ? "#dc2626" : "#00D6E8"}}></div>
+                                            <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{asset}</div>
                                         </div>
                                     </div>
                                 ))}
                             </div>
                              <div className="grid sm:grid-cols-2 gap-4 mt-4">
-                                {[
-                                    { name: "360 degree Digital Social Media calendar set up and Roll Out", color: "#00D6E8" },
-                                    { name: "Digital PR Calendar including UGC distribution", color: "#dc2626" }
-                                ].map((asset, index) => (
+                                {solutionProposed.digitalAssets && solutionProposed.digitalAssets.slice(3).map((asset, index) => (
                                     <div key={index} className="bg-white rounded-xl p-4 border-2 border-red-200 hover:border-red-400 transition-all duration-300 hover:shadow-lg group cursor-pointer hover:-translate-y-1">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: asset.color}}></div>
-                                            <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{asset.name}</div>
+                                            <div className="w-3 h-3 rounded-full transition-all duration-300 group-hover:scale-125" style={{backgroundColor: index % 2 === 0 ? "#00D6E8" : "#dc2626"}}></div>
+                                            <div className="text-sm font-semibold text-black group-hover:text-red-600 transition-colors duration-300">{asset}</div>
                                         </div>
                                     </div>
                                 ))}

@@ -6,7 +6,7 @@ import ChatBot from "./components/ChatBot";
 import Book from "./components/home/Book";
 // import Podcast from "./components/home/Podcast";
 // import BlogSection from "./components/home/BlogSection";
-import ExploreSection from "./components/ExploreSection";
+// import ExploreSection from "./components/ExploreSection";
 
 import { Testimonials } from "./components/home/Testimonials";
 import Stats from "./components/home/Stats";
@@ -21,6 +21,7 @@ import SocialMediaSection from "./components/home/SocialMediaSection";
 import VideoSection from "@/components/home/Video";
 import MobileVideoSection from "@/components/home/MobileHelpSection";
 import ManualYoutubeShortsWrapper from "./components/home/ManualYoutubeShortsWrapper";
+import HomeExploreCards from "./components/home/HomeExploreCards";
 
 
 
@@ -64,7 +65,7 @@ export default function Home() {
       <Careers />
 
       {/* Explore Section */}
-      <ExploreSection />
+      <HomeExploreCards />
 
       {/* Quora Section */}
       <QuoraSection />

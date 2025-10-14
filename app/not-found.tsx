@@ -37,8 +37,7 @@ export default function NotFound() {
             y: 0,
             opacity: 1,
             transition: {
-                type: "spring",
-                stiffness: 100
+                duration: 0.4
             }
         }
     };
@@ -218,4 +217,4 @@ export default function NotFound() {
             </motion.div>
         </div>
     );
-} 
+}

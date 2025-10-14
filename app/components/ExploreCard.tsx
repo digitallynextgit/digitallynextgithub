@@ -56,7 +56,7 @@ const ExploreCard = ({ id, imgUrl, title, description, industry, impact, slug, i
           <p className="font-normal text-[14px] leading-[18px] text-black uppercase tracking-wider">
             Case Study
           </p>
-          <h2 className="mt-[12px] font-semibold sm:text-[28px] text-[20px] text-black leading-tight">
+          <h2 className="mt-[12px] font-semibold text-[22px] text-black leading-tight">
             {title}
           </h2>
           {description && (

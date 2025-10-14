@@ -24,7 +24,6 @@ const Banner = () => {
             y: 0,
             transition: {
                 duration: 0.8,
-                ease: "easeOut",
                 staggerChildren: 0.2
             }
         }

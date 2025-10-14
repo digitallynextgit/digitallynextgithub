@@ -65,9 +65,7 @@ const Profile = () => {
         visible: {
             scale: 1,
             transition: {
-                type: "spring",
-                stiffness: 200,
-                damping: 10,
+                duration: 0.3,
                 delay: 0.2
             }
         }
@@ -207,7 +205,7 @@ const Profile = () => {
                     transition={{
                         duration: 8,
                         repeat: Infinity,
-                        ease: "easeInOut"
+                        
                     }}
                 />
                 <motion.div
@@ -219,7 +217,6 @@ const Profile = () => {
                     transition={{
                         duration: 10,
                         repeat: Infinity,
-                        ease: "easeInOut",
                         delay: 1
                     }}
                 />
@@ -236,10 +233,10 @@ const Profile = () => {
                     </motion.h2>
                     <motion.div
                         className="w-24 h-1 bg-[#5d7a64] mx-auto mt-4 mb-8"
-                        initial={{ width: 0 }}
-                        animate={{ width: 96 }}
-                        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
-                    />
+                    initial={{ width: 0 }}
+                    animate={{ width: 96 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                />
 
                     {/* Stats counter section */}
                     <motion.div
@@ -755,4 +752,4 @@ const Profile = () => {
     );
 };
 
-export default Profile; 
+export default Profile;
