@@ -225,8 +225,8 @@ export default function TestPage({ params }: PageProps) {
               <div className=" relative flex size-full  items-center justify-center flex-col overflow-hidden border rounded-3xl">
                 <div className="flex items-center flex-col mb-6 ">
                   <div className=" flex items-center justify-center flex-col text-left -translate-y-12 p-10 ">
-                    <h2 className="text-2xl font-semibold text-center  mb-4 text-[#00d6e8] hover:scale-110 transition-transform duration-300">{pageData.objectiveGoal.title}</h2>
-                    <p className="text-sm text-gray-700 leading-relaxed mb-6 text-center">
+                    <h2 className="text-2xl font-semibold text-center  mb-4 text-red-500 hover:scale-110 transition-transform duration-300">{pageData.objectiveGoal.title}</h2>
+                    <p className="text-sm text-gray-700 leading-relaxed font-semibold mb-6 text-center">
                       {pageData.objectiveGoal.description}
                     </p>
                   </div>

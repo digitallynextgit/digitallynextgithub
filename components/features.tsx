@@ -25,13 +25,14 @@ export function Features({ solutionProposed }: FeaturesProps) {
                     <Card className="group overflow-hidden border-red-600 border-2 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-red-500 sm:col-span-3 sm:rounded-none sm:rounded-tl-xl bg-gradient-to-br from-white to-red-50">
                         <CardHeader>
                             <div className="md:p-6">
-                                <div className="flex items-center justify-center gap-3 mb-8">
+                                <div className="flex items-center flex-col justify-center gap-2 mb-8">
                                   
                                     <h3 className="mx-auto max-w-md text-center text-lg font-semibold sm:text-2xl font-montserrat text-red-600">Approach</h3>
+                                    <p className='text-center text-sm font-semibold text-black'>Mix of Strategy</p>
                                 </div>
-                                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-[-10]">
+                                <div className="grid sm:grid-cols-2  gap-4 mb-[-10]">
                                     {solutionProposed.approach && [
-                                        { name: "Mix of Strategy", icon: Lightbulb },
+                                     
                                         { name: "Functional", icon: Zap },
                                         { name: "Operational pursuits ", icon: TrendingUp }
                                     ].map((area, index) => (
@@ -122,15 +123,7 @@ export function Features({ solutionProposed }: FeaturesProps) {
                                 </div>
                             ))}
                         </div>
-                        <div className="flex justify-center gap-6">
-                            <div className="inset-shadow-sm dark:inset-shadow-white/5 bg-gradient-to-br from-red-600 to-red-500 relative flex aspect-square size-16 items-center rounded-[7px] border-2 border-red-400 p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer">
-                                <span className="absolute right-2 top-1 block text-sm text-white font-bold">fn</span>
-                         
-                            </div>
-                            <div className="inset-shadow-sm dark:inset-shadow-white/5 flex aspect-square size-16 items-center justify-center rounded-[7px] border-2 p-3 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer" style={{background: `linear-gradient(to bottom right, #00D6E8, #0891b2)`}}>
-                                <span className="text-white font-bold text-lg">K</span>
-                            </div>
-                        </div>
+                        
                     </Card>
                     <Card className="group relative shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-red-600 hover:border-red-500 sm:col-span-3 sm:rounded-none sm:rounded-br-xl bg-gradient-to-br from-white via-red-50 to-white">
                         <CardHeader className="p-6 md:p-12">
