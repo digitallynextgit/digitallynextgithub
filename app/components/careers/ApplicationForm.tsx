@@ -16,7 +16,10 @@ const applicationSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(7, 'Please enter a valid phone number'),
   position: z.string().min(1, 'Please select a position'),
-  linkedin: z.string().optional(),
+  linkedin: z
+    .string()
+    .min(1, 'LinkedIn profile is required')
+    .url('Please enter a valid LinkedIn profile URL'),
   message: z.string().min(10, 'Please tell us about yourself')
 })
 
@@ -425,18 +428,24 @@ const ApplicationForm = ({ selectedJobId }: ApplicationFormProps) => {
                 </div>
                 
                 <div>
-                  <label className="block mb-1 text-sm font-medium">LinkedIn Profile (Optional)</label>
+                  <label className="block mb-1 text-sm font-medium">LinkedIn Profile*</label>
                   <div className="relative">
                     <div className="absolute left-4 top-3.5 text-gray-400">
                       <FaLinkedin />
                     </div>
                     <input
-                      type="text"
+                      type="url"
                       placeholder="https://linkedin.com/in/yourprofile"
-                      className="w-full py-3 px-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"
+                      className={`w-full py-3 px-10 border rounded-lg focus:outline-none focus:ring-2 ${
+                        errors.linkedin ? 'border-red-500 focus:ring-red-200' : 'border-gray-300 focus:ring-blue-200'
+                      }`}
                       {...register('linkedin')}
+                      required
                     />
                   </div>
+                  {errors.linkedin && (
+                    <p className="mt-1 text-sm text-red-600">{errors.linkedin.message}</p>
+                  )}
                 </div>
                 
                 <div>
@@ -498,4 +507,4 @@ const ApplicationForm = ({ selectedJobId }: ApplicationFormProps) => {
   )
 }
 
-export default ApplicationForm 
+export default ApplicationForm

@@ -3,7 +3,7 @@ export const careersData = {
   positions: [
     {
       id: 1,
-      icon: "/images/full-time/seo.webp",
+      icon: "/images/full-time/7.webp",
       title: "SEO Strategist",
       description:
         "It’s not just keywords… it’s the art of being discovered. Like hidden trails leading to breathtaking views, or a compass guiding travelers home, your expertise ensures brands are found where it matters most. We’re looking for someone who understands the rhythm of search engines, the pulse of online audiences, and can weave strategy with creativity to amplify a brand’s digital heartbeat.",

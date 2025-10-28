@@ -10,7 +10,10 @@ const applicationSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
   phone: z.string().min(7, 'Please enter a valid phone number'),
   position: z.string().min(1, 'Please select a position'),
-  linkedin: z.string().optional(),
+  linkedin: z
+    .string()
+    .min(1, 'LinkedIn profile is required')
+    .url('Please enter a valid LinkedIn profile URL'),
   message: z.string().min(10, 'Please tell us about yourself')
 });
 
@@ -115,4 +118,4 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
-} 
+}

@@ -22,7 +22,7 @@ const fullTimeJobs = careersData.positions.map(position => ({
   icon: position.icon,
   type: 'Full-time',
   department: getDepartment(position.title),
-  location: 'Remote / Hybrid',
+  location: 'Full-Time Roles',
   requirements: position.requirements || [],
   jobEssence: position.jobEssence || '',
   openings: position.openings || []
@@ -36,7 +36,7 @@ const internshipJobs = internshipPositions.map((position, index) => ({
   icon: `/images/internship/${index + 1}.webp`,
   type: 'Internship',
   department: getDepartment(position.title),
-  location: 'Remote',
+  location: 'Full-Time Roles',
   requirements: [],
   jobEssence: '',
   openings: []

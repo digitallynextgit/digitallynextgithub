@@ -7,7 +7,7 @@ type ApplicationData = {
   phone: string;
   position: string;
   positionName: string;
-  linkedin?: string;
+  linkedin: string;
   message: string;
 };
 
@@ -540,12 +540,10 @@ export function generateRecruiterEmail(data: ApplicationData): string {
                 <span>${data.phone}</span>
               </div>
               
-              ${data.linkedin ? `
               <div class="applicant-detail">
                 <span class="detail-icon">👥</span>
                 <span><a href="${data.linkedin}" style="color: ${colors.primary};">${data.linkedin}</a></span>
               </div>
-              ` : ''}
               
               <div class="applicant-detail">
                 <span class="detail-icon">🕒</span>
@@ -584,4 +582,4 @@ export function generateRecruiterEmail(data: ApplicationData): string {
     </body>
     </html>
   `;
-} 
+}
