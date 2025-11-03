@@ -54,9 +54,9 @@ export default function ListingClient({ items }: Props) {
   const nextPage = () => setPage((p) => Math.min(maxPage, p + 1));
 
   return (
-    <section className="px-6 py-16 max-w-7xl mx-auto mt-32">
-      <h1 className="text-4xl font-bold mb-8">Case Studies</h1>
-      <div className="flex items-center justify-between mb-6">
+    <section className="px-6 py-16 max-w-7xl mx-auto lg:mt-32 mt-16">
+      <h1 className="text-6xl text-center lg:text-7xl font-bold mb-8">Case Studies</h1>
+      <div className="flex items-center justify-between flex-col lg:flex-row gap-5 mb-6">
         <div className="text-sm text-gray-600">
           Showing <span className="font-semibold">{start + 1}</span>-<span className="font-semibold">{Math.min(end, items.length)}</span> of <span className="font-semibold">{items.length}</span>
         </div>
@@ -64,18 +64,18 @@ export default function ListingClient({ items }: Props) {
           <button
             onClick={prevPage}
             disabled={page === 0}
-            className="px-3 py-2 rounded-md border border-gray-300 bg-white text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+            className="px-3 py-2 rounded-full border border-black bg-white text-gray-800 lg:disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             aria-label="Previous"
           >
-            ← Prev
+            ←
           </button>
           <button
             onClick={nextPage}
             disabled={page >= maxPage}
-            className="px-3 py-2 rounded-md border border-gray-300 bg-white text-gray-800 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+            className="px-3 py-2 rounded-full border border-black bg-white text-gray-800 lg:disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             aria-label="Next"
           >
-            Next →
+            →
           </button>
         </div>
       </div>

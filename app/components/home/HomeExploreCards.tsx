@@ -92,29 +92,32 @@ export default function HomeExploreCards() {
   return (
     <section className="w-full py-12 px-4 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto relative">
-        <h2 className="text-[4.5vw] font-semibold mb-10 text-center">
+        <div className='flex lg:flex-row flex-col items-center justify-between px-4'>
+        <h2 className="lg:text-[4.5vw] text-[12vw] font-semibold lg:mb-10 mb-4 text-center">
           Featured Case Studies
         </h2>
 
         {/* Navigation Arrows */}
-        <button
-          aria-label="Previous"
-          onClick={prevPage}
-          disabled={page === 0}
-          className={`absolute -left-20 top-1/2  z-10 bg-white border border-gray-200 shadow-sm rounded-full p-3 hidden sm:flex items-center justify-center transition-opacity ${page === 0 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
-        >
-          <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/></svg>
-        </button>
+        <div className='flex flex-row justify-end mb-6 gap-5 '>
+          <button
+            aria-label="Previous"
+            onClick={prevPage}
+            disabled={page === 0}
+            className={`lg:-left-20 left-1 top-[18%] lg:top-1/2  z-10 bg-white border border-gray-200 shadow-sm rounded-full p-3  flex items-center justify-center transition-opacity ${page === 0 ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
+          >
+            <svg className="w-5 h-5 " viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" /></svg>
+          </button>
 
-        <button
-          aria-label="Next"
-          onClick={nextPage}
-          disabled={page >= maxPage}
-          className={`absolute -right-20 top-1/2  z-10 bg-white border border-gray-200 shadow-sm rounded-full p-3 hidden sm:flex items-center justify-center transition-opacity ${page >= maxPage ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
-        >
-          <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"/></svg>
-        </button>
-
+          <button
+            aria-label="Next"
+            onClick={nextPage}
+            disabled={page >= maxPage}
+            className={`lg:-right-20 -right-1 lg:top-1/2  z-10 bg-white border border-gray-200 shadow-sm rounded-full p-3 flex items-center justify-center transition-opacity ${page >= maxPage ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
+          >
+            <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+        </div>
         {/* Cards Grid */}
         <div className="grid grid-cols-1  lg:grid-cols-3 gap-6">
           {visibleItems.map((item, index) => (
