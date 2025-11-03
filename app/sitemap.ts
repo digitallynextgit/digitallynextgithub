@@ -5,6 +5,10 @@ import { testPageDataMap } from '@/app/data/test-page-data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
+  const safeDate = (input: unknown): Date => {
+    const dt = new Date(input as any);
+    return Number.isNaN(dt.getTime()) ? now : dt;
+  };
 
   const staticPages = [
     '/',
@@ -30,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogDetail = blogPosts.map((post) => ({
     url: absoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.createdAt),
+    lastModified: safeDate(post.createdAt),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
@@ -39,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter((p) => p.categories.includes('Innews'))
     .map((post) => ({
       url: absoluteUrl(`/innews/${post.id}`),
-      lastModified: new Date(post.createdAt),
+      lastModified: safeDate(post.createdAt),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     }));
