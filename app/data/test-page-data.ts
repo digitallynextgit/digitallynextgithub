@@ -238,18 +238,18 @@ export const testPageDataMap: Record<string, TestPageData> = {
       strategicSupport: [],
       digitalAssets: [],
     },
-    impact: {
-      coverage: {
-        geographic: " ",
-        media: " ",
-        publications: "",
-      },
-      achievements: [
-        "",
-        "",
-        // ""
-      ],
-    },
+    // impact: {
+    //   coverage: {
+    //     geographic: " ",
+    //     media: " ",
+    //     publications: "",
+    //   },
+    //   achievements: [
+    //     "",
+    //     "",
+    //     // ""
+    //   ],
+    // },
     results: {
       brandRecognition: {
         percentage: "",
@@ -442,18 +442,18 @@ export const testPageDataMap: Record<string, TestPageData> = {
      "360 degree Digital Social Media calendar set up and Roll Out",
       ],
     },
-    impact: {
-      coverage: {
-        geographic: " ",
-        media: "",
-        publications: "",
-      },
-      achievements: [
+    // impact: {
+    //   coverage: {
+    //     geographic: " ",
+    //     media: "",
+    //     publications: "",
+    //   },
+    //   achievements: [
        
        
-        // ""
-      ],
-    },
+    //     // ""
+    //   ],
+    // },
     results: {
       brandRecognition: {
         percentage: "",
@@ -501,18 +501,18 @@ export const testPageDataMap: Record<string, TestPageData> = {
 
       ],
     },
-    impact: {
-      coverage: {
-        geographic: " ",
-        media: "",
-        publications: "",
-      },
-      achievements: [
+    // impact: {
+    //   coverage: {
+    //     geographic: " ",
+    //     media: "",
+    //     publications: "",
+    //   },
+    //   achievements: [
        
        
-        // ""
-      ],
-    },
+    //     // ""
+    //   ],
+    // },
     results: {
       brandRecognition: {
         percentage: "",
