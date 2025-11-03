@@ -24,14 +24,14 @@ const ExploreCard = ({ id, imgUrl, title, description, industry, impact, slug, i
   const CardContent = () => (
     <motion.div
       variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
-      className={`relative flex items-center justify-center min-w-[170px] h-full min-h-[560px] lg:min-h-[700px] overflow-hidden bg-white border-2 border-red-500 rounded-[24px] shadow-lg`}
+      className={`relative flex items-center justify-center min-w-[170px] h-full min-h-[560px] lg:min-h-[550px] overflow-hidden bg-white border-2 border-red-500 rounded-[24px] shadow-lg`}
     >
       <img
         src={imgUrl}
         alt={title}
         className="absolute w-full h-full object-cover rounded-[22px] opacity-20"
       />
-      <div className="absolute bottom-0 p-8 w-full bg-white/95 rounded-b-[22px] border-t-2 border-red-500 flex flex-col justify-between h-[360px] lg:h-[610px]">
+      <div className="absolute bottom-0 p-8 w-full bg-white/95 rounded-b-[22px] border-t-2 border-red-500 flex flex-col justify-between h-[360px] lg:h-[550px]">
         <div className="flex-1">
           <div
             className={`${styles.flexCenter} w-[40px] h-[40px] rounded-[24px] bg-red-500 mb-[16px]`}
