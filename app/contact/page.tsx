@@ -1,13 +1,21 @@
-"use client";
 import React from "react";
-// import { motion } from "framer-motion";
-// import { FaArrowRight } from "react-icons/fa6";
+import type { Metadata } from "next";
+import { buildMetadata, webPageJsonLd } from "@/app/utils/seo";
+import Script from "next/script";
 import ConsultationForm from "@/app/components/contact/ConsultationForm";
-// import Image from "next/image";
 
-const ContactPage = () => {
+export default function ContactPage() {
   return (
     <main className="min-h-[110vh] bg-white flex items-center justify-center py-24 flex-col px-4">
+      <Script id="ld-contact-webpage" type="application/ld+json">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: 'Contact | DigitallyNext',
+            description: 'Contact DigitallyNext for consultations, projects, and inquiries.',
+            path: '/contact',
+          })
+        )}
+      </Script>
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Side: Heading, Testimonial, CTA */}
         <div className="flex flex-col justify-center h-full">
@@ -76,6 +84,11 @@ const ContactPage = () => {
       </div>
     </main>
   );
-};
+}
 
-export default ContactPage;
+export const metadata: Metadata = buildMetadata({
+  title: 'Contact | DigitallyNext',
+  description: 'Reach out to DigitallyNext for a consultation or project inquiry.',
+  path: '/contact',
+  keywords: ['contact DigitallyNext', 'consultation', 'project inquiry'],
+});

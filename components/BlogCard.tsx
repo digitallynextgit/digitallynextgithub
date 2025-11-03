@@ -16,7 +16,7 @@ export default function BlogCard({ post }: BlogCardProps) {
     };
 
     return (
-        <Link href={getPostLink()}>
+        <Link href={getPostLink()} aria-label={`Read more: ${post.title}`}>
             <div className="bg-white rounded-lg overflow-hidden shadow-md transition-transform duration-300 hover:-translate-y-1">
                 <div className="relative h-48 w-full">
                     <Image

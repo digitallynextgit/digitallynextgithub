@@ -61,7 +61,7 @@ export default function HomeExploreCards() {
       const w = typeof window !== 'undefined' ? window.innerWidth : 1024;
       if (w < 640) return 1; // sm
       if (w < 1024) return 2; // md
-      return 4; // lg+
+      return 3; // lg+
     };
     const update = () => setPerPage(calcPerPage());
     update();
@@ -116,7 +116,7 @@ export default function HomeExploreCards() {
         </button>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1  lg:grid-cols-3 gap-6">
           {visibleItems.map((item, index) => (
             <ExploreCard
               key={item.id}

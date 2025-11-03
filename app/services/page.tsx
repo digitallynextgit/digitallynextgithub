@@ -1,4 +1,7 @@
 import React from "react";
+import type { Metadata } from "next";
+import { buildMetadata, webPageJsonLd } from "@/app/utils/seo";
+import Script from "next/script";
 import Banner from "../components/services/Banner";
 import BannerAssets from "../components/services/BannerAssets";
 import Service1 from "../components/services/Service1";
@@ -14,6 +17,16 @@ import Service9 from "../components/services/Service9";
 export default function ServicesPage() {
   return (
     <main>
+      <Script id="ld-services-webpage" type="application/ld+json">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: "Services | DigitallyNext",
+            description:
+              "Explore DigitallyNext services: SEO, performance marketing, social media, content, and UX.",
+            path: "/services",
+          })
+        )}
+      </Script>
       <Banner />
       <BannerAssets />
       <Service1 />
@@ -27,4 +40,19 @@ export default function ServicesPage() {
       <Service9 />
     </main>
   );
-} 
+}
+
+export const metadata: Metadata = buildMetadata({
+  title: "Services | DigitallyNext",
+  description:
+    "Explore DigitallyNext services: SEO, performance marketing, social media, content, and UX.",
+  path: "/services",
+  keywords: [
+    "Digital marketing services",
+    "SEO",
+    "performance marketing",
+    "social media",
+    "content",
+    "UX",
+  ],
+});

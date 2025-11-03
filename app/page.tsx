@@ -28,6 +28,16 @@ import HomeExploreCards from "./components/home/HomeExploreCards";
 export default function Home() {
   return (
     <main className="overflow-x-hidden w-full">
+      <Script id="ld-home-webpage" type="application/ld+json">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: "DigitallyNext: Full-stack Digital Marketing Agency",
+            description:
+              "Partner with DigitallyNext for SEO, performance marketing, social media, content, and UI/UX — tailored strategies that drive growth.",
+            path: "/",
+          })
+        )}
+      </Script>
       {/* Hero Section */}
       <Hero />
 
@@ -96,3 +106,22 @@ export default function Home() {
     </main>
   );
 }
+import type { Metadata } from "next";
+import { buildMetadata, webPageJsonLd } from "@/app/utils/seo";
+import Script from "next/script";
+export const metadata: Metadata = buildMetadata({
+  title: "DigitallyNext: Full-stack Digital Marketing Agency",
+  description:
+    "Partner with DigitallyNext for SEO, performance marketing, social media, content, and UI/UX — tailored strategies that drive growth.",
+  path: "/",
+  keywords: [
+    "DigitallyNext",
+    "digital marketing agency",
+    "SEO services",
+    "performance marketing",
+    "social media",
+    "content strategy",
+    "UI/UX",
+  ],
+  images: ["/logo.webp"],
+});

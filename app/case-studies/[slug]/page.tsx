@@ -1,7 +1,7 @@
 
-"use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
+import type { Metadata } from "next";
+import Script from "next/script";
 import dayjs from "dayjs";
 import {
   FaIndustry,
@@ -21,65 +21,37 @@ import { Features } from "@/components/features";
 import { AnimatedList } from "@/components/magicui/animated-list";
 import LightRays from "@/components/reactbits/lightrays";
 import { Globe } from "@/components/ui/globe";
-import { getTestPageDataById } from '@/app/data/test-page-data';
+import { getTestPageDataById, testPageDataMap } from '@/app/data/test-page-data';
 import { notFound } from 'next/navigation';
 import Impact from '@/components/impact';
 import Results from '@/components/results';
 import { TestPageData } from '@/types/test-page';
+import { buildMetadata, caseStudyJsonLd } from '@/app/utils/seo';
 
-interface PageProps {
-  params: Promise<{
-    slug: string;
-  }>;
-}
-
-export default function TestPage({ params }: PageProps) {
-  const [now, setNow] = useState(dayjs());
-  const [pageData, setPageData] = useState<TestPageData | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const loadData = async () => {
-      try {
-        const resolvedParams = await params;
-        const { slug } = resolvedParams;
-        const data = getTestPageDataById(slug);
-
-        if (!data) {
-          notFound();
-          return;
-        }
-
-        setPageData(data);
-      } catch (error) {
-        console.error('Error loading page data:', error);
-        notFound();
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadData();
-
-    // Timer for real-time date updates
-    const timer = setInterval(() => {
-      setNow(dayjs()); // update every second
-    }, 1000);
-
-    return () => clearInterval(timer); // cleanup on unmount
-  }, [params]);
-
-  // If no data found for the slug, show 404
-  if (loading) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
-  }
-
+export default async function TestPage(
+  props: { params?: Promise<{ slug: string }> }
+) {
+  const now = dayjs();
+  const { slug } = await props.params!;
+  const pageData: TestPageData | null = getTestPageDataById(slug);
   if (!pageData) {
     notFound();
   }
 
   return (
     <div className="min-h-screen  from-gray-50 via-white to-gray-100">
+      {/* Case Study JSON-LD */}
+      {pageData && (
+        <Script id="ld-case-study" type="application/ld+json">
+          {JSON.stringify(
+            caseStudyJsonLd({
+              title: pageData.hero.title,
+              description: pageData.hero.description,
+              path: `/case-studies/${slug}`,
+            })
+          )}
+        </Script>
+      )}
       {/* Hero Section */}
 
       <section className="relative w-full bg-black text-white md:py-2 h-[100vh]  flex justify-center items-center">
@@ -247,4 +219,26 @@ export default function TestPage({ params }: PageProps) {
       </div>
     </div>
   );
+}
+
+export async function generateMetadata(
+  props: { params?: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await props.params!;
+  const data = getTestPageDataById(slug);
+  if (!data) return {};
+  const keywords: string[] = [];
+  if (data.clientProfile?.industry) keywords.push(data.clientProfile.industry);
+  if (data.clientProfile?.category) keywords.push(data.clientProfile.category);
+  return buildMetadata({
+    title: `${data.hero.title} | DigitallyNext Case Study`,
+    description: data.hero.description,
+    path: `/case-studies/${slug}`,
+    keywords,
+    images: data.hero.mobileImages && data.hero.mobileImages.length ? [data.hero.mobileImages[0]] : undefined,
+  });
+}
+
+export function generateStaticParams() {
+  return Object.keys(testPageDataMap).map((slug) => ({ slug }));
 }

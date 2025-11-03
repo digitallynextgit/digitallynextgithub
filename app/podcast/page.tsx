@@ -1,47 +1,45 @@
-"use client";
-
 import React from 'react';
+import type { Metadata } from 'next';
+import { buildMetadata, webPageJsonLd } from '@/app/utils/seo';
+import Script from 'next/script';
 import Hero from '@/app/components/podcast/Hero';
-// import Categories from '@/app/components/podcast/Categories';
 import SupportMetrics from '@/app/components/podcast/SupportMetrics';
 import FeaturedEpisode from '@/app/components/podcast/FeaturedEpisode';
-// import ExploreCategories from '@/app/components/podcast/ExploreCategories';
 import LeadingPodcaster from '@/app/components/podcast/LeadingPodcaster';
 import Community from '@/app/components/podcast/Community';
-// import ArtistHighlight from '@/app/components/podcast/ArtistHighlight';
-// import CategoryTags from '@/app/components/podcast/CategoryTags';
 
+export default function PodcastPage() {
+  return (
+    <main className="bg-white min-h-screen">
+      <Script id="ld-podcast-webpage" type="application/ld+json">
+        {JSON.stringify(
+          webPageJsonLd({
+            title: 'Podcast | DigitallyNext',
+            description: 'Listen to DigitallyNext podcast episodes on marketing and growth.',
+            path: '/podcast',
+          })
+        )}
+      </Script>
+      {/* Decorative background pattern */}
+      <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none">
+        <div className="absolute inset-0 bg-repeat " style={{ backgroundImage: "url('/podcast/pattern-bg.svg')" }}></div>
+      </div>
 
-const page = () => {
-    return (
-        <div className="bg-white min-h-screen">
-            {/* Decorative background pattern */}
-            <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none">
-                <div className="absolute inset-0 bg-repeat " style={{ backgroundImage: "url('/podcast/pattern-bg.svg')" }}></div>
-            </div>
+      {/* Main content */}
+      <div className="relative z-10">
+        <Hero />
+        <SupportMetrics />
+        <FeaturedEpisode />
+        <LeadingPodcaster />
+        <Community />
+      </div>
+    </main>
+  );
+}
 
-            {/* Fixed category tags at top */}
-            {/* <div className="sticky top-0 z-50">
-                <CategoryTags />
-            </div> */}
-
-            {/* Main content */}
-            <div className="relative z-10">
-                <Hero />
-                <SupportMetrics />
-                <FeaturedEpisode />
-                {/* <ExploreCategories /> */}
-                <LeadingPodcaster />
-                <Community />
-                {/* <ArtistHighlight /> */}
-            </div>
-
-            {/* Fixed category tags at bottom */}
-            {/* <div className="sticky bottom-0 z-50">
-                <CategoryTags />
-            </div> */}
-        </div>
-    );
-};
-
-export default page; 
+export const metadata: Metadata = buildMetadata({
+  title: 'Podcast | DigitallyNext',
+  description: 'Listen to DigitallyNext podcast episodes on marketing and growth.',
+  path: '/podcast',
+  keywords: ['podcast', 'marketing podcast', 'DigitallyNext'],
+});

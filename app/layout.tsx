@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import LenisProvider from "./components/LenisProvider";
 import ToastProvider from "./providers/ToastProvider";
 import Script from "next/script";
+import { organizationJsonLd, siteConfig } from "@/app/utils/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ const playfairDisplay = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "DigitallyNext - Digital Marketing Solutions",
-  description: "AD Agency DigitallyNext provides comprehensive digital marketing solutions to help businesses establish and grow their online presence.",
+  description:
+    "AD Agency DigitallyNext provides comprehensive digital marketing solutions to help businesses establish and grow their online presence.",
+  metadataBase: new URL(siteConfig.siteUrl),
 };
 
 export default function RootLayout({
@@ -64,7 +67,7 @@ export default function RootLayout({
             <Script id="google-analytics" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
+                function gtag(){dataLayer.push(arguments);} 
                 gtag('js', new Date());
                 gtag('config', '${GA_TRACKING_ID}', {
                   page_title: document.title,
@@ -74,6 +77,11 @@ export default function RootLayout({
             </Script>
           </>
         )}
+
+        {/* Organization JSON-LD */}
+        <Script id="ld-organization" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(organizationJsonLd())}
+        </Script>
         
         <LenisProvider>
           <ToastProvider />
