@@ -40,6 +40,9 @@ export const metadata: Metadata = {
   description:
     "AD Agency DigitallyNext provides comprehensive digital marketing solutions to help businesses establish and grow their online presence.",
   metadataBase: new URL(siteConfig.siteUrl),
+  verification: {
+    google: "Eq2pQQ2GuXvTaAbyOw860Gw6mwe4VLxMIlBLuwIfXrk",
+  },
 };
 
 export default function RootLayout({
