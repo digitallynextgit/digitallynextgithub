@@ -1,7 +1,7 @@
 import Hero from "./components/home/Hero";
 import About from "./components/home/About";
 // import Info from "./components/home/Info";
-import ChatBot from "./components/ChatBot";
+// import ChatBot from "./components/ChatBot";
 // import Learn from "./components/home/Learn";
 import Book from "./components/home/Book";
 // import Podcast from "./components/home/Podcast";
@@ -101,8 +101,7 @@ export default function Home() {
       {/* YouTube Shorts Section */}
       <ManualYoutubeShortsWrapper />
 
-      {/* Chat Bot */}
-      <ChatBot />
+      
     </main>
   );
 }

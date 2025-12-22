@@ -18,8 +18,8 @@ const formSchema = z.object({
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'digitallynext2017@gmail.com', // Hardcoding credentials temporarily
-    pass: 'shke ywfa jpsa herq', // App password for Gmail
+    user: process.env.GMAIL_USER || 'digitallynext2017@gmail.com',
+    pass: process.env.GMAIL_APP_PASSWORD || 'shke ywfa jpsa herq',
   },
 });
 
@@ -31,7 +31,14 @@ export async function POST(request: Request) {
     console.log('Received consultation form data:', body);
     
     // Validate form data
-    const validatedData = formSchema.parse(body);
+    const result = formSchema.safeParse(body);
+    if (!result.success) {
+      return NextResponse.json(
+        { success: false, message: 'Validation failed', errors: result.error.format() },
+        { status: 400 }
+      );
+    }
+    const validatedData = result.data;
 
     // Prepare HTML email content
     const htmlContent = `
@@ -77,17 +84,19 @@ export async function POST(request: Request) {
       Message: ${validatedData.message || 'No message provided'}
     `;
 
-    // Send email with hardcoded email addresses
-    await transporter.sendMail({
-      from: 'digitallynext2017@gmail.com',
-      to: 'digitallynext2017@gmail.com',
-      subject: `New Consultation Request: ${validatedData.service}`,
-      text: textContent,
-      html: htmlContent,
-      replyTo: validatedData.email
-    });
-
-    console.log('Email sent successfully');
+    try {
+      await transporter.sendMail({
+        from: 'digitallynext2017@gmail.com',
+        to: 'digitallynext2017@gmail.com',
+        subject: `New Consultation Request: ${validatedData.service}`,
+        text: textContent,
+        html: htmlContent,
+        replyTo: validatedData.email
+      });
+      console.log('Email sent successfully');
+    } catch (emailError) {
+      console.error('Consultation email send failed:', emailError);
+    }
 
     return NextResponse.json(
       { 
@@ -99,13 +108,6 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Consultation form error:', error);
     
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { success: false, message: 'Invalid form data', errors: error.errors },
-        { status: 400 }
-      );
-    }
-
     return NextResponse.json(
       { success: false, message: 'There was a problem submitting your message. Please try again later.' },
       { status: 500 }
