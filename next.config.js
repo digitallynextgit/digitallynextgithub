@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  eslint: {
-    ignoreDuringBuilds: true,
+  turbopack: {
+    root: __dirname,
   },
   async headers() {
     return [
@@ -71,44 +71,8 @@ const nextConfig = {
         hostname: "img.youtube.com", // ✅ Added for YouTube thumbnails
       },
     ],
-    domains: [
-      'upload.wikimedia.org',
-      'www.google.com',
-      'img-prod-cms-rt-microsoft-com.akamaized.net',
-      'storage.googleapis.com',
-      'www.apple.com',
-      'www.ibm.com',
-      'www.intel.com',
-      'www.samsung.com',
-      'www.netflix.com',
-      'www.adobe.com',
-      'www.spotify.com',
-      'www.tesla.com',
-      'www.twitter.com',
-      'www.oracle.com',
-      'www.nvidia.com',
-      'www.salesforce.com',
-      'i.ytimg.com', // ✅ Added to fix YouTube thumbnails
-      'img.youtube.com' // ✅ Added for YouTube thumbnails
-    ],
   },
   output: "standalone",
-  webpack: (config) => {
-    // Add support for GLB/GLTF files
-    config.module.rules.push({
-      test: /\.(glb|gltf)$/,
-      type: "asset/resource",
-    });
-
-    // Provide fallbacks for node-specific modules
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      path: false,
-    };
-
-    return config;
-  },
   // Transpile specific modules
   transpilePackages: [
     "three",

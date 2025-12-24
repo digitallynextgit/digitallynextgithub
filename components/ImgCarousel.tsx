@@ -95,11 +95,12 @@ const TeamCarousel = () => {
                   style={{ transitionTimingFunction: "cubic-bezier(0.25, 0.46, 0.45, 0.94)" }}
                 >
                   <Image
-                    src={`${member.image}?w=400&auto=format&fit=crop&q=80`}
+                    src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
                     width={1200}
-                    height={100}
+                    height={800}
+                    priority={offset === 0}
                   />
                 </div>
               );
