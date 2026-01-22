@@ -33,6 +33,7 @@ const Footer = () => {
             <a href="#" aria-label="YouTube" className="hover:text-[#b92b27] transition"><FaYoutube size={22} /></a>
           </div>
         </div>
+        
         {/* Quick Links */}
         <div>
           <h4 className="font-bold text-xl mb-4">Quick Links</h4>
