@@ -61,7 +61,7 @@ const Header = () => {
                     </div>
                     <div className="flex-shrink-0 md:ml-0 -ml-32 ">
                         <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
-                            <Image src="/logo.webp" alt="logo" width={120} height={100} className='transform lg:-translate-y-3 translate-y-2'/>
+                            <Image src="/logo1.webp" alt="logo" width={250} height={100} className='transform lg:-translate-y-3 translate-y-2 -translate-x-10'/>
                         </Link>
                     </div>
           
