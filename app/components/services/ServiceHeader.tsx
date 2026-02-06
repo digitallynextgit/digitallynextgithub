@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 function BatteryOrMenu() {
   const [showMenu, setShowMenu] = useState(false);
@@ -31,7 +32,7 @@ export default function ServiceHeader() {
     <header className="w-full flex items-center justify-between px-8 py-4 fixed top-0 left-0 z-[1000] bg-transparent">
       {/* Logo on the left */}
       <div className="flex items-center">
-        <img src="/logo.png" alt="Logo" className="h-10 w-auto" />
+        <Image src="/logo.png" alt="Logo" width={100} height={40} className="h-10 w-auto" />
       </div>
       {/* Battery/Menu on the right */}
       <div className="flex items-center">

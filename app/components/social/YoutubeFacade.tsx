@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 
 interface YoutubeFacadeProps {
   videoId: string;
@@ -26,11 +27,12 @@ export default function YoutubeFacade({ videoId, className = "" }: YoutubeFacade
       aria-label="Play video"
       type="button"
     >
-      <img
+      <Image
         src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
         alt="YouTube thumbnail"
-        className="absolute inset-0 w-full h-full object-cover rounded-xl"
-        loading="lazy"
+        fill
+        sizes="(max-width: 768px) 100vw, 400px"
+        className="object-cover rounded-xl"
       />
       <span className="z-10 text-white text-4xl">▶</span>
     </button>
