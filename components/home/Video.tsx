@@ -63,7 +63,7 @@ const VideoSection = () => {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
       >
         <source src="/what.mp4" type="video/mp4" />
         Your browser does not support the video tag.

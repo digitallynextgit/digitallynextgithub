@@ -147,7 +147,7 @@ export const careersData = {
     "Performance Metrics Analysis",
     "Cross-Functional Communication",
     "Documentation & SOP Management",
-    "PPT & Business Reporting",
+    "Business Reporting",
     "B.Tech Background Preferred"
   ],
   openings: [

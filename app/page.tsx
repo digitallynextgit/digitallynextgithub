@@ -1,29 +1,29 @@
+import dynamic from "next/dynamic";
 import Hero from "./components/home/Hero";
 import About from "./components/home/About";
 // import Info from "./components/home/Info";
 // import ChatBot from "./components/ChatBot";
 // import Learn from "./components/home/Learn";
-import Book from "./components/home/Book";
 // import Podcast from "./components/home/Podcast";
 // import BlogSection from "./components/home/BlogSection";
 // import ExploreSection from "./components/ExploreSection";
 
-import { Testimonials } from "./components/home/Testimonials";
-import Stats from "./components/home/Stats";
-import LogoSlider from "./components/home/LogoSlider";
-import BookConsultation from "./components/home/BookConsultation";
-import Nuggest from "./components/home/Nuggest";
-import HomeServices from "./components/home/HomeServices";
-import Careers from "./components/home/Careers";
-import QuoraSection from "./components/home/QuoraSection";
-import Map from "./components/home/Map";
-import SocialMediaSection from "./components/home/SocialMediaSection";
-import VideoSection from "@/components/home/Video";
-import MobileVideoSection from "@/components/home/MobileHelpSection";
-import ManualYoutubeShortsWrapper from "./components/home/ManualYoutubeShortsWrapper";
-import HomeExploreCards from "./components/home/HomeExploreCards";
-
-
+// Dynamic imports for below-fold components (improves initial load)
+const Book = dynamic(() => import("./components/home/Book"));
+const Testimonials = dynamic(() => import("./components/home/Testimonials").then(mod => ({ default: mod.Testimonials })));
+const Stats = dynamic(() => import("./components/home/Stats"));
+const LogoSlider = dynamic(() => import("./components/home/LogoSlider"));
+const BookConsultation = dynamic(() => import("./components/home/BookConsultation"));
+const Nuggest = dynamic(() => import("./components/home/Nuggest"));
+const HomeServices = dynamic(() => import("./components/home/HomeServices"));
+const Careers = dynamic(() => import("./components/home/Careers"));
+const QuoraSection = dynamic(() => import("./components/home/QuoraSection"));
+const Map = dynamic(() => import("./components/home/Map"));
+const SocialMediaSection = dynamic(() => import("./components/home/SocialMediaSection"));
+const VideoSection = dynamic(() => import("@/components/home/Video"));
+const MobileVideoSection = dynamic(() => import("@/components/home/MobileHelpSection"));
+const ManualYoutubeShortsWrapper = dynamic(() => import("./components/home/ManualYoutubeShortsWrapper"));
+const HomeExploreCards = dynamic(() => import("./components/home/HomeExploreCards"));
 
 export default function Home() {
   return (
@@ -67,7 +67,7 @@ export default function Home() {
 
       {/* Nuggest Section */}
       <Nuggest />
-      
+
       {/* Services Section */}
       <HomeServices />
 
@@ -101,7 +101,7 @@ export default function Home() {
       {/* YouTube Shorts Section */}
       <ManualYoutubeShortsWrapper />
 
-      
+
     </main>
   );
 }

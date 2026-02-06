@@ -46,7 +46,7 @@ const testimonials = [
     quote: "Scaled social presence by 500% in India",
     avatar: "https://plus.unsplash.com/premium_photo-1683141154082-324d296f3c66?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RmludGVjaHxlbnwwfHwwfHx8MA%3D%3D",
   },
-  
+
 ];
 
 const Hero = () => {
@@ -78,11 +78,15 @@ const Hero = () => {
 
   return (
     <section id="hero-section" className="relative lg:h-[110vh] h-[120vh] flex flex-col overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/bg.webp')" }}
-      ></div>
+      {/* Background Image - Using Next.js Image for optimization */}
+      <Image
+        src="/bg.webp"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+        sizes="100vw"
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col items-center justify-center">
         {/* Animated Address in Top Right */}
@@ -114,16 +118,16 @@ const Hero = () => {
               <motion.div
                 key={currentImage}
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ 
+                animate={{
                   opacity: 1,
-                  scale: [0.8, 1.2, 0.8], 
-                  y: [0, 15, 0], 
+                  scale: [0.8, 1.2, 0.8],
+                  y: [0, 15, 0],
                   rotate: 12
                 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{
                   duration: 0.5,
-                
+
                   y: {
                     duration: 7,
                     repeat: Infinity,
@@ -209,7 +213,7 @@ const Hero = () => {
                   <h4 className="font-bold text-gray-900">
                     {testimonials[currentTestimonial].name}
                   </h4>
-                
+
                 </div>
               </div>
               <p className="text-gray-800 italic md:text-base text-xs">
