@@ -101,78 +101,88 @@ export const careersData = {
       ],
     },
     {
-      id: 6,
+      id: 10,
       icon: "/images/full-time/5.webp",
       title: "Web Developer",
-      description: "A website isn't merely an online presence; it's a powerful message from our brand to its audience. It communicates our values and identity effortlessly. If you understand how to craft a brand persona and not just a website, we invite you to join us.",
-      jobEssence: "The role focuses on the design and construction (latest) of websites (mainly on WordPress and Shopify). To ensure that sites meet user expectations by ensuring they look good, run smoothly and offer easy access points with no loading issues between pages or error messages.",
+      description:
+        "We build websites that do more than look good — they perform, scale, and convert. This role is for a Web Developer who understands modern frameworks, clean architecture, and real-world deployment, and enjoys building reliable, future-ready digital platforms.",
+      jobEssence:
+        "The role focuses on building high-performance, scalable, and SEO-friendly web applications. It involves translating UI/UX designs into responsive interfaces, developing frontend and backend systems, managing deployments, and ensuring stability, performance, and clean architecture across digital platforms.",
       requirements: [
-        "WordPress Development",
-        "Shopify Development",
-        "Frontend Development",
-        "UI/UX Understanding"
+        "Next.js & React.js (Mandatory)",
+        "TypeScript / JavaScript",
+        "HTML, CSS & Responsive Design",
+        "Frontend & Backend Integration",
+        "Node.js and/or Python (Working Knowledge)",
+        "API Integration & Database Handling",
+        "Git & GitHub with CI/CD Pipelines",
+        "Vercel / AWS Deployment",
+        "DNS, Hosting & Domain Management",
+        "UI/UX Collaboration with Figma",
+        "Strong Debugging & Problem-Solving Skills",
+        "Ownership-Driven Development Mindset",
+      ],
+      openings: ["Web Developer (2–3 Years Exp)"],
+    },
+    {
+      id: 7,
+      icon: "/images/full-time/6.webp",
+      title: "Social Media Optimization Specialist",
+      description:
+        "Visibility is power in today’s digital-first world. Social media isn’t just about posting content — it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.",
+      jobEssence:
+        "The role focuses on optimizing social media presence across platforms to maximize reach, engagement, and performance. This includes platform-specific content optimization, trend analysis, audience behavior tracking, and data-backed strategies to ensure the brand remains memorable, relevant, and influential.",
+      requirements: [
+        "Social Media Optimization (SMO)",
+        "Platform Algorithm Understanding",
+        "Content & Engagement Strategy",
+        "Analytics & Performance Tracking",
+        "Hashtag, Keyword & Caption Optimization",
+        "SEO for Social Media",
+      ],
+      openings: ["Social Media Optimization Specialist (0–2+ Years Exp)"],
+    },
+    {
+      id: 8,
+      icon: "/images/full-time/7.webp",
+      title: "Project Controller & Operations Analyst",
+      description:
+        "Execution is strategy. In a fast-moving digital ecosystem, ideas only matter when they are delivered with clarity and control. If you thrive on structure, accountability, and turning complexity into seamless execution, this role is built for you.",
+      jobEssence:
+        "The role focuses on bringing structure, visibility, and accountability across projects and teams. It involves coordinating cross-functional execution, tracking performance metrics, building dashboards and reports, and translating strategy into disciplined, data-backed action.",
+      requirements: [
+        "Project & Operations Coordination",
+        "Advanced Excel / Google Sheets",
+        "Dashboarding & Reporting",
+        "Performance Metrics Analysis",
+        "Cross-Functional Communication",
+        "Documentation & SOP Management",
+        "Business Reporting",
+        "B.Tech Background Preferred",
       ],
       openings: [
-        "Web Developer (3-5 Years Exp)"
-      ]
+        "Project Controller & Operations Analyst(2 - 3 Years Experience)",
+      ],
     },
-   {
-  id: 7,
-  icon: "/images/full-time/6.webp",
-  title: "Social Media Optimization Specialist",
-  description: "Visibility is power in today’s digital-first world. Social media isn’t just about posting content — it’s about shaping perception, driving engagement, and building brand authority. If you understand how to engineer reach, relevance, and impact across platforms, we’d love to have you on board.",
-  jobEssence: "The role focuses on optimizing social media presence across platforms to maximize reach, engagement, and performance. This includes platform-specific content optimization, trend analysis, audience behavior tracking, and data-backed strategies to ensure the brand remains memorable, relevant, and influential.",
-  requirements: [
-    "Social Media Optimization (SMO)",
-    "Platform Algorithm Understanding",
-    "Content & Engagement Strategy",
-    "Analytics & Performance Tracking",
-    "Hashtag, Keyword & Caption Optimization",
-    "SEO for Social Media"
-  ],
-  openings: [
-    "Social Media Optimization Specialist (0–2+ Years Exp)"
-  ]
-},
-{
-  id: 8,
-  icon: "/images/full-time/7.webp",
-  title: "Project Controller & Operations Analyst",
-  description: "Execution is strategy. In a fast-moving digital ecosystem, ideas only matter when they are delivered with clarity and control. If you thrive on structure, accountability, and turning complexity into seamless execution, this role is built for you.",
-  jobEssence: "The role focuses on bringing structure, visibility, and accountability across projects and teams. It involves coordinating cross-functional execution, tracking performance metrics, building dashboards and reports, and translating strategy into disciplined, data-backed action.",
-  requirements: [
-    "Project & Operations Coordination",
-    "Advanced Excel / Google Sheets",
-    "Dashboarding & Reporting",
-    "Performance Metrics Analysis",
-    "Cross-Functional Communication",
-    "Documentation & SOP Management",
-    "Business Reporting",
-    "B.Tech Background Preferred"
-  ],
-  openings: [
-    "Project Controller & Operations Analyst(2 - 3 Years Experience)"
-  ]
-},
- {
-  id: 9,
-  icon: "/images/full-time/8.webp",
-  title: "Create Manager",
-  description: "Creativity scales only when it’s managed well. This role is for someone who can lead, align, and elevate video, design, content, and social media teams to deliver consistent, high-impact brand communication across platforms.",
-  jobEssence: "The role focuses on managing end-to-end creative execution across video, graphic design, content, and social media. It involves team coordination, quality control, campaign alignment, and ensuring timely, platform-optimized delivery while maintaining brand consistency and performance.",
-  requirements: [
-    "Creative Team Management (Video, Graphic, Content & Social)",
-    "Content & Campaign Planning",
-    "Social Media Strategy & Execution Oversight",
-    "Quality Control & Brand Consistency",
-    "Cross-Functional Coordination",
-    "Agency Experience Preferred",
-    "Minimum 3–4 Years of Relevant Experience"
-  ],
-  openings: [
-    "Create Manager (3–4+ Years Exp)"
-  ]
-}
+    {
+      id: 9,
+      icon: "/images/full-time/8.webp",
+      title: "Create Manager",
+      description:
+        "Creativity scales only when it’s managed well. This role is for someone who can lead, align, and elevate video, design, content, and social media teams to deliver consistent, high-impact brand communication across platforms.",
+      jobEssence:
+        "The role focuses on managing end-to-end creative execution across video, graphic design, content, and social media. It involves team coordination, quality control, campaign alignment, and ensuring timely, platform-optimized delivery while maintaining brand consistency and performance.",
+      requirements: [
+        "Creative Team Management (Video, Graphic, Content & Social)",
+        "Content & Campaign Planning",
+        "Social Media Strategy & Execution Oversight",
+        "Quality Control & Brand Consistency",
+        "Cross-Functional Coordination",
+        "Agency Experience Preferred",
+        "Minimum 3–4 Years of Relevant Experience",
+      ],
+      openings: ["Create Manager (3–4+ Years Exp)"],
+    },
     // {
     //   id: 7,
     //   icon: "/images/full-time/7.webp",
