@@ -1,6 +1,10 @@
 import dynamic from "next/dynamic";
 import Hero from "./components/home/Hero";
-import About from "./components/home/About";
+
+// About section contains heavy 28MB GIF - load dynamically
+const About = dynamic(() => import("./components/home/About"), {
+  loading: () => <div className="h-[600px] bg-gray-100 animate-pulse" />
+});
 // import Info from "./components/home/Info";
 // import ChatBot from "./components/ChatBot";
 // import Learn from "./components/home/Learn";

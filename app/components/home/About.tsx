@@ -19,7 +19,7 @@ import Image from "next/image";
 const About = () => {
   // Image carousel data
   const carouselImages = [
-      {
+    {
       src: {
         desktop: "/office/8.webp",
         mobile: "/office/8.webp",
@@ -96,6 +96,8 @@ const About = () => {
               alt="About us"
               width={500}
               height={300}
+              loading="lazy"
+              unoptimized
               className="w-full h-full object-cover "
             />
           </motion.div>

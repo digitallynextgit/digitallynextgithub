@@ -192,7 +192,7 @@ const Hero = () => {
         </div>
 
         {/* Testimonial Carousel - Bottom Left */}
-        <div className="absolute bottom-28 left-8 md:left-16 z-20 max-w-xs">
+        <div className="absolute bottom-28 left-8 md:left-16 z-20 max-w-xs min-h-[100px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTestimonial}
