@@ -8,6 +8,7 @@ import ImageCarousel from "./ImageCarousel";
 import { VideoText } from "@/components/magicui/video-text";
 import Link from "next/link";
 import Image from "next/image";
+import YouTubeFacade from "../YouTubeFacade";
 // Dynamically import Lottie Animation for better performance
 // const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
 //   ssr: false,
@@ -169,15 +170,10 @@ const About = () => {
                 viewport={{ once: true }}
               >
                 <div className="relative w-full h-0 pb-[56.25%] rounded-md overflow-hidden mb-6">
-                  <div className="absolute top-0 left-0 w-full h-full bg-gray-200 animate-pulse"></div>
-                  <iframe
-                    className="absolute top-0 left-0 w-full h-full z-10"
-                    src="https://www.youtube.com/embed/TuOqG4dkSVE?autoplay=1&mute=1"
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  ></iframe>
+                  <YouTubeFacade
+                    videoId="TuOqG4dkSVE"
+                    title="Digitally Next - Our Philosophy"
+                  />
                 </div>
 
                 <h3 className="text-2xl font-bold mb-3">Our Philosophy</h3>
