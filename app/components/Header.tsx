@@ -56,7 +56,7 @@ const Header = () => {
             {/* Combined Fixed Header Container */}
             <div className="fixed top-0  left-0 right-0 z-50">
                 {/* Top Banner Strip - Collapses on scroll */}
-                <div className={`w-full bg-white transition-all duration-300 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-[60px] md:h-[100px] opacity-100'}`}>
+                <div className={`w-full bg-white transition-all duration-300 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-[60px] md:h-[00px] opacity-100'}`}>
                     <Image
                         src="/banner/ipl-header-desktop.webp"
                         alt="IPL Banner"
@@ -70,7 +70,7 @@ const Header = () => {
                         alt="IPL Banner"
                         width={2900}
                         height={60}
-                        className="w-full h-[100px] object-contain hidden md:block"
+                        className="w-full h-[100px] object-contain hidden "
                         priority
                     />
                 </div>
