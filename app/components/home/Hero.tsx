@@ -77,7 +77,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero-section" className="relative lg:h-[110vh] h-[120vh] flex flex-col overflow-hidden">
+    <section id="hero-section" className="relative lg:h-[110vh] h-[100vh] flex flex-col overflow-hidden">
       {/* Background Image - Using Next.js Image for optimization */}
       <Image
         src="/bg.webp"
@@ -88,7 +88,7 @@ const Hero = () => {
         sizes="100vw"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col items-center justify-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full h-full flex flex-col items-center justify-center mt-40 ">
         {/* Animated Address in Top Right */}
         <motion.div
           className="absolute hidden  right-8 z-30 md:flex items-center md:top-24 top-10"
@@ -192,7 +192,7 @@ const Hero = () => {
         </div>
 
         {/* Testimonial Carousel - Bottom Left */}
-        <div className="absolute bottom-28 left-8 md:left-16 z-20 max-w-xs min-h-[100px]">
+        {/* <div className="absolute bottom-28 left-8 md:left-16 z-20 max-w-xs min-h-[100px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTestimonial}
@@ -220,8 +220,8 @@ const Hero = () => {
                 &quot;{testimonials[currentTestimonial].quote}&quot;
               </p>
 
-              {/* Indicator dots */}
-              {/* <div className="flex justify-center mt-3 space-x-2">
+        
+              <div className="flex justify-center mt-3 space-x-2">
                 {testimonials.map((_, i) => (
                   <button 
                     key={i}
@@ -230,10 +230,10 @@ const Hero = () => {
                     aria-label={`Go to testimonial ${i + 1}`}
                   />
                 ))}
-              </div> */}
+              </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </div> */}
       </div>
     </section>
   );
