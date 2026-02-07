@@ -55,25 +55,7 @@ const Header = () => {
         <>
             {/* Combined Fixed Header Container */}
             <div className="fixed top-0  left-0 right-0 z-50">
-                {/* Top Banner Strip - Collapses on scroll */}
-                <div className={`w-full bg-white transition-all duration-300 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-[60px] md:h-[00px] opacity-100'}`}>
-                    <Image
-                        src="/banner/ipl-header-desktop.webp"
-                        alt="IPL Banner"
-                        width={768}
-                        height={30}
-                        className="w-full h-[60px] object-contain block md:hidden "
-                        priority
-                    />
-                    <Image
-                        src="/banner/ipl-header-desktop.webp"
-                        alt="IPL Banner"
-                        width={2900}
-                        height={60}
-                        className="w-full h-[100px] object-contain hidden "
-                        priority
-                    />
-                </div>
+              
 
                 {/* Separator Line */}
                 <div className={`w-full h-[1px] bg-black-800 transition-all duration-300 ${scrolled ? 'opacity-0' : 'opacity-100'}`}></div>
@@ -217,6 +199,25 @@ const Header = () => {
                         </div>
                     </div>
                 </header>
+                  {/* Top Banner Strip - Collapses on scroll */}
+                <div className={`w-full bg-white transition-all lg:-mt-10 -mt-3 duration-300 overflow-hidden ${scrolled ? 'h-0 opacity-0' : 'h-[60px] md:h-[140px] opacity-100'}`}>
+                    <Image
+                        src="/banner/ipl-desktop.webp"
+                        alt="IPL Banner"
+                        width={768}
+                        height={30}
+                        className="w-full h-[60px] object-contain block md:hidden "
+                        priority
+                    />
+                    <Image
+                        src="/banner/ipl-desktop.webp"
+                        alt="IPL Banner"
+                        width={2900}
+                        height={60}
+                        className="w-full h-[140px] object-cover hidden md:block"
+                        priority
+                    />
+                </div>
             </div>
         </>
     );
