@@ -175,17 +175,17 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
   return (
     <>
       {formStatus.success === true ? (
-        <div ref={successRef} className="bg-green-50 p-8 rounded-xl text-center shadow-lg border-2 border-green-200 mb-8">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-10 h-10 text-green-600">
+        <div ref={successRef} className="bg-green-50 p-4 sm:p-6 md:p-8 rounded-xl text-center shadow-lg border-2 border-green-200 ">
+          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-8 h-8 sm:w-10 sm:h-10 text-green-600">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-green-800 mb-3">Message Sent Successfully!</h3>
-          <p className="text-lg text-green-700 mb-6">{formStatus.message}</p>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-800 mb-2 sm:mb-3">Message Sent Successfully!</h3>
+          <p className="text-sm sm:text-base md:text-lg text-green-700 mb-4 sm:mb-6">{formStatus.message}</p>
           
-          <div className="bg-white p-6 rounded-lg shadow-sm mb-6 max-w-md mx-auto">
-            <h4 className="font-semibold text-gray-700 mb-3">What happens next?</h4>
+          <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm mb-4 sm:mb-6 max-w-md mx-auto">
+            <h4 className="text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3">What happens next?</h4>
             <ol className="text-left space-y-2 text-gray-600">
               <li className="flex items-start gap-3">
                 <span className="bg-green-100 text-green-600 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
@@ -206,7 +206,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             onClick={() => setFormStatus({ success: null, message: "" })}
-            className="px-6 py-3 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition-colors"
+            className="px-5 sm:px-6 py-3 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition-colors text-sm sm:text-base"
           >
             Send Another Message
           </motion.button>
@@ -223,7 +223,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Full Name"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('name') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('name') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('name') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('name')}</p>
@@ -239,7 +239,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Email Address"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('email') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('email') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('email') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('email')}</p>
@@ -257,7 +257,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Phone Number"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('phone') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('phone') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('phone') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('phone')}</p>
@@ -273,7 +273,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="City/State"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('city') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('city') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('city') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('city')}</p>
@@ -291,7 +291,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Country"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('country') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('country') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('country') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('country')}</p>
@@ -307,7 +307,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Company/Organization"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('company') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('company') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('company') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('company')}</p>
@@ -325,7 +325,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Your Designation"
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('designation') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('designation') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('designation') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('designation')}</p>
@@ -340,7 +340,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('service') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                  className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('service') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
                 >
                   <option value="">Select a Service</option>
                   {services.map((service) => (
@@ -365,7 +365,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
               required
               rows={5}
               placeholder="Message"
-              className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('message') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all resize-none`}
+              className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('message') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all resize-none`}
             />
             {getFieldError('message') && (
               <p className="mt-1 text-sm text-red-600">{getFieldError('message')}</p>
@@ -381,34 +381,36 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
             </div>
           )}
            
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            type="submit"
-            disabled={isSubmitting}
-            className={`w-full md:w-auto flex items-center justify-center gap-2 py-4 px-8 rounded-full text-lg font-bold transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d90429] border-0 ${
-              isSubmitting
-                ? 'bg-[#f87171] text-white cursor-not-allowed'
-                : 'bg-[#d90429] text-white hover:bg-[#b90323] cursor-pointer'
-            }`}
-          >
-            {isSubmitting ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sending...
-              </>
-            ) : (
-              <>
-                Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 ml-2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L21 12m0 0l-3.75 5.25M21 12H3" />
-                </svg>
-              </>
-            )}
-          </motion.button>
+          <div className="sticky bottom-0 bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl shadow-sm">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full md:w-auto flex items-center justify-center gap-2 py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg font-bold transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d90429] border-0 ${
+                isSubmitting
+                  ? 'bg-[#f87171] text-white cursor-not-allowed'
+                  : 'bg-[#d90429] text-white hover:bg-[#b90323] cursor-pointer'
+              }`}
+            >
+              {isSubmitting ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </>
+              ) : (
+                <>
+                  Send Message
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 ml-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L21 12m0 0l-3.75 5.25M21 12H3" />
+                  </svg>
+                </>
+              )}
+            </motion.button>
+          </div>
         </form>
       )}
     </>
