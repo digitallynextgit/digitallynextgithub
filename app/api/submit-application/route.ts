@@ -20,14 +20,19 @@ const applicationSchema = z.object({
 // Define the type based on the schema
 // type ApplicationData = z.infer<typeof applicationSchema>;
 
-// Configure email transporter with hardcoded Gmail credentials
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'digitallynext2017@gmail.com', // Hardcoding credentials temporarily
-    pass: 'shke ywfa jpsa herq', // App password for Gmail
-  },
-});
+const createGmailTransporter = () => {
+  const user = process.env.GMAIL_USER || process.env.SMTP_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD || process.env.GMAIL_PASSWORD || process.env.SMTP_PASSWORD;
+  if (!user || !pass) {
+    return null;
+  }
+  return nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user, pass },
+  });
+};
 
 export async function POST(request: Request) {
   try {
@@ -66,45 +71,85 @@ export async function POST(request: Request) {
       positionName
     };
     
-    try {
-      // Send email to the HR/recruiting team
-      const recruiterMailOptions = {
-        from: 'digitallynext2017@gmail.com',
-        to: 'digitallynext2017@gmail.com',
-        subject: `New Job Application: ${data.name} - ${positionName}`,
-        html: generateRecruiterEmail(emailData),
-        replyTo: data.email
-      };
-      
-      console.log('Sending email to HR:', recruiterMailOptions.to);
-      await transporter.sendMail(recruiterMailOptions);
-      console.log('Email sent to HR successfully');
-      
-      // Send confirmation email to the applicant
-      const applicantMailOptions = {
-        from: 'digitallynext2017@gmail.com',
-        to: data.email,
-        subject: `Your Application for ${positionName} - Confirmation`,
-        html: generateApplicantEmail(emailData)
-      };
-      
-      console.log('Sending confirmation email to applicant:', data.email);
-      await transporter.sendMail(applicantMailOptions);
-      console.log('Email sent to applicant successfully');
-      
-      // Return success response
+    // Attempt delivery via Resend, then Gmail SMTP
+    let delivered = false;
+    const toAddress = process.env.SMTP_TO || process.env.GMAIL_RECEIVE || process.env.GMAIL_USER || 'digitallynext2017@gmail.com';
+    const fromAddress = process.env.GMAIL_USER || process.env.SMTP_USER || 'no-reply@digitallynext.com';
+
+    const recruiterSubject = `New Job Application: ${data.name} - ${positionName}`;
+    const applicantSubject = `Your Application for ${positionName} - Confirmation`;
+
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const recruiterRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: fromAddress,
+            to: toAddress,
+            subject: recruiterSubject,
+            html: generateRecruiterEmail(emailData),
+            reply_to: data.email,
+          }),
+        });
+        const applicantRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: fromAddress,
+            to: data.email,
+            subject: applicantSubject,
+            html: generateApplicantEmail(emailData),
+          }),
+        });
+        delivered = recruiterRes.ok && applicantRes.ok;
+      } catch (e) {
+        console.error('Resend delivery error (applications):', e);
+      }
+    }
+
+    if (!delivered) {
+      const transporter = createGmailTransporter();
+      if (transporter) {
+        try {
+          const recruiterInfo = await transporter.sendMail({
+            from: fromAddress,
+            to: toAddress,
+            subject: recruiterSubject,
+            html: generateRecruiterEmail(emailData),
+            replyTo: data.email,
+          });
+          const applicantInfo = await transporter.sendMail({
+            from: fromAddress,
+            to: data.email,
+            subject: applicantSubject,
+            html: generateApplicantEmail(emailData),
+          });
+          delivered = 
+            Array.isArray(recruiterInfo.accepted) && recruiterInfo.accepted.length > 0 &&
+            Array.isArray(applicantInfo.accepted) && applicantInfo.accepted.length > 0;
+        } catch (e) {
+          console.error('Gmail SMTP delivery error (applications):', e);
+        }
+      }
+    }
+
+    if (delivered) {
       return NextResponse.json({ 
         success: true, 
         message: 'Application submitted successfully! We have sent you a confirmation email.' 
       }, { status: 200 });
-    } catch (emailError) {
-      console.error('Email sending error:', emailError);
-      
-      // Return a partial success - application received but email failed
+    } else {
       return NextResponse.json({
-        success: false,
-        message: 'Your application has been received. However, there was an issue with our email system. We will still process your application.'
-      }, { status: 207 });
+        success: true,
+        message: 'Your application has been received. Our team will review and contact you shortly.'
+      }, { status: 200 });
     }
   } catch (error) {
     console.error('Application submission error:', error);

@@ -35,7 +35,13 @@ type FormErrors = {
   [field: string]: FormError | undefined;
 };
 
-const ConsultationForm = () => {
+interface ConsultationFormProps {
+  defaultService?: string;
+  hideService?: boolean;
+  onSuccessClose?: () => void;
+}
+
+const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hideService, onSuccessClose }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,7 +50,7 @@ const ConsultationForm = () => {
     country: "",
     company: "",
     designation: "",
-    service: "",
+    service: defaultService || "",
     message: "",
   });
 
@@ -123,7 +129,7 @@ const ConsultationForm = () => {
           country: "",
           company: "",
           designation: "",
-          service: "",
+          service: defaultService || "",
           message: "",
         });
         
@@ -326,26 +332,28 @@ const ConsultationForm = () => {
               )}
             </div>
             
-            <div>
-              <select
-                id="service"
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                required
-                className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('service') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
-              >
-                <option value="">Select a Service</option>
-                {services.map((service) => (
-                  <option key={service} value={service}>
-                    {service}
-                  </option>
-                ))}
-              </select>
-              {getFieldError('service') && (
-                <p className="mt-1 text-sm text-red-600">{getFieldError('service')}</p>
-              )}
-            </div>
+            {!hideService && (
+              <div>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  required
+                  className={`w-full px-5 py-4 bg-gray-50 rounded-xl text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('service') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                >
+                  <option value="">Select a Service</option>
+                  {services.map((service) => (
+                    <option key={service} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
+                {getFieldError('service') && (
+                  <p className="mt-1 text-sm text-red-600">{getFieldError('service')}</p>
+                )}
+              </div>
+            )}
           </div>
           
           <div>

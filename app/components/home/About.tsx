@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 // import Image from "next/image";
 import { motion } from "framer-motion";
 // import dynamic from "next/dynamic";
@@ -9,6 +9,7 @@ import { VideoText } from "@/components/magicui/video-text";
 import Link from "next/link";
 import Image from "next/image";
 import YouTubeFacade from "../YouTubeFacade";
+import ConsultationForm from "../contact/ConsultationForm";
 // Dynamically import Lottie Animation for better performance
 // const LottieAnimation = dynamic(() => import("./LottieAnimation"), {
 //   ssr: false,
@@ -64,8 +65,36 @@ const About = () => {
     },
   ];
 
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section className="bg-white py-10 overflow-hidden" id="about">
+      <button
+        type="button"
+        onClick={() => setIsFormOpen(true)}
+        className="w-full"
+      >
+        <div className="w-full">
+          <Image
+            src="/banner/ipl-mobile.webp"
+            alt="About us (mobile)"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            unoptimized
+            className="w-full h-full object-cover border-b-2 block lg:hidden"
+          />
+          <Image
+            src="/banner/ipl.webp"
+            alt="About us (desktop)"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            unoptimized
+            className="w-full h-full object-cover border-b-2 hidden lg:block"
+          />
+        </div>
+      </button>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large "ABOUT US" Heading with Lottie animation */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
@@ -189,6 +218,27 @@ const About = () => {
           </div>
         </div>
       </div>
+      {isFormOpen && (
+        <div className="fixed inset-0 z-50">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="absolute inset-0 flex items-center justify-center p-4">
+            <div className="bg-white rounded-2xl shadow-2xl max-w-3xl w-full p-6 relative">
+              <button
+                type="button"
+                onClick={() => setIsFormOpen(false)}
+                className="absolute top-3 right-3 rounded-full bg-gray-100 hover:bg-gray-200 w-9 h-9 flex items-center justify-center"
+                aria-label="Close"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+                  <path fill="currentColor" d="M6.225 4.811L4.811 6.225 10.586 12l-5.775 5.775 1.414 1.414L12 13.414l5.775 5.775 1.414-1.414L13.414 12l5.775-5.775-1.414-1.414L12 10.586z"/>
+                </svg>
+              </button>
+              <h3 className="text-xl font-bold mb-4">Start a Conversation</h3>
+              <ConsultationForm defaultService="General Inquiry" hideService />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

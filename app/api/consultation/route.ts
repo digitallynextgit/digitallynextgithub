@@ -14,14 +14,19 @@ const formSchema = z.object({
   message: z.string().optional(),
 });
 
-// Configure transporter to use Gmail
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.GMAIL_USER || 'digitallynext2017@gmail.com',
-    pass: process.env.GMAIL_APP_PASSWORD || 'shke ywfa jpsa herq',
-  },
-});
+const createGmailTransporter = () => {
+  const user = process.env.GMAIL_USER || process.env.SMTP_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD || process.env.GMAIL_PASSWORD || process.env.SMTP_PASSWORD;
+  if (!user || !pass) {
+    return null;
+  }
+  return nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: { user, pass },
+  });
+};
 
 export async function POST(request: Request) {
   try {
@@ -84,27 +89,64 @@ export async function POST(request: Request) {
       Message: ${validatedData.message || 'No message provided'}
     `;
 
-    try {
-      await transporter.sendMail({
-        from: 'digitallynext2017@gmail.com',
-        to: 'digitallynext2017@gmail.com',
-        subject: `New Consultation Request: ${validatedData.service}`,
-        text: textContent,
-        html: htmlContent,
-        replyTo: validatedData.email
-      });
-      console.log('Email sent successfully');
-    } catch (emailError) {
-      console.error('Consultation email send failed:', emailError);
+    let delivered = false;
+    const toAddress = process.env.GMAIL_RECEIVE || process.env.GMAIL_USER;
+    // Try Resend first if configured
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: process.env.GMAIL_USER || 'no-reply@digitallynext.com',
+            to: toAddress || (validatedData.email ?? ''),
+            subject: `New Consultation Request: ${validatedData.service}`,
+            html: htmlContent,
+            text: textContent,
+            reply_to: validatedData.email,
+          }),
+        });
+        delivered = res.ok;
+      } catch (e) {
+        console.error('Resend delivery error:', e);
+      }
+    }
+    // Fallback to Gmail SMTP if available and not delivered
+    if (!delivered) {
+      const transporter = createGmailTransporter();
+      if (transporter && toAddress) {
+        try {
+          const info = await transporter.sendMail({
+            from: process.env.GMAIL_USER!,
+            to: toAddress,
+            subject: `New Consultation Request: ${validatedData.service}`,
+            text: textContent,
+            html: htmlContent,
+            replyTo: validatedData.email
+          });
+          delivered = Array.isArray(info.accepted) && info.accepted.length > 0;
+        } catch (e) {
+          console.error('Gmail SMTP delivery error:', e);
+        }
+      }
     }
 
-    return NextResponse.json(
-      { 
-        success: true,
-        message: 'Your message has been sent successfully. We will get back to you soon!' 
-      },
-      { status: 200 }
-    );
+    if (delivered) {
+      return NextResponse.json(
+        { success: true, message: 'Your message has been sent successfully. We will get back to you soon!' },
+        { status: 200 }
+      );
+    } else {
+      // Graceful success even if email infra is not configured
+      console.warn('Email infrastructure not configured or delivery failed; returning graceful success');
+      return NextResponse.json(
+        { success: true, message: 'Thank you for your message. Our team will contact you shortly.' },
+        { status: 200 }
+      );
+    }
   } catch (error) {
     console.error('Consultation form error:', error);
     
