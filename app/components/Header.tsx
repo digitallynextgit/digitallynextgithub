@@ -44,7 +44,7 @@ const Header = () => {
                 setShowServicesMegaMenu(false);
             }
         }
-        
+
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -52,21 +52,21 @@ const Header = () => {
     }, [servicesRef]);
 
     return (
-        <header className={`fixed top-0 w-full lg:h-[95px] z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+        <header className={`fixed top-0 w-full lg:h-[95px] z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md pb-2 lg:pb-0' : 'bg-transparent'}`}>
             <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center">
-       
+
                     <div className='flex-shrink-0 relative'>
-                        <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2"/>
+                        <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2" />
                     </div>
                     <div className="flex-shrink-0 md:ml-0 -ml-32 ">
                         <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
-                            <Image src="/logo1.webp" alt="logo" width={250} height={100} className='transform lg:-translate-y-3 translate-y-3 lg:-translate-x-10 translate-x-10 lg:w-[250px] w-[200px] h-full'/>
+                            <Image src="/logo1.webp" alt="logo" width={250} height={100} className='transform lg:-translate-y-3 translate-y-3 lg:-translate-x-10 translate-x-10 lg:w-[250px] w-[200px] h-full' />
                         </Link>
                     </div>
-          
+
                     {/* Hamburger Button */}
-                    <button 
+                    <button
                         className="flex flex-col justify-center items-center w-12 h-12 rounded-full bg-[#dc3333] z-50 relative focus:outline-none transform lg:-translate-y-4 translate-y-2"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         aria-label="Toggle menu"
@@ -77,33 +77,31 @@ const Header = () => {
                     </button>
 
                     {/* Fullscreen Menu Overlay */}
-                    <div 
-                        className={`fixed inset-0 bg-white bg-opacity-98 flex items-center justify-center transition-all duration-500 ease-in-out ${
-                            isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                        }`}
+                    <div
+                        className={`fixed inset-0 bg-white bg-opacity-98 flex items-center justify-center transition-all duration-500 ease-in-out ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                            }`}
                     >
                         <nav className="flex flex-col items-center justify-center space-y-6 md:space-y-6 w-full px-4">
                             {menuItems.map((item, index) => (
-                                <div 
+                                <div
                                     key={index}
-                                    className="relative" 
+                                    className="relative"
                                     ref={item.label === 'SERVICES' ? servicesRef : null}
                                 >
                                     <Link
                                         href={item.href}
-                                        className={`text-lg md:text-base lg:text-base font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${
-                                            isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                                        }`}
+                                        className={`text-lg md:text-base lg:text-base font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                            }`}
                                         style={{ transitionDelay: `${index * 100}ms` }}
                                         onClick={() => item.label !== 'SERVICES' && setIsMenuOpen(false)}
                                         onMouseEnter={() => item.label === 'SERVICES' ? setShowServicesMegaMenu(true) : null}
                                     >
                                         {item.label}
                                     </Link>
-                                    
+
                                     {/* Mega Menu for Services */}
                                     {item.label === 'SERVICES' && showServicesMegaMenu && isMenuOpen && (
-                                        <div 
+                                        <div
                                             className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-screen max-w-6xl bg-white shadow-lg rounded-md border border-gray-200 z-50 hidden lg:block"
                                             onMouseLeave={() => setShowServicesMegaMenu(false)}
                                         >
@@ -159,19 +157,17 @@ const Header = () => {
                             <div></div>
                             <Link
                                 href="/contact"
-                                className={`mt-4 md:mt-6 btn-primary text-lg md:text-base px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${
-                                    isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                                }`}
+                                className={`mt-4 md:mt-6 btn-primary text-lg md:text-base px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                    }`}
                                 style={{ transitionDelay: `${menuItems.length * 100}ms` }}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 GET IN TOUCH
                             </Link>
-                            
+
                             {/* Social Icons */}
-                            <div className={`flex space-x-6 mt-6 md:mt-8 ${
-                                isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                            }`} style={{ transitionDelay: `${(menuItems.length + 1) * 100}ms` }}>
+                            <div className={`flex space-x-6 mt-6 md:mt-8 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                }`} style={{ transitionDelay: `${(menuItems.length + 1) * 100}ms` }}>
                                 <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
                                     <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
