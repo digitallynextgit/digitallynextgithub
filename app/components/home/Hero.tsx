@@ -98,7 +98,7 @@ const Hero = () => {
           onHoverStart={() => setAddressHovered(true)}
           onHoverEnd={() => setAddressHovered(false)}
         >
-          <div className="bg-[#dc3333] translate-y-10 bg-opacity-90 px-3 py-1 rounded-3xl shadow-md flex text-center">
+          {/* <div className="bg-[#dc3333] translate-y-10 bg-opacity-90 px-3 py-1 rounded-3xl shadow-md flex text-center">
             <FaMapMarkerAlt className="text-white text-xl mr-2" />
             <motion.div
               animate={addressHovered ? { scale: 1.15 } : { scale: 1 }}
@@ -108,7 +108,7 @@ const Hero = () => {
               <p className="text-[10px] text-white">Uday Park, </p>
               <p className="text-[10px] text-white">South Delhi, India</p>
             </motion.div>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* Image Container - Positioned absolutely within the Hero section */}
