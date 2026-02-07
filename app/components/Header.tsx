@@ -52,144 +52,167 @@ const Header = () => {
     }, [servicesRef]);
 
     return (
-        <header className={`fixed top-0 w-full lg:h-[95px] z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'bg-white shadow-md pb-2 lg:pb-0' : 'bg-transparent'}`}>
-            <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center">
+        <>
+            {/* Top Banner Strip - Higher z-index, always on top */}
+            <div className={`fixed top-0 left-0 right-0 z-[60] bg-white transition-all duration-300 ${scrolled ? 'h-0 overflow-hidden opacity-0' : 'h-auto opacity-100'}`}>
+                <Image
+                    src="/banner/ipl-header-mobile.webp"
+                    alt="IPL Banner"
+                    width={768}
+                    height={30}
+                    className="w-full h-[30px] object-contain block md:hidden"
+                    priority
+                />
+                <Image
+                    src="/banner/ipl-header-desktop.webp"
+                    alt="IPL Banner"
+                    width={2920}
+                    height={35}
+                    className="w-full h-[35px] object-contain hidden md:block"
+                    priority
+                />
+            </div>
 
-                    <div className='flex-shrink-0 relative'>
-                        <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2" />
-                    </div>
-                    <div className="flex-shrink-0 md:ml-0 -ml-32 ">
-                        <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
-                            <Image src="/logo1.webp" alt="logo" width={250} height={100} className='transform lg:-translate-y-3 translate-y-3 lg:-translate-x-10 translate-x-10 lg:w-[250px] w-[200px] h-full' />
-                        </Link>
-                    </div>
+            {/* Main Header - Positioned below banner */}
+            <header className={`fixed w-full lg:h-[95px] z-50 transition-all duration-300 ${scrolled || isMenuOpen ? 'top-0 bg-white shadow-md pb-2 lg:pb-0' : 'top-[30px] md:top-[35px] bg-transparent'}`}>
+                <div className="max-w-7xl mx-auto px-4 py-2 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center">
 
-                    {/* Hamburger Button */}
-                    <button
-                        className="flex flex-col justify-center items-center w-12 h-12 rounded-full bg-[#dc3333] z-50 relative focus:outline-none transform lg:-translate-y-4 translate-y-2"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle menu"
-                    >
-                        <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
-                        <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                        <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
-                    </button>
+                        <div className='flex-shrink-0 relative'>
+                            <Image src="/admin-ajax.webp" alt="logo" width={120} height={100} className="hidden sm:block transform -translate-y-2" />
+                        </div>
+                        <div className="flex-shrink-0 md:ml-0 -ml-32 ">
+                            <Link href="/" className="text-2xl font-serif font-bold text-gray-900">
+                                <Image src="/logo1.webp" alt="logo" width={250} height={100} className='transform lg:-translate-y-3 translate-y-3 lg:-translate-x-10 translate-x-10 lg:w-[250px] w-[200px] h-full' />
+                            </Link>
+                        </div>
 
-                    {/* Fullscreen Menu Overlay */}
-                    <div
-                        className={`fixed inset-0 bg-white bg-opacity-98 flex items-center justify-center transition-all duration-500 ease-in-out ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-                            }`}
-                    >
-                        <nav className="flex flex-col items-center justify-center space-y-6 md:space-y-6 w-full px-4">
-                            {menuItems.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className="relative"
-                                    ref={item.label === 'SERVICES' ? servicesRef : null}
-                                >
-                                    <Link
-                                        href={item.href}
-                                        className={`text-lg md:text-base lg:text-base font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                                            }`}
-                                        style={{ transitionDelay: `${index * 100}ms` }}
-                                        onClick={() => item.label !== 'SERVICES' && setIsMenuOpen(false)}
-                                        onMouseEnter={() => item.label === 'SERVICES' ? setShowServicesMegaMenu(true) : null}
+                        {/* Hamburger Button */}
+                        <button
+                            className="flex flex-col justify-center items-center w-12 h-12 rounded-full bg-[#dc3333] z-50 relative focus:outline-none transform lg:-translate-y-4 translate-y-2"
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            aria-label="Toggle menu"
+                        >
+                            <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`}></span>
+                            <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                            <span className={`block w-6 h-0.5 bg-white rounded-full transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`}></span>
+                        </button>
+
+                        {/* Fullscreen Menu Overlay */}
+                        <div
+                            className={`fixed inset-0 bg-white bg-opacity-98 flex items-center justify-center transition-all duration-500 ease-in-out ${isMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                                }`}
+                        >
+                            <nav className="flex flex-col items-center justify-center space-y-6 md:space-y-6 w-full px-4">
+                                {menuItems.map((item, index) => (
+                                    <div
+                                        key={index}
+                                        className="relative"
+                                        ref={item.label === 'SERVICES' ? servicesRef : null}
                                     >
-                                        {item.label}
-                                    </Link>
-
-                                    {/* Mega Menu for Services */}
-                                    {item.label === 'SERVICES' && showServicesMegaMenu && isMenuOpen && (
-                                        <div
-                                            className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-screen max-w-6xl bg-white shadow-lg rounded-md border border-gray-200 z-50 hidden lg:block"
-                                            onMouseLeave={() => setShowServicesMegaMenu(false)}
+                                        <Link
+                                            href={item.href}
+                                            className={`text-lg md:text-base lg:text-base font-bold text-[#111] hover:text-[#dc3333] transition-all duration-300 transform hover:scale-110 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                                }`}
+                                            style={{ transitionDelay: `${index * 100}ms` }}
+                                            onClick={() => item.label !== 'SERVICES' && setIsMenuOpen(false)}
+                                            onMouseEnter={() => item.label === 'SERVICES' ? setShowServicesMegaMenu(true) : null}
                                         >
-                                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 p-6 md:p-8">
-                                                {/* Column 1 */}
-                                                <div className="space-y-4">
-                                                    <h3 className="text-xl font-semibold text-[#dc3333]">360° Performance Marketing</h3>
-                                                    <div className="space-y-2">
-                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Digital Branding</Link>
-                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Complete Online Demand Generation</Link>
-                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Influencer Marketing | Digital PR | Personal Branding</Link>
-                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Online Community Building & Development</Link>
-                                                        <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Social CRM/Analytics Integration & Management</Link>
+                                            {item.label}
+                                        </Link>
+
+                                        {/* Mega Menu for Services */}
+                                        {item.label === 'SERVICES' && showServicesMegaMenu && isMenuOpen && (
+                                            <div
+                                                className="absolute left-1/2 transform -translate-x-1/2 mt-4 w-screen max-w-6xl bg-white shadow-lg rounded-md border border-gray-200 z-50 hidden lg:block"
+                                                onMouseLeave={() => setShowServicesMegaMenu(false)}
+                                            >
+                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 p-6 md:p-8">
+                                                    {/* Column 1 */}
+                                                    <div className="space-y-4">
+                                                        <h3 className="text-xl font-semibold text-[#dc3333]">360° Performance Marketing</h3>
+                                                        <div className="space-y-2">
+                                                            <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Digital Branding</Link>
+                                                            <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Complete Online Demand Generation</Link>
+                                                            <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Influencer Marketing | Digital PR | Personal Branding</Link>
+                                                            <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Online Community Building & Development</Link>
+                                                            <Link href="/services" className="block font-medium text-black hover:text-[#dc3333] transition-colors">Social CRM/Analytics Integration & Management</Link>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Column 2 */}
+                                                    <div className="space-y-4">
+                                                        <h3 className="text-xl font-semibold text-black">Disruptive Digital Campaigns</h3>
+                                                        <ul className="space-y-2">
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Meme Marketing</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Viral Marketing</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Engagement Marketing</Link></li>
+                                                        </ul>
+
+                                                        <h3 className="text-xl font-semibold text-black mt-6">Digital Marketing Campaigns– Publish and Promote</h3>
+                                                        <ul className="space-y-2">
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Search Engine Optimization (SEO)</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Paid Media Planning and Optimization</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Social Media Optimization (SMO)</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Online Reputation Management (ORM)</Link></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    {/* Column 3 */}
+                                                    <div className="space-y-4">
+                                                        <h3 className="text-xl font-semibold text-black">Digital Marketing Campaigns Assets Creation</h3>
+                                                        <ul className="space-y-2">
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Website / Microsite / Landing page</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Social Media Setup and Activation</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Content Marketing Assets</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Visual Communication Assets</Link></li>
+                                                            <li className="pl-6"><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">- Video production</Link></li>
+                                                            <li className="pl-6"><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">- Graphics</Link></li>
+                                                            <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Paid Ads Assets</Link></li>
+                                                        </ul>
                                                     </div>
                                                 </div>
-
-                                                {/* Column 2 */}
-                                                <div className="space-y-4">
-                                                    <h3 className="text-xl font-semibold text-black">Disruptive Digital Campaigns</h3>
-                                                    <ul className="space-y-2">
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Meme Marketing</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Viral Marketing</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Engagement Marketing</Link></li>
-                                                    </ul>
-
-                                                    <h3 className="text-xl font-semibold text-black mt-6">Digital Marketing Campaigns– Publish and Promote</h3>
-                                                    <ul className="space-y-2">
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Search Engine Optimization (SEO)</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Paid Media Planning and Optimization</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Social Media Optimization (SMO)</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Online Reputation Management (ORM)</Link></li>
-                                                    </ul>
-                                                </div>
-
-                                                {/* Column 3 */}
-                                                <div className="space-y-4">
-                                                    <h3 className="text-xl font-semibold text-black">Digital Marketing Campaigns Assets Creation</h3>
-                                                    <ul className="space-y-2">
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Website / Microsite / Landing page</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Social Media Setup and Activation</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Content Marketing Assets</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Visual Communication Assets</Link></li>
-                                                        <li className="pl-6"><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">- Video production</Link></li>
-                                                        <li className="pl-6"><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">- Graphics</Link></li>
-                                                        <li><Link href="/services" className="text-black hover:text-[#dc3333] transition-colors">• Paid Ads Assets</Link></li>
-                                                    </ul>
-                                                </div>
                                             </div>
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
-                            <div></div>
-                            <Link
-                                href="/contact"
-                                className={`mt-4 md:mt-6 btn-primary text-lg md:text-base px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                                    }`}
-                                style={{ transitionDelay: `${menuItems.length * 100}ms` }}
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                GET IN TOUCH
-                            </Link>
+                                        )}
+                                    </div>
+                                ))}
+                                <div></div>
+                                <Link
+                                    href="/contact"
+                                    className={`mt-4 md:mt-6 btn-primary text-lg md:text-base px-6 md:px-8 py-2 md:py-3 transform hover:scale-105 transition-all duration-300 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                        }`}
+                                    style={{ transitionDelay: `${menuItems.length * 100}ms` }}
+                                    onClick={() => setIsMenuOpen(false)}
+                                >
+                                    GET IN TOUCH
+                                </Link>
 
-                            {/* Social Icons */}
-                            <div className={`flex space-x-6 mt-6 md:mt-8 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                                }`} style={{ transitionDelay: `${(menuItems.length + 1) * 100}ms` }}>
-                                <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
-                                    <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                                    </svg>
-                                </a>
-                                <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
-                                    <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                                    </svg>
-                                </a>
-                                <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
-                                    <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0z" />
-                                        <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </nav>
+                                {/* Social Icons */}
+                                <div className={`flex space-x-6 mt-6 md:mt-8 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                                    }`} style={{ transitionDelay: `${(menuItems.length + 1) * 100}ms` }}>
+                                    <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
+                                        <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
+                                        <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                                        </svg>
+                                    </a>
+                                    <a href="#" className="text-gray-800 hover:text-[#dc3333] transition-colors duration-300">
+                                        <svg className="h-5 w-5 md:h-6 md:w-6" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0z" />
+                                            <path d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
+        </>
     );
 };
 
