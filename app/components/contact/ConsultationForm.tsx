@@ -39,9 +39,10 @@ interface ConsultationFormProps {
   defaultService?: string;
   hideService?: boolean;
   onSuccessClose?: () => void;
+  isPopup?: boolean;
 }
 
-const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hideService, onSuccessClose }) => {
+const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hideService, onSuccessClose, isPopup = false }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -64,7 +65,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
     success: null,
     message: ""
   });
-  
+
   // Create a ref for the success message container
   const successRef = useRef<HTMLDivElement>(null);
 
@@ -73,7 +74,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
   useEffect(() => {
     setIsClient(true);
   }, []);
-  
+
   // Scroll to success message when it appears
   useEffect(() => {
     if (formStatus.success && successRef.current) {
@@ -87,7 +88,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
       ...prev,
       [name]: value
     }));
-    
+
     // Clear error for this field when typing
     if (formStatus.errors && formStatus.errors[name]) {
       setFormStatus(prev => {
@@ -105,20 +106,20 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
     e.preventDefault();
     setIsSubmitting(true);
     setFormStatus({ success: null, message: "" });
-    
+
     try {
       console.log('Submitting form data:', formData);
-      
+
       // Send form data to our backend
       const response = await fetch("/api/consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-      
+
       const result = await response.json();
       console.log('Form submission result:', result);
-      
+
       if (response.ok && result.success) {
         // Reset form after successful submission
         setFormData({
@@ -132,7 +133,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
           service: defaultService || "",
           message: "",
         });
-        
+
         setFormStatus({
           success: true,
           message: result.message || "Thank you for your message. We'll get back to you soon!"
@@ -147,7 +148,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
     } catch (error) {
       console.error("Error submitting form:", error);
       setFormStatus({
-        success: false, 
+        success: false,
         message: "There was an error submitting your message. Please try again."
       });
     } finally {
@@ -166,8 +167,9 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
 
   // Function to get field error message
   const getFieldError = (fieldName: string) => {
-    if (formStatus.errors && formStatus.errors[fieldName]) {
-      return formStatus.errors[fieldName]._errors?.[0] || "Invalid field";
+    const fieldError = formStatus.errors?.[fieldName];
+    if (fieldError) {
+      return fieldError._errors?.[0] || "Invalid field";
     }
     return null;
   };
@@ -183,7 +185,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
           </div>
           <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-green-800 mb-2 sm:mb-3">Message Sent Successfully!</h3>
           <p className="text-sm sm:text-base md:text-lg text-green-700 mb-4 sm:mb-6">{formStatus.message}</p>
-          
+
           <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm mb-4 sm:mb-6 max-w-md mx-auto">
             <h4 className="text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3">What happens next?</h4>
             <ol className="text-left space-y-2 text-gray-600">
@@ -201,7 +203,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
               </li>
             </ol>
           </div>
-          
+
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
@@ -212,8 +214,8 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
           </motion.button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form onSubmit={handleSubmit} className={isPopup ? "space-y-4 sm:space-y-6" : "space-y-5"}>
+          <div className={isPopup ? "grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
             <div>
               <input
                 type="text"
@@ -223,13 +225,13 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Full Name"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('name') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('name') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('name') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('name')}</p>
               )}
             </div>
-            
+
             <div>
               <input
                 type="email"
@@ -239,15 +241,15 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Email Address"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('email') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('email') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('email') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('email')}</p>
               )}
             </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div className={isPopup ? "grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
             <div>
               <input
                 type="tel"
@@ -257,13 +259,13 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Phone Number"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('phone') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('phone') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('phone') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('phone')}</p>
               )}
             </div>
-            
+
             <div>
               <input
                 type="text"
@@ -273,15 +275,15 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="City/State"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('city') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('city') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('city') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('city')}</p>
               )}
             </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div className={isPopup ? "grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
             <div>
               <input
                 type="text"
@@ -291,13 +293,13 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Country"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('country') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('country') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('country') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('country')}</p>
               )}
             </div>
-            
+
             <div>
               <input
                 type="text"
@@ -307,15 +309,15 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Company/Organization"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('company') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('company') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('company') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('company')}</p>
               )}
             </div>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div className={isPopup ? "grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-5" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
             <div>
               <input
                 type="text"
@@ -325,13 +327,13 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                 onChange={handleChange}
                 required
                 placeholder="Your Designation"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('designation') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('designation') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
               />
               {getFieldError('designation') && (
                 <p className="mt-1 text-sm text-red-600">{getFieldError('designation')}</p>
               )}
             </div>
-            
+
             {!hideService && (
               <div>
                 <select
@@ -340,7 +342,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('service') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
+                  className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('service') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all`}
                 >
                   <option value="">Select a Service</option>
                   {services.map((service) => (
@@ -355,7 +357,7 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
               </div>
             )}
           </div>
-          
+
           <div>
             <textarea
               id="message"
@@ -363,15 +365,15 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
               value={formData.message}
               onChange={handleChange}
               required
-              rows={5}
+              rows={isPopup ? 3 : 5}
               placeholder="Message"
-              className={`w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 rounded-xl text-sm sm:text-base font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('message') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all resize-none`}
+              className={`w-full ${isPopup ? 'px-3 py-2 sm:px-5 sm:py-4 text-xs sm:text-base rounded-lg' : 'px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl'} bg-gray-50 font-medium text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 ${getFieldError('message') ? 'border-red-500 ring-red-200' : 'border-0 focus:ring-[#d90429]'} shadow-sm transition-all resize-none`}
             />
             {getFieldError('message') && (
               <p className="mt-1 text-sm text-red-600">{getFieldError('message')}</p>
             )}
           </div>
-           
+
           {formStatus.success === false && formStatus.message && (
             <div className="bg-red-50 p-4 rounded-lg text-red-600 flex items-start gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5 flex-shrink-0 mt-0.5">
@@ -380,18 +382,17 @@ const ConsultationForm: React.FC<ConsultationFormProps> = ({ defaultService, hid
               <span>{formStatus.message}</span>
             </div>
           )}
-           
-          <div className="sticky bottom-0 bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl shadow-sm">
+
+          <div className={isPopup ? "sticky bottom-0 bg-white/80 backdrop-blur-sm p-2 sm:p-4 rounded-lg sm:rounded-xl shadow-sm" : "sticky bottom-0 bg-white/80 backdrop-blur-sm p-3 sm:p-4 rounded-xl shadow-sm"}>
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               type="submit"
               disabled={isSubmitting}
-              className={`w-full md:w-auto flex items-center justify-center gap-2 py-3 sm:py-4 px-6 sm:px-8 rounded-full text-sm sm:text-base md:text-lg font-bold transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d90429] border-0 ${
-                isSubmitting
-                  ? 'bg-[#f87171] text-white cursor-not-allowed'
-                  : 'bg-[#d90429] text-white hover:bg-[#b90323] cursor-pointer'
-              }`}
+              className={`w-full md:w-auto flex items-center justify-center gap-2 ${isPopup ? 'py-2 sm:py-4 px-4 sm:px-8 text-xs sm:text-base' : 'py-3 sm:py-4 px-6 sm:px-8 text-sm sm:text-base md:text-lg'} rounded-full font-bold transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-[#d90429] border-0 ${isSubmitting
+                ? 'bg-[#f87171] text-white cursor-not-allowed'
+                : 'bg-[#d90429] text-white hover:bg-[#b90323] cursor-pointer'
+                }`}
             >
               {isSubmitting ? (
                 <>

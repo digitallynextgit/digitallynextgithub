@@ -219,10 +219,10 @@ const About = () => {
         </div>
       </div>
       {isFormOpen && (
-        <div className="fixed inset-0 z-50">
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="absolute inset-0 flex items-center justify-center p-2 sm:p-4 overflow-y-auto overscroll-contain touch-pan-y">
-            <div className="bg-white rounded-2xl shadow-2xl w-[95vw] sm:w-[90vw] md:w-[80vw] lg:max-w-3xl max-h-[95vh] sm:max-h-[85vh] overflow-y-auto p-4 sm:p-6 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsFormOpen(false)} />
+          <div className="relative flex items-center justify-center p-4 sm:p-6 w-full h-full overflow-y-auto">
+            <div className="bg-white rounded-2xl shadow-2xl w-[95vw] sm:w-[85vw] md:w-[70vw] lg:max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-8 relative m-auto">
               <button
                 type="button"
                 onClick={() => setIsFormOpen(false)}
@@ -230,11 +230,11 @@ const About = () => {
                 aria-label="Close"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
-                  <path fill="currentColor" d="M6.225 4.811L4.811 6.225 10.586 12l-5.775 5.775 1.414 1.414L12 13.414l5.775 5.775 1.414-1.414L13.414 12l5.775-5.775-1.414-1.414L12 10.586z"/>
+                  <path fill="currentColor" d="M6.225 4.811L4.811 6.225 10.586 12l-5.775 5.775 1.414 1.414L12 13.414l5.775 5.775 1.414-1.414L13.414 12l5.775-5.775-1.414-1.414L12 10.586z" />
                 </svg>
               </button>
-              <h3 className="text-lg sm:text-xl font-bold mb-4">Start a Conversation</h3>
-              <ConsultationForm defaultService="General Inquiry" hideService />
+              <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-gray-800">Start a Conversation</h3>
+              <ConsultationForm defaultService="General Inquiry" hideService isPopup />
             </div>
           </div>
         </div>
